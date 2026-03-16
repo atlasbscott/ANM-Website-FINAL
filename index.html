@@ -57,11 +57,12 @@ body::after{
   position:fixed;top:0;left:0;right:0;
   z-index:200;
   padding:1.125rem 2rem;
-  display:flex;align-items:center;justify-content:space-between;
+  display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
   background:transparent;
   border-bottom:1px solid transparent;
   transition:background-color 0.4s ease,border-color 0.4s ease,backdrop-filter 0.4s ease;
 }
+.nav-cta{justify-self:end;}
 .nav.scrolled{
   background:rgba(8,8,8,0.93);
   backdrop-filter:blur(20px);
