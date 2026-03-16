@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atlas Narrative Media — Visual Storytelling</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --clr-base:       #080808;
+  --clr-surface:    #111111;
+  --clr-elevated:   #1A1A1A;
+  --clr-floating:   #242424;
+  --clr-border:     #2A2A2A;
+  --clr-gold:       #C8A96E;
+  --clr-gold-light: #E8D5A3;
+  --clr-gold-dim:   #8B7240;
+  --clr-text:       #F0EDE6;
+  --clr-text-muted: #8A8278;
+  --clr-text-faint: #4A4642;
+  --fs-display: clamp(3.25rem, 9vw, 7.5rem);
+  --fs-h1:     clamp(2rem, 5vw, 4rem);
+  --fs-h2:     clamp(1.625rem, 3vw, 2.5rem);
+  --fs-h3:     1.25rem;
+  --fs-body:   1rem;
+  --fs-label:  0.6875rem;
+  --fs-sm:     0.875rem;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background-color:var(--clr-base);
+  color:var(--clr-text);
+  font-family:'DM Sans',sans-serif;
+  font-weight:300;
+  line-height:1.7;
+  overflow-x:hidden;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 15% 20%, rgba(200,169,110,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 80% at 85% 80%, rgba(200,169,110,0.04) 0%, transparent 55%);
+}
+body::after{
+  content:'';
+  position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  opacity:0.032;
+  pointer-events:none;
+  z-index:9998;
+  mix-blend-mode:overlay;
+}
+
+/* ── NAV ─────────────────────────────────────────────── */
+.nav{
+  position:fixed;top:0;left:0;right:0;
+  z-index:200;
+  padding:1.125rem 2rem;
+  display:flex;align-items:center;justify-content:space-between;
+  background:transparent;
+  border-bottom:1px solid transparent;
+  transition:background-color 0.4s ease,border-color 0.4s ease,backdrop-filter 0.4s ease;
+}
+.nav.scrolled{
+  background:rgba(8,8,8,0.93);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  border-bottom-color:var(--clr-border);
+}
+.nav-logo{height:38px;width:auto;display:block;flex-shrink:0;}
+.nav-links{display:flex;align-items:center;gap:2.25rem;list-style:none;}
+.nav-links a{
+  font-family:'DM Sans',sans-serif;font-size:var(--fs-sm);font-weight:400;
+  color:var(--clr-text-muted);text-decoration:none;position:relative;
+  transition:color 0.2s ease;
+}
+.nav-links a::after{
+  content:'';position:absolute;bottom:-3px;left:0;width:100%;height:1px;
+  background:var(--clr-gold);transform:scaleX(0);transform-origin:left;
+  transition:transform 0.3s ease;
+}
+.nav-links a:hover,.nav-links a.active{color:var(--clr-gold);}
+.nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1);}
+.nav-links a:focus-visible{outline:2px solid var(--clr-gold);outline-offset:4px;}
+
+/* Dropdown */
+.nav-dropdown{position:relative;}
+.nav-dd-menu{
+  position:absolute;top:100%;left:50%;
+  transform:translateX(-50%);
+  padding-top:8px;
+  background:var(--clr-floating);border:1px solid var(--clr-border);
+  min-width:210px;
+  opacity:0;pointer-events:none;
+  transition:opacity 0.2s ease;
+}
+.nav-dropdown:hover .nav-dd-menu,.nav-dropdown:focus-within .nav-dd-menu{
+  opacity:1;pointer-events:all;
+}
+.nav-dd-menu a{
+  display:block;padding:0.75rem 1.25rem;
+  font-family:'DM Mono',monospace;font-size:var(--fs-label);letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--clr-text-muted);border-bottom:1px solid var(--clr-border);
+  transition:color 0.15s ease,background-color 0.15s ease;
+}
+.nav-dd-menu a:last-child{border-bottom:none;}
+.nav-dd-menu a:hover{color:var(--clr-gold);background:var(--clr-elevated);}
+.nav-dd-menu a::after{display:none;}
+
+.nav-cta{
+  font-family:'DM Sans',sans-serif;font-size:var(--fs-sm);font-weight:400;
+  color:var(--clr-gold);border:1px solid var(--clr-gold);
+  padding:0.5rem 1.375rem;text-decoration:none;
+  transition:background-color 0.2s ease,color 0.2s ease,transform 0.2s ease;
+  flex-shrink:0;
+}
+.nav-cta:hover{background:var(--clr-gold);color:var(--clr-base);transform:translateY(-1px);}
+.nav-cta:active{transform:translateY(0);}
+.nav-cta::after{display:none!important;}
+.nav-cta:focus-visible{outline:2px solid var(--clr-gold);outline-offset:3px;}
+
+/* Hamburger */
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;z-index:210;}
+.hamburger span{display:block;width:24px;height:1px;background:var(--clr-text);transition:transform 0.3s ease,opacity 0.3s ease;}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(4.5px,4.5px);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(4.5px,-4.5px);}
+
+/* Mobile overlay */
+.mobile-menu{
+  position:fixed;inset:0;background:rgba(8,8,8,0.98);
+  z-index:205;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem;
+  opacity:0;pointer-events:none;transition:opacity 0.3s ease;
+}
+.mobile-menu.open{opacity:1;pointer-events:all;}
+.mobile-menu a{
+  font-family:'Cormorant',serif;font-size:clamp(2rem,8vw,3.25rem);font-weight:300;font-style:italic;
+  color:var(--clr-text);text-decoration:none;
+  opacity:0;transform:translateY(18px);transition:color 0.2s ease,opacity 0.4s ease,transform 0.4s ease;
+}
+.mobile-menu.open a{opacity:1;transform:translateY(0);}
+.mobile-menu.open a:nth-child(2){transition-delay:0.05s;}.mobile-menu.open a:nth-child(3){transition-delay:0.10s;}.mobile-menu.open a:nth-child(4){transition-delay:0.15s;}.mobile-menu.open a:nth-child(5){transition-delay:0.20s;}.mobile-menu.open a:nth-child(6){transition-delay:0.25s;}.mobile-menu.open a:nth-child(7){transition-delay:0.30s;}.mobile-menu.open a:nth-child(8){transition-delay:0.35s;}
+.mobile-menu a:hover{color:var(--clr-gold);}
+.mobile-close{position:absolute;top:1.5rem;right:1.5rem;background:none;border:none;color:var(--clr-text-muted);font-family:'DM Mono',monospace;font-size:1.5rem;line-height:1;cursor:pointer;padding:0.5rem;z-index:210;transition:color 0.2s ease,transform 0.2s ease;}
+.mobile-close:hover{color:var(--clr-gold);transform:rotate(90deg);}
+.mobile-close:focus-visible{outline:2px solid var(--clr-gold);outline-offset:2px;}
+
+/* ── HERO ────────────────────────────────────────────── */
+.hero{
+  position:relative;height:100dvh;min-height:600px;
+  display:flex;align-items:center;justify-content:center;overflow:hidden;
+}
+.hero-video-wrap{position:absolute;inset:0;overflow:hidden;z-index:0;}
+.hero-video-wrap iframe{
+  position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  min-width:100%;min-height:100%;
+  width:177.78vh;height:56.25vw;
+  pointer-events:none;border:none;
+}
+.hero-overlay{
+  position:absolute;inset:0;z-index:1;
+  background:
+    linear-gradient(to bottom,rgba(8,8,8,0.25) 0%,rgba(8,8,8,0.15) 40%,rgba(8,8,8,0.97) 100%),
+    radial-gradient(ellipse 120% 100% at 50% 50%,transparent 25%,rgba(8,8,8,0.65) 100%);
+}
+.hero-content{
+  position:relative;z-index:2;text-align:center;
+  padding:0 1.5rem;max-width:960px;width:100%;
+}
+.hero-pre{
+  font-family:'DM Mono',monospace;font-size:var(--fs-label);
+  letter-spacing:0.25em;text-transform:uppercase;color:var(--clr-gold);
+  margin-bottom:1.75rem;
+  opacity:0;transform:translateY(8px);
+  transition:opacity 0.6s ease,transform 0.6s ease;
+}
+.hero-line1{
+  display:block;
+  font-family:'Cormorant',serif;font-weight:300;font-style:italic;
+  font-size:var(--fs-display);letter-spacing:-0.03em;line-height:1.0;
+  color:var(--clr-text);
+  opacity:0;transform:translateY(28px);
+  transition:opacity 0.7s ease,transform 0.7s ease;
+}
+.hero-line2{
+  display:block;
+  font-family:'Cormorant',serif;font-weight:600;font-style:normal;
+  font-size:var(--fs-display);letter-spacing:-0.03em;line-height:1.05;
+  color:var(--clr-text);
+  opacity:0;transform:translateY(28px);
+  transition:opacity 0.7s ease,transform 0.7s ease;
+}
+.hero-body{
+  font-size:var(--fs-sm);font-weight:300;color:var(--clr-text-muted);
+  max-width:460px;margin:1.75rem auto 0;line-height:1.8;
+  opacity:0;transform:translateY(18px);
+  transition:opacity 0.6s ease,transform 0.6s ease;
+}
+.hero-ctas{
+  display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;
+  margin-top:2.5rem;
+  opacity:0;transform:translateY(18px);
+  transition:opacity 0.6s ease,transform 0.6s ease;
+}
+.anim-in{opacity:1!important;transform:none!important;}
+
+/* Scroll indicator */
+.scroll-ind{
+  position:absolute;bottom:2.25rem;left:50%;transform:translateX(-50%);
+  z-index:2;display:flex;flex-direction:column;align-items:center;gap:0.5rem;
+  opacity:0;transition:opacity 0.6s ease;
+}
+.scroll-ind.anim-in{opacity:1;}
+.scroll-line{
+  width:1px;height:44px;background:var(--clr-gold);opacity:0.45;
+  animation:scrollBob 2.2s ease-in-out infinite;
+}
+@keyframes scrollBob{0%,100%{transform:scaleY(1);opacity:0.45;}50%{transform:scaleY(0.55);opacity:0.75;}}
+.scroll-label{font-family:'DM Mono',monospace;font-size:0.5625rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--clr-text-faint);}
+
+/* ── BUTTONS ─────────────────────────────────────────── */
+.btn-gold{
+  font-family:'DM Sans',sans-serif;font-size:var(--fs-sm);font-weight:500;
+  background:var(--clr-gold);color:var(--clr-base);
+  padding:0.875rem 2.25rem;text-decoration:none;display:inline-block;
+  transition:filter 0.2s ease,transform 0.2s ease;
+}
+.btn-gold:hover{filter:brightness(1.1);transform:translateY(-2px);}
+.btn-gold:active{transform:translateY(0);}
+.btn-gold:focus-visible{outline:2px solid var(--clr-gold-light);outline-offset:3px;}
+
+.btn-outline{
+  font-family:'DM Sans',sans-serif;font-size:var(--fs-sm);font-weight:400;
+  background:transparent;color:var(--clr-gold);border:1px solid var(--clr-gold);
+  padding:0.875rem 2.25rem;text-decoration:none;display:inline-block;
+  transition:background-color 0.2s ease,color 0.2s ease,transform 0.2s ease;
+}
+.btn-outline:hover{background:var(--clr-gold);color:var(--clr-base);transform:translateY(-2px);}
+.btn-outline:active{transform:translateY(0);}
+.btn-outline:focus-visible{outline:2px solid var(--clr-gold);outline-offset:3px;}
+
+/* ── SHARED ELEMENTS ─────────────────────────────────── */
+.sec-label{font-family:'DM Mono',monospace;font-size:var(--fs-label);letter-spacing:0.2em;text-transform:uppercase;color:var(--clr-gold);}
+.sec-head{font-family:'Cormorant',serif;font-weight:300;font-style:italic;letter-spacing:-0.02em;color:var(--clr-text);}
+.gold-rule{width:100%;height:1px;background:linear-gradient(to right,transparent,rgba(200,169,110,0.25),transparent);}
+
+/* Scroll reveal */
+[data-reveal]{opacity:0;transform:translateY(22px);transition:opacity 0.7s ease,transform 0.7s ease;}
+[data-reveal].on{opacity:1;transform:none;}
+[data-reveal][data-d="1"]{transition-delay:0.1s;}
+[data-reveal][data-d="2"]{transition-delay:0.2s;}
+[data-reveal][data-d="3"]{transition-delay:0.3s;}
+[data-reveal][data-d="4"]{transition-delay:0.4s;}
+
+/* ── SERVICES STRIP ──────────────────────────────────── */
+.svc-grid{display:grid;grid-template-columns:1fr;}
+@media(min-width:480px){.svc-grid{grid-template-columns:repeat(2,1fr);}}
+@media(min-width:1024px){.svc-grid{grid-template-columns:repeat(4,1fr);}}
+
+.svc-card{
+  display:block;text-decoration:none;color:var(--clr-text);
+  padding:2.5rem 1.75rem;
+  background:var(--clr-surface);border:1px solid var(--clr-border);
+  border-bottom:none;position:relative;overflow:hidden;
+  transition:transform 0.3s ease,border-color 0.3s ease;
+}
+@media(min-width:480px){
+  .svc-card{border-right:none;border-bottom:1px solid var(--clr-border);}
+  .svc-card:nth-child(2){border-right:1px solid var(--clr-border);}
+  .svc-card:nth-child(3){border-right:none;border-top:none;}
+  .svc-card:nth-child(4){border-right:1px solid var(--clr-border);border-top:none;}
+}
+@media(min-width:1024px){
+  .svc-card{border-right:none;border-bottom:1px solid var(--clr-border);}
+  .svc-card:last-child{border-right:1px solid var(--clr-border);}
+  .svc-card:nth-child(n){border-top:1px solid var(--clr-border);}
+}
+.svc-card:last-child{border-bottom:1px solid var(--clr-border);}
+
+.svc-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(200,169,110,0.06) 0%,transparent 60%);opacity:0;transition:opacity 0.3s ease;}
+.svc-card:hover{transform:translateY(-4px);border-color:rgba(200,169,110,0.35);}
+.svc-card:hover::before{opacity:1;}
+.svc-card:focus-visible{outline:2px solid var(--clr-gold);outline-offset:-2px;}
+
+.svc-icon{width:26px;height:26px;margin-bottom:1.5rem;color:var(--clr-gold);}
+.svc-num{font-family:'DM Mono',monospace;font-size:var(--fs-label);letter-spacing:0.15em;text-transform:uppercase;color:var(--clr-gold);margin-bottom:0.375rem;}
+.svc-title{font-family:'DM Sans',sans-serif;font-size:var(--fs-h3);font-weight:500;color:var(--clr-text);margin-bottom:0.75rem;line-height:1.3;}
+.svc-desc{font-size:var(--fs-sm);color:var(--clr-text-muted);line-height:1.65;}
+.svc-arrow{font-family:'DM Mono',monospace;font-size:var(--fs-label);letter-spacing:0.08em;color:var(--clr-gold);margin-top:1.5rem;display:inline-flex;align-items:center;gap:0.4rem;transition:gap 0.2s ease;}
+.svc-card:hover .svc-arrow{gap:0.7rem;}
+
+/* ── SHOWREEL ─────────────────────────────────────────── */
+.showreel-split{display:grid;grid-template-columns:1fr;gap:2.5rem;}
+@media(min-width:900px){.showreel-split{grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}}
+
+.showreel-thumb{
+  position:relative;aspect-ratio:16/9;background:var(--clr-surface);
+  cursor:pointer;overflow:hidden;
+}
+.showreel-thumb img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s ease;}
+.showreel-thumb:hover img{transform:scale(1.03);}
+.showreel-thumb-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,8,0.55) 0%,transparent 60%);}
+.showreel-tint{position:absolute;inset:0;background:rgba(200,169,110,0.04);mix-blend-mode:multiply;pointer-events:none;}
+.play-btn{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:68px;height:68px;border-radius:50%;
+  border:1px solid rgba(200,169,110,0.55);
+  display:flex;align-items:center;justify-content:center;
+  transition:border-color 0.2s ease,transform 0.2s ease,background-color 0.2s ease;
+}
+.showreel-thumb:hover .play-btn{
+  border-color:var(--clr-gold);
+  transform:translate(-50%,-50%) scale(1.08);
+  background:rgba(200,169,110,0.1);
+}
+.play-btn svg{margin-left:4px;color:var(--clr-gold);}
+
+.stat-num{font-family:'Cormorant',serif;font-size:2.25rem;font-weight:600;color:var(--clr-gold);line-height:1;}
+.stat-label{font-family:'DM Mono',monospace;font-size:var(--fs-label);letter-spacing:0.15em;text-transform:uppercase;color:var(--clr-text-muted);margin-top:0.2rem;}
+
+/* ── MARQUEE ─────────────────────────────────────────── */
+.marquee-wrap{overflow:hidden;white-space:nowrap;}
+.marquee-track{display:inline-flex;gap:3rem;animation:marquee 28s linear infinite;}
+@keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+.marquee-item{font-family:'DM Mono',monospace;font-size:var(--fs-sm);color:var(--clr-text-faint);letter-spacing:0.08em;flex-shrink:0;}
+.marquee-sep{color:var(--clr-gold);font-size:0.4rem;flex-shrink:0;display:inline-flex;align-items:center;}
+
+/* ── PROJECTS GRID ───────────────────────────────────── */
+.proj-grid{display:grid;grid-template-columns:1fr;gap:3px;background:var(--clr-border);}
+@media(min-width:720px){.proj-grid{grid-template-columns:2fr 1fr;}}
+@media(min-width:720px){.proj-card:first-child{grid-row:span 2;}}
+
+.proj-card{
+  position:relative;overflow:hidden;display:block;
+  text-decoration:none;aspect-ratio:16/9;background:var(--clr-surface);
+}
+.proj-card img{width:100%;height:100%;object-fit:cover;transition:transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94),filter 0.5s ease;}
+.proj-card:hover img{transform:scale(1.06);filter:brightness(0.6);}
+.proj-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,8,0.98) 0%,rgba(8,8,8,0.45) 48%,rgba(8,8,8,0.05) 100%);}
+.proj-tint{position:absolute;inset:0;background:rgba(200,169,110,0.04);mix-blend-mode:multiply;pointer-events:none;}
+.proj-num{position:absolute;top:1.25rem;left:1.5rem;font-family:'Cormorant',serif;font-size:5.5rem;font-weight:300;font-style:italic;color:rgba(200,169,110,0.06);line-height:1;pointer-events:none;user-select:none;transition:color 0.5s ease;z-index:1;}
+.proj-card:hover .proj-num{color:rgba(200,169,110,0.11);}
+.proj-card:first-child .proj-num{font-size:7.5rem;}
+.proj-meta{position:absolute;bottom:0;left:0;right:0;padding:1.75rem;z-index:2;}
+.proj-cat{font-family:'DM Mono',monospace;font-size:0.5625rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--clr-gold);margin-bottom:0.625rem;display:block;opacity:0.85;transition:opacity 0.3s ease;}
+.proj-card:hover .proj-cat{opacity:1;}
+.proj-line{height:1px;background:var(--clr-gold);width:0;margin-bottom:0.875rem;transition:width 0.45s cubic-bezier(0.25,0.46,0.45,0.94) 0.05s;opacity:0.5;}
+.proj-card:hover .proj-line{width:2.75rem;}
+.proj-title{font-family:'Cormorant',serif;font-size:clamp(1.25rem,2.5vw,2rem);font-weight:300;font-style:italic;color:var(--clr-text);line-height:1.2;letter-spacing:-0.015em;transform:translateY(5px);transition:transform 0.35s ease;}
+.proj-card:hover .proj-title{transform:translateY(0);}
+.proj-arrow{display:block;font-family:'DM Mono',monospace;font-size:0.5625rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--clr-gold);margin-top:0.875rem;opacity:0;transform:translateY(5px);transition:opacity 0.3s ease 0.1s,transform 0.3s ease 0.1s;}
+.proj-card:hover .proj-arrow{opacity:0.65;transform:translateY(0);}
+.proj-card::after{content:'';position:absolute;inset:0;border:1px solid rgba(200,169,110,0);transition:border-color 0.3s ease;pointer-events:none;z-index:3;}
+.proj-card:hover::after{border-color:rgba(200,169,110,0.3);}
+.proj-card:focus-visible{outline:2px solid var(--clr-gold);outline-offset:2px;}
+
+/* ── PROCESS ─────────────────────────────────────────── */
+.proc-grid{display:grid;grid-template-columns:1fr;gap:2.5rem;}
+@media(min-width:768px){.proc-grid{grid-template-columns:repeat(3,1fr);gap:3rem;}}
+.proc-num{font-family:'Cormorant',serif;font-size:5rem;font-weight:300;font-style:italic;color:rgba(200,169,110,0.12);line-height:1;margin-bottom:0.5rem;}
+.proc-title{font-family:'DM Sans',sans-serif;font-size:1.125rem;font-weight:500;color:var(--clr-text);margin-bottom:0.625rem;}
+.proc-desc{font-size:var(--fs-sm);color:var(--clr-text-muted);line-height:1.7;}
+
+/* ── TESTIMONIALS ────────────────────────────────────── */
+.t-quote{font-family:'Cormorant',serif;font-size:var(--fs-h2);font-weight:300;font-style:italic;letter-spacing:-0.02em;line-height:1.35;color:var(--clr-text);transition:opacity 0.4s ease;}
+.t-attr{font-family:'DM Mono',monospace;font-size:var(--fs-label);letter-spacing:0.15em;text-transform:uppercase;color:var(--clr-gold);transition:opacity 0.4s ease;}
+.t-dot{width:6px;height:6px;border-radius:50%;background:var(--clr-text-faint);cursor:pointer;border:none;transition:background-color 0.2s ease,transform 0.2s ease;}
+.t-dot.active{background:var(--clr-gold);transform:scale(1.5);}
+.t-dot:focus-visible{outline:2px solid var(--clr-gold);outline-offset:3px;}
+
+/* ── CTA BANNER ──────────────────────────────────────── */
+.cta-banner{position:relative;overflow:hidden;}
+.cta-banner::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:70%;height:300%;background:radial-gradient(ellipse at center,rgba(200,169,110,0.07) 0%,transparent 70%);pointer-events:none;}
+
+/* ── FOOTER ──────────────────────────────────────────── */
+footer{background:var(--clr-surface);border-top:1px solid rgba(200,169,110,0.12);}
+.foot-grid{display:grid;grid-template-columns:1fr;gap:2.5rem;}
+@media(min-width:640px){.foot-grid{grid-template-columns:1fr 1fr;}}
+@media(min-width:1024px){.foot-grid{grid-template-columns:1.5fr 1fr 1fr;}}
+
+.foot-social{color:var(--clr-text-faint);display:inline-flex;transition:color 0.2s ease,transform 0.2s ease;}
+.foot-social:hover{color:var(--clr-gold);transform:translateY(-2px);}
+.foot-link{font-family:'DM Sans',sans-serif;font-size:var(--fs-sm);font-weight:300;color:var(--clr-text-muted);text-decoration:none;display:block;margin-bottom:0.625rem;transition:color 0.2s ease;}
+.foot-link:hover{color:var(--clr-text);}
+
+/* ── LIGHTBOX ────────────────────────────────────────── */
+.lb{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.3s ease;}
+.lb.open{opacity:1;pointer-events:all;}
+.lb-bg{position:absolute;inset:0;background:rgba(8,8,8,0.97);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);}
+.lb-inner{position:relative;z-index:1;max-width:90vw;width:100%;}
+.lb-media{width:100%;aspect-ratio:16/9;background:var(--clr-surface);display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.lb-media img,.lb-media iframe{width:100%;height:100%;object-fit:contain;border:none;}
+.lb-close{position:fixed;top:1.5rem;right:1.5rem;background:none;border:none;color:var(--clr-text-muted);font-size:1.25rem;cursor:pointer;padding:0.625rem;z-index:2;transition:color 0.2s ease,transform 0.2s ease;}
+.lb-close:hover{color:var(--clr-gold);transform:rotate(90deg);}
+.lb-close:focus-visible{outline:2px solid var(--clr-gold);}
+.lb-info{padding:1rem 0 0;}
+.lb-cat{font-family:'DM Mono',monospace;font-size:var(--fs-label);letter-spacing:0.15em;text-transform:uppercase;color:var(--clr-gold);display:block;margin-bottom:0.25rem;}
+.lb-title{font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:500;color:var(--clr-text);}
+@media(max-width:767px){.nav-links,.nav-cta{display:none;}.hamburger{display:flex;}.nav{padding:1rem 1.25rem;}}
+</style>
+</head>
+<body>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Site navigation">
+  <button class="mobile-close" id="mobileClose" aria-label="Close menu">&#x2715;</button>
+  <a href="corporate.html">Corporate</a>
+  <a href="real-estate.html">Real Estate</a>
+  <a href="music.html">Music</a>
+  <a href="camera-op.html">Camera Op</a>
+  <a href="work.html">Work</a>
+  <a href="about.html">About</a>
+  <a href="contact.html" style="color:var(--clr-gold)">Contact</a>
+</div>
+
+<!-- Nav -->
+<nav class="nav" id="mainNav" aria-label="Main navigation">
+  <a href="index.html" aria-label="Atlas Narrative Media — Home">
+    <img src="brand_assets/ANM Profile Pic WHITE BIGGER.svg" alt="Atlas Narrative Media" class="nav-logo">
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li class="nav-dropdown">
+      <a href="#" tabindex="0">Services</a>
+      <div class="nav-dd-menu" role="menu">
+        <a href="corporate.html" role="menuitem">Corporate Videos</a>
+        <a href="real-estate.html" role="menuitem">Real Estate Media</a>
+        <a href="music.html" role="menuitem">Music Media</a>
+        <a href="camera-op.html" role="menuitem">Camera Operation</a>
+      </div>
+    </li>
+    <li><a href="work.html">Work</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Contact</a>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Hero -->
+<section class="hero" aria-label="Hero — Atlas Narrative Media">
+  <div class="hero-video-wrap" aria-hidden="true">
+    <iframe
+      src="https://player.vimeo.com/video/901769964?background=1&autoplay=1&loop=1&muted=1&playsinline=1"
+      allow="autoplay; fullscreen; picture-in-picture"
+      title="Atlas Narrative Media background reel">
+    </iframe>
+  </div>
+  <div class="hero-overlay" aria-hidden="true"></div>
+  <div class="hero-content">
+    <p class="hero-pre" id="hp">Atlas Narrative Media</p>
+    <h1>
+      <span class="hero-line1" id="hl1">Press record.</span>
+      <span class="hero-line2" id="hl2">Become the brand they follow.</span>
+    </h1>
+    <p class="hero-body" id="hb">Four specializations. One vision. We craft visual stories that move audiences and build brands worth remembering.</p>
+    <div class="hero-ctas" id="hc">
+      <a href="work.html" class="btn-gold">View Our Work</a>
+      <a href="contact.html" class="btn-outline">Start a Project</a>
+    </div>
+  </div>
+  <div class="scroll-ind" id="si" aria-hidden="true">
+    <div class="scroll-line"></div>
+    <span class="scroll-label">Scroll</span>
+  </div>
+</section>
+
+<!-- Services Strip -->
+<section style="padding:5rem 0;" aria-label="Services">
+  <div style="max-width:1400px;margin:0 auto;padding:0 2rem 3rem;">
+    <div style="display:flex;align-items:center;gap:1.25rem;margin-bottom:2.75rem;" data-reveal>
+      <span class="sec-label">What We Do</span>
+      <div class="gold-rule" style="flex:1;"></div>
+    </div>
+    <h2 class="sec-head" style="font-size:var(--fs-h1);max-width:440px;" data-reveal data-d="1">
+      Four niches.<br>Endless stories.
+    </h2>
+  </div>
+  <div class="svc-grid" style="max-width:1400px;margin:0 auto;padding:0 2rem;">
+    <a href="corporate.html" class="svc-card" data-reveal data-d="1">
+      <svg class="svc-icon" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="2" y="7" width="19" height="14" rx="1"/><path d="M21 12l5 3-5 3V12z"/>
+        <path d="M7 11h7M7 15h5"/>
+      </svg>
+      <p class="svc-num">01</p>
+      <h3 class="svc-title">Corporate Videos</h3>
+      <p class="svc-desc">Brand films, product launches, culture videos, and executive stories that make your company impossible to ignore.</p>
+      <span class="svc-arrow">Explore <span>→</span></span>
+    </a>
+    <a href="real-estate.html" class="svc-card" data-reveal data-d="2">
+      <svg class="svc-icon" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M3 14L14 4l11 10"/><path d="M6 11.5V22h5v-5h6v5h5V11.5"/>
+      </svg>
+      <p class="svc-num">02</p>
+      <h3 class="svc-title">Real Estate Media</h3>
+      <p class="svc-desc">Cinematic property tours, aerial drone coverage, and photography that sells before the showing.</p>
+      <span class="svc-arrow">Explore <span>→</span></span>
+    </a>
+    <a href="music.html" class="svc-card" data-reveal data-d="3">
+      <svg class="svc-icon" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="8.5" cy="21" r="2.5"/><circle cx="20.5" cy="19" r="2.5"/>
+        <path d="M11 21V7.5l12-2V17"/>
+      </svg>
+      <p class="svc-num">03</p>
+      <h3 class="svc-title">Music Media</h3>
+      <p class="svc-desc">Music videos, concert coverage, and artist branding that turn listeners into a loyal following.</p>
+      <span class="svc-arrow">Explore <span>→</span></span>
+    </a>
+    <a href="camera-op.html" class="svc-card" data-reveal data-d="4">
+      <svg class="svc-icon" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="14" cy="14" r="4.5"/><circle cx="14" cy="14" r="9"/>
+        <line x1="14" y1="2" x2="14" y2="5"/><line x1="14" y1="23" x2="14" y2="26"/>
+        <line x1="2" y1="14" x2="5" y2="14"/><line x1="23" y1="14" x2="26" y2="14"/>
+      </svg>
+      <p class="svc-num">04</p>
+      <h3 class="svc-title">Camera Operation</h3>
+      <p class="svc-desc">Professional operators for film, TV, commercials, events, and live productions of any scale.</p>
+      <span class="svc-arrow">Explore <span>→</span></span>
+    </a>
+  </div>
+</section>
+
+<div class="gold-rule" style="max-width:1400px;margin:0 auto;padding:0 2rem;"></div>
+
+<!-- Showreel -->
+<section style="padding:6rem 0;" aria-label="Featured showreel">
+  <div style="max-width:1400px;margin:0 auto;padding:0 2rem;">
+    <div class="showreel-split">
+      <div data-reveal>
+        <span class="sec-label" style="display:block;margin-bottom:1rem;">Featured Work</span>
+        <h2 class="sec-head" style="font-size:var(--fs-h1);margin-bottom:1.5rem;">Our Signature<br><em>Showreel</em></h2>
+        <p style="color:var(--clr-text-muted);font-size:var(--fs-sm);line-height:1.8;margin-bottom:2rem;max-width:420px;">From corporate boardrooms to concert stages, from luxury listings to live sets — every frame is built to tell the story your audience can't look away from.</p>
+        <div style="display:flex;gap:3rem;flex-wrap:wrap;">
+          <div><div class="stat-num">50+</div><div class="stat-label">Projects</div></div>
+          <div><div class="stat-num">4</div><div class="stat-label">Niches</div></div>
+          <div><div class="stat-num">100%</div><div class="stat-label">Craft</div></div>
+        </div>
+      </div>
+      <div data-reveal data-d="2">
+        <div class="showreel-thumb" id="showreelBtn" role="button" tabindex="0" aria-label="Play showreel">
+          <img src="https://placehold.co/900x506/111111/C8A96E?text=ANM+Showreel+2026" alt="ANM Showreel">
+          <div class="showreel-thumb-overlay" aria-hidden="true"></div>
+          <div class="showreel-tint" aria-hidden="true"></div>
+          <div class="play-btn" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="currentColor"><path d="M5 3l12 6-12 6V3z"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Marquee -->
+<div style="padding:2.5rem 0;border-top:1px solid var(--clr-border);border-bottom:1px solid var(--clr-border);background:var(--clr-surface);" aria-hidden="true">
+  <div style="text-align:center;margin-bottom:1.25rem;"><span class="sec-label">Trusted By</span></div>
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <span class="marquee-item">Corporate Clients</span><span class="marquee-sep">◆</span>
+      <span class="marquee-item">Real Estate Agencies</span><span class="marquee-sep">◆</span>
+      <span class="marquee-item">Independent Artists</span><span class="marquee-sep">◆</span>
+      <span class="marquee-item">Production Studios</span><span class="marquee-sep">◆</span>
+      <span class="marquee-item">Property Developers</span><span class="marquee-sep">◆</span>
+      <span class="marquee-item">Music Labels</span><span class="marquee-sep">◆</span>
+      <span class="marquee-item">Broadcast Networks</span><span class="marquee-sep">◆</span>
+      <span class="marquee-item">Corporate Clients</span><span class="marquee-sep">◆</span>
+      <span class="marquee-item">Real Estate Agencies</span><span class="marquee-sep">◆</span>
+      <span class="marquee-item">Independent Artists</span><span class="marquee-sep">◆</span>
+      <span class="marquee-item">Production Studios</span><span class="marquee-sep">◆</span>
+      <span class="marquee-item">Property Developers</span><span class="marquee-sep">◆</span>
+      <span class="marquee-item">Music Labels</span><span class="marquee-sep">◆</span>
+      <span class="marquee-item">Broadcast Networks</span><span class="marquee-sep">◆</span>
+    </div>
+  </div>
+</div>
+
+<!-- Selected Projects -->
+<section style="padding:6rem 0;" aria-label="Selected projects">
+  <div style="max-width:1400px;margin:0 auto;padding:0 2rem 2.5rem;">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem;" data-reveal>
+      <div>
+        <span class="sec-label" style="display:block;margin-bottom:0.625rem;">Portfolio</span>
+        <h2 class="sec-head" style="font-size:var(--fs-h1);">Selected Projects</h2>
+      </div>
+      <a href="work.html" style="font-family:'DM Mono',monospace;font-size:var(--fs-label);letter-spacing:0.12em;text-transform:uppercase;color:var(--clr-gold);text-decoration:none;transition:opacity 0.2s ease;" onmouseover="this.style.opacity='.65'" onmouseout="this.style.opacity='1'">View All Work →</a>
+    </div>
+  </div>
+  <div style="max-width:1400px;margin:0 auto;">
+    <div class="proj-grid">
+      <a href="work.html" class="proj-card">
+        <img src="https://placehold.co/1200x750/111111/C8A96E?text=Corporate" alt="Executive brand film" loading="lazy">
+        <div class="proj-overlay"></div><div class="proj-tint"></div>
+        <span class="proj-num" aria-hidden="true">01</span>
+        <div class="proj-meta">
+          <span class="proj-cat">Corporate · Brand Film</span>
+          <div class="proj-line"></div>
+          <p class="proj-title">Executive Brand Film</p>
+          <span class="proj-arrow">View Project →</span>
+        </div>
+      </a>
+      <a href="work.html" class="proj-card">
+        <img src="https://placehold.co/800x500/0E0D0B/C8A96E?text=Real+Estate" alt="Luxury listing showcase" loading="lazy">
+        <div class="proj-overlay"></div><div class="proj-tint"></div>
+        <span class="proj-num" aria-hidden="true">02</span>
+        <div class="proj-meta">
+          <span class="proj-cat">Real Estate · Cinematic</span>
+          <div class="proj-line"></div>
+          <p class="proj-title">Luxury Listing Showcase</p>
+          <span class="proj-arrow">View Project →</span>
+        </div>
+      </a>
+      <a href="work.html" class="proj-card">
+        <img src="https://placehold.co/800x500/0A0A0E/C8A96E?text=Music" alt="Artist visual identity" loading="lazy">
+        <div class="proj-overlay"></div><div class="proj-tint"></div>
+        <span class="proj-num" aria-hidden="true">03</span>
+        <div class="proj-meta">
+          <span class="proj-cat">Music · Visual Identity</span>
+          <div class="proj-line"></div>
+          <p class="proj-title">Artist Visual Identity</p>
+          <span class="proj-arrow">View Project →</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="gold-rule" style="max-width:1400px;margin:0 auto;padding:0 2rem;"></div>
+
+<!-- Process -->
+<section style="padding:6rem 0;background:var(--clr-surface);" aria-label="Our process">
+  <div style="max-width:1400px;margin:0 auto;padding:0 2rem;">
+    <div style="text-align:center;margin-bottom:4rem;" data-reveal>
+      <span class="sec-label" style="display:block;margin-bottom:1rem;">How We Work</span>
+      <h2 class="sec-head" style="font-size:var(--fs-h1);">The Process</h2>
+    </div>
+    <div class="proc-grid">
+      <div data-reveal data-d="1">
+        <div class="proc-num">01</div>
+        <h3 class="proc-title">Concept & Strategy</h3>
+        <p class="proc-desc">We start with your story. What do you need the audience to feel? Every project begins with a clear vision before a single frame is captured.</p>
+      </div>
+      <div data-reveal data-d="2">
+        <div class="proc-num">02</div>
+        <h3 class="proc-title">Production</h3>
+        <p class="proc-desc">Precision on set. From lighting to composition, every element is intentional. We don't miss the moment — we build toward it.</p>
+      </div>
+      <div data-reveal data-d="3">
+        <div class="proc-num">03</div>
+        <h3 class="proc-title">Delivery</h3>
+        <p class="proc-desc">Polished post-production and delivery optimized for every platform. You get assets that work as hard as your brand does.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section style="padding:6rem 0;" aria-label="Client testimonials">
+  <div style="max-width:860px;margin:0 auto;padding:0 2rem;text-align:center;" data-reveal>
+    <span class="sec-label" style="display:block;margin-bottom:2rem;">What Clients Say</span>
+    <blockquote>
+      <p class="t-quote" id="tq">"ANM didn't just shoot our brand video — they understood our story before they even picked up the camera. The result exceeded every expectation."</p>
+      <footer style="margin-top:2rem;">
+        <cite class="t-attr" id="ta" style="font-style:normal;">— Client Name · Corporate Client</cite>
+      </footer>
+    </blockquote>
+    <div style="display:flex;justify-content:center;gap:0.75rem;margin-top:2.5rem;" role="tablist" aria-label="Testimonial navigation">
+      <button class="t-dot active" data-i="0" aria-selected="true" role="tab" aria-label="Testimonial 1"></button>
+      <button class="t-dot" data-i="1" aria-selected="false" role="tab" aria-label="Testimonial 2"></button>
+      <button class="t-dot" data-i="2" aria-selected="false" role="tab" aria-label="Testimonial 3"></button>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Banner -->
+<section class="cta-banner" style="padding:7rem 2rem;text-align:center;background:var(--clr-surface);" aria-label="Contact call to action">
+  <div style="max-width:680px;margin:0 auto;" data-reveal>
+    <span class="sec-label" style="display:block;margin-bottom:1.5rem;">Ready to Begin?</span>
+    <h2 style="font-family:'Cormorant',serif;font-size:var(--fs-h1);font-weight:600;font-style:italic;letter-spacing:-0.02em;color:var(--clr-text);margin-bottom:1.5rem;line-height:1.15;">
+      Ready to Tell<br>Your Story?
+    </h2>
+    <p style="color:var(--clr-text-muted);font-size:var(--fs-sm);max-width:440px;margin:0 auto 2.5rem;line-height:1.8;">
+      Let's talk about what you're building, what your audience needs to feel, and how we make it happen.
+    </p>
+    <a href="contact.html" class="btn-gold" style="font-size:1rem;padding:1rem 2.75rem;">Start a Conversation</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div style="max-width:1400px;margin:0 auto;padding:4rem 2rem 2rem;">
+    <div class="foot-grid" style="margin-bottom:3rem;">
+      <div>
+        <img src="brand_assets/ANM Profile Pic WHITE BIGGER.svg" alt="Atlas Narrative Media" style="height:52px;width:auto;margin-bottom:1.25rem;display:block;">
+        <p style="font-family:'Cormorant',serif;font-style:italic;font-weight:300;font-size:1rem;color:var(--clr-text-muted);line-height:1.65;margin-bottom:1.5rem;max-width:280px;">
+          Crafting visual stories that move audiences and build brands worth remembering.
+        </p>
+        <div style="display:flex;gap:1rem;">
+          <a href="#" class="foot-social" aria-label="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="#" class="foot-social" aria-label="YouTube">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.95C18.88 4 12 4 12 4s-6.88 0-8.59.47a2.78 2.78 0 0 0-1.95 1.95C1 8.12 1 12 1 12s0 3.88.46 5.58a2.78 2.78 0 0 0 1.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 0 0 1.95-1.95C23 15.88 23 12 23 12s0-3.88-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+          </a>
+          <a href="#" class="foot-social" aria-label="Vimeo">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 7.4c-.09 2.1-1.55 4.95-4.36 8.57C14.8 19.67 12.4 21.5 10.4 21.5c-1.28 0-2.36-1.18-3.24-3.54l-1.76-6.5C4.74 9.1 4.12 8 3.38 8c-.16 0-.7.33-1.63.98L.63 7.5C1.65 6.6 2.66 5.7 3.65 4.8 5.01 3.62 6.03 3 6.71 2.94c1.61-.15 2.6.94 2.98 3.28.4 2.52.68 4.08.84 4.68.47 2.12.98 3.18 1.54 3.18.44 0 1.09-.69 1.97-2.07.88-1.38 1.35-2.43 1.41-3.15.12-1.19-.34-1.79-1.41-1.79-.5 0-1.02.11-1.55.35 1.03-3.38 3-5.02 5.91-4.92C20.1 2.63 22.1 4.1 22 7.4z"/></svg>
+          </a>
+          <a href="#" class="foot-social" aria-label="LinkedIn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <p style="font-family:'DM Mono',monospace;font-size:var(--fs-label);letter-spacing:0.2em;text-transform:uppercase;color:var(--clr-text-faint);margin-bottom:1.25rem;">Explore</p>
+        <nav aria-label="Footer navigation">
+          <a href="index.html" class="foot-link">Home</a>
+          <a href="corporate.html" class="foot-link">Corporate Videos</a>
+          <a href="real-estate.html" class="foot-link">Real Estate Media</a>
+          <a href="music.html" class="foot-link">Music Media</a>
+          <a href="camera-op.html" class="foot-link">Camera Operation</a>
+          <a href="work.html" class="foot-link">Our Work</a>
+          <a href="about.html" class="foot-link">About</a>
+          <a href="contact.html" class="foot-link">Contact</a>
+        </nav>
+      </div>
+      <div>
+        <p style="font-family:'DM Mono',monospace;font-size:var(--fs-label);letter-spacing:0.2em;text-transform:uppercase;color:var(--clr-text-faint);margin-bottom:1.25rem;">Get in Touch</p>
+        <a href="mailto:hello@atlasnarrativemedia.com" style="display:block;font-size:var(--fs-sm);color:var(--clr-gold);text-decoration:none;margin-bottom:0.75rem;transition:opacity 0.2s ease;" onmouseover="this.style.opacity='.7'" onmouseout="this.style.opacity='1'">hello@atlasnarrativemedia.com</a>
+        <a href="tel:+15550000000" style="display:block;font-size:var(--fs-sm);color:var(--clr-text-muted);text-decoration:none;margin-bottom:0.75rem;transition:color 0.2s ease;" onmouseover="this.style.color='var(--clr-gold)'" onmouseout="this.style.color='var(--clr-text-muted)'">+1 (555) 000-0000</a>
+        <p style="font-size:var(--fs-sm);color:var(--clr-text-faint);">Available Worldwide</p>
+      </div>
+    </div>
+    <div style="border-top:1px solid var(--clr-border);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.75rem;">
+      <p style="font-family:'DM Mono',monospace;font-size:var(--fs-label);color:var(--clr-text-faint);">© 2026 Atlas Narrative Media. All rights reserved.</p>
+      <p style="font-family:'DM Mono',monospace;font-size:var(--fs-label);color:var(--clr-text-faint);">Crafted with Precision.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Lightbox -->
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Media viewer">
+  <div class="lb-bg" id="lbBg"></div>
+  <div class="lb-inner">
+    <button class="lb-close" id="lbClose" aria-label="Close">✕</button>
+    <div class="lb-media" id="lbMedia"></div>
+    <div class="lb-info">
+      <span class="lb-cat" id="lbCat"></span>
+      <h3 class="lb-title" id="lbTitle"></h3>
+    </div>
+  </div>
+</div>
+
+<script>
+// Nav scroll
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60), {passive:true});
+
+// Mobile menu
+const burger = document.getElementById('hamburger');
+const mMenu = document.getElementById('mobileMenu');
+burger.addEventListener('click', () => {
+  const open = mMenu.classList.toggle('open');
+  burger.classList.toggle('open', open);
+  burger.setAttribute('aria-expanded', open);
+  document.body.style.overflow = open ? 'hidden' : '';
+});
+mMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  mMenu.classList.remove('open'); burger.classList.remove('open');
+  burger.setAttribute('aria-expanded','false'); document.body.style.overflow = '';
+}));
+
+// Hero animation
+const heroEls = [
+  {el:'hp',  delay:350},
+  {el:'hl1', delay:550},
+  {el:'hl2', delay:750},
+  {el:'hb',  delay:950},
+  {el:'hc',  delay:1150},
+  {el:'si',  delay:1500},
+];
+heroEls.forEach(({el,delay}) => {
+  const e = document.getElementById(el);
+  if(e) setTimeout(()=>e.classList.add('anim-in'), delay);
+});
+
+// Scroll reveal
+const ro = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');ro.unobserve(e.target);}});
+},{threshold:0.12});
+document.querySelectorAll('[data-reveal]').forEach(el=>ro.observe(el));
+
+// Testimonials
+const testimonials = [
+  {q:'"ANM didn\'t just shoot our brand video — they understood our story before they even picked up the camera. The result exceeded every expectation."', a:'— Client Name · Corporate Client'},
+  {q:'"Our listings sold faster than ever. The videos ANM produced made buyers feel like they were already home before the showing."', a:'— Realtor Name · Real Estate Agency'},
+  {q:'"The music video they created changed everything. My following doubled in a month. These people understand the culture."', a:'— Artist Name · Independent Artist'},
+];
+let tIdx = 0, tTimer;
+const tq = document.getElementById('tq'), ta = document.getElementById('ta');
+const dots = document.querySelectorAll('.t-dot');
+
+function showT(i){
+  tq.style.opacity='0'; ta.style.opacity='0';
+  setTimeout(()=>{
+    tq.textContent = testimonials[i].q; ta.textContent = testimonials[i].a;
+    tq.style.opacity='1'; ta.style.opacity='1';
+  }, 380);
+  dots.forEach((d,j)=>{d.classList.toggle('active',j===i); d.setAttribute('aria-selected',j===i);});
+  tIdx=i;
+}
+dots.forEach(d=>d.addEventListener('click',()=>{clearInterval(tTimer);showT(+d.dataset.i);startT();}));
+function startT(){tTimer=setInterval(()=>showT((tIdx+1)%testimonials.length),5000);}
+startT();
+
+// Lightbox
+const lb=document.getElementById('lb'), lbBg=document.getElementById('lbBg');
+const lbClose=document.getElementById('lbClose'), lbMedia=document.getElementById('lbMedia');
+const lbCat=document.getElementById('lbCat'), lbTitle=document.getElementById('lbTitle');
+
+function openLb(src,type,title,cat){
+  lbMedia.innerHTML='';
+  if(type==='video'){
+    const ifr=document.createElement('iframe');
+    ifr.src=src; ifr.allowFullscreen=true;
+    ifr.setAttribute('allow','autoplay; fullscreen');
+    ifr.style.cssText='width:100%;height:100%;border:none;';
+    lbMedia.appendChild(ifr);
+  } else {
+    const img=document.createElement('img');
+    img.src=src; img.alt=title||'';
+    img.style.cssText='max-width:100%;max-height:75vh;object-fit:contain;width:100%;';
+    lbMedia.appendChild(img);
+  }
+  lbCat.textContent=cat||''; lbTitle.textContent=title||'';
+  lb.classList.add('open'); document.body.style.overflow='hidden';
+  lbClose.focus();
+}
+function closeLb(){
+  lb.classList.remove('open'); document.body.style.overflow='';
+  setTimeout(()=>{lbMedia.innerHTML='';},300);
+}
+
+// Showreel
+const srBtn=document.getElementById('showreelBtn');
+if(srBtn){
+  srBtn.addEventListener('click',()=>openLb('https://player.vimeo.com/video/901769964?autoplay=1','video','ANM Showreel 2026','Featured'));
+  srBtn.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();srBtn.click();}});
+}
+lbClose.addEventListener('click',closeLb);
+lbBg.addEventListener('click',closeLb);
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&lb.classList.contains('open'))closeLb();});
+</script>
+</body>
+</html>

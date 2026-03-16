@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Work — Atlas Narrative Media</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --clr-base:       #080808;
+  --clr-surface:    #111111;
+  --clr-elevated:   #1A1A1A;
+  --clr-floating:   #242424;
+  --clr-border:     #2A2A2A;
+  --clr-gold:       #C8A96E;
+  --clr-gold-light: #E8D5A3;
+  --clr-gold-dim:   #8B7240;
+  --clr-text:       #F0EDE6;
+  --clr-text-muted: #8A8278;
+  --clr-text-faint: #4A4642;
+  --fs-display: clamp(3.25rem, 9vw, 7.5rem);
+  --fs-h1: clamp(2rem, 5vw, 4rem);
+  --fs-h2: clamp(1.625rem, 3vw, 2.5rem);
+  --fs-label: 0.6875rem;
+  --fs-sm: 0.875rem;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--clr-base);color:var(--clr-text);
+  font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.7;overflow-x:hidden;
+  background-image:
+    radial-gradient(ellipse 70% 40% at 80% 10%, rgba(200,169,110,0.05) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 70% at 20% 85%, rgba(200,169,110,0.04) 0%, transparent 55%);
+}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");opacity:0.032;pointer-events:none;z-index:9998;mix-blend-mode:overlay;}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:1.125rem 2rem;display:flex;align-items:center;justify-content:space-between;background:transparent;border-bottom:1px solid transparent;transition:background-color 0.4s ease,border-color 0.4s ease;}
+.nav.scrolled{background:rgba(8,8,8,0.93);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom-color:var(--clr-border);}
+.nav-logo{height:38px;width:auto;display:block;flex-shrink:0;}
+.nav-links{display:flex;align-items:center;gap:2.25rem;list-style:none;}
+.nav-links a{font-family:'DM Sans',sans-serif;font-size:var(--fs-sm);font-weight:400;color:var(--clr-text-muted);text-decoration:none;position:relative;transition:color 0.2s ease;}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:100%;height:1px;background:var(--clr-gold);transform:scaleX(0);transform-origin:left;transition:transform 0.3s ease;}
+.nav-links a:hover,.nav-links a.active{color:var(--clr-gold);}
+.nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1);}
+.nav-dropdown{position:relative;}
+.nav-dd-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%);padding-top:8px;background:var(--clr-floating);border:1px solid var(--clr-border);min-width:210px;opacity:0;pointer-events:none;transition:opacity 0.2s ease,transform 0.2s ease;}
+.nav-dropdown:hover .nav-dd-menu,.nav-dropdown:focus-within .nav-dd-menu{opacity:1;pointer-events:all;}
+.nav-dd-menu a{display:block;padding:0.75rem 1.25rem;font-family:'DM Mono',monospace;font-size:var(--fs-label);letter-spacing:0.1em;text-transform:uppercase;color:var(--clr-text-muted);border-bottom:1px solid var(--clr-border);transition:color 0.15s ease,background-color 0.15s ease;}
+.nav-dd-menu a:last-child{border-bottom:none;}
+.nav-dd-menu a:hover{color:var(--clr-gold);background:var(--clr-elevated);}
+.nav-dd-menu a::after{display:none;}
+.nav-cta{font-family:'DM Sans',sans-serif;font-size:var(--fs-sm);font-weight:400;color:var(--clr-gold);border:1px solid var(--clr-gold);padding:0.5rem 1.375rem;text-decoration:none;transition:background-color 0.2s ease,color 0.2s ease,transform 0.2s ease;flex-shrink:0;}
+.nav-cta:hover{background:var(--clr-gold);color:var(--clr-base);transform:translateY(-1px);}
+.nav-cta::after{display:none!important;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;z-index:210;}
+.hamburger span{display:block;width:24px;height:1px;background:var(--clr-text);transition:transform 0.3s ease,opacity 0.3s ease;}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(4.5px,4.5px);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(4.5px,-4.5px);}
+.mobile-menu{position:fixed;inset:0;background:rgba(8,8,8,0.98);z-index:205;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem;opacity:0;pointer-events:none;transition:opacity 0.3s ease;}
+.mobile-menu.open{opacity:1;pointer-events:all;}
+.mobile-menu a{font-family:'Cormorant',serif;font-size:clamp(2rem,8vw,3.25rem);font-weight:300;font-style:italic;color:var(--clr-text);text-decoration:none;opacity:0;transform:translateY(18px);transition:color 0.2s ease,opacity 0.4s ease,transform 0.4s ease;}
+.mobile-menu.open a{opacity:1;transform:translateY(0);}
+.mobile-menu.open a:nth-child(2){transition-delay:0.05s;}.mobile-menu.open a:nth-child(3){transition-delay:0.10s;}.mobile-menu.open a:nth-child(4){transition-delay:0.15s;}.mobile-menu.open a:nth-child(5){transition-delay:0.20s;}.mobile-menu.open a:nth-child(6){transition-delay:0.25s;}.mobile-menu.open a:nth-child(7){transition-delay:0.30s;}.mobile-menu.open a:nth-child(8){transition-delay:0.35s;}
+.mobile-menu a:hover{color:var(--clr-gold);}
+.mobile-close{position:absolute;top:1.5rem;right:1.5rem;background:none;border:none;color:var(--clr-text-muted);font-family:'DM Mono',monospace;font-size:1.5rem;line-height:1;cursor:pointer;padding:0.5rem;z-index:210;transition:color 0.2s ease,transform 0.2s ease;}
+.mobile-close:hover{color:var(--clr-gold);transform:rotate(90deg);}
+.mobile-close:focus-visible{outline:2px solid var(--clr-gold);outline-offset:2px;}
+
+/* PAGE HERO */
+.page-hero{position:relative;min-height:70vh;display:flex;align-items:center;justify-content:center;overflow:hidden;text-align:center;}
+.hero-vid-wrap{position:absolute;inset:0;overflow:hidden;z-index:0;}
+.hero-vid-wrap iframe{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);min-width:100%;min-height:100%;width:177.78vh;height:56.25vw;pointer-events:none;}
+.page-hero-overlay{position:absolute;inset:0;background:rgba(8,8,8,0.82);z-index:1;}
+.page-hero-grain{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(8,8,8,0.3) 0%,transparent 40%,rgba(8,8,8,0.5) 100%);z-index:2;}
+.page-hero-content{position:relative;z-index:3;padding:2rem;}
+.work-hero-stat{font-family:'DM Mono',monospace;font-size:var(--fs-label);letter-spacing:0.25em;text-transform:uppercase;color:var(--clr-text-faint);margin-top:1.75rem;}
+.hero-scroll{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:0.625rem;z-index:3;opacity:0.5;}
+.hero-scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,transparent,var(--clr-gold));animation:scrollPulse 2s ease-in-out infinite;}
+.hero-scroll-label{font-family:'DM Mono',monospace;font-size:0.5rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--clr-gold);}
+@keyframes scrollPulse{0%,100%{opacity:0.4;transform:scaleY(0.8);}50%{opacity:1;transform:scaleY(1);}}
+
+/* FILTER BAR */
+.filter-bar{position:sticky;top:68px;z-index:100;background:rgba(8,8,8,0.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--clr-border);padding:1rem 2rem;}
+.filter-inner{max-width:1400px;margin:0 auto;display:flex;gap:0.25rem;align-items:center;flex-wrap:wrap;}
+.filter-btn{font-family:'DM Mono',monospace;font-size:var(--fs-label);letter-spacing:0.15em;text-transform:uppercase;color:var(--clr-text-faint);background:none;border:none;cursor:pointer;padding:0.5rem 1rem;position:relative;transition:color 0.2s ease;}
+.filter-btn::after{content:'';position:absolute;bottom:0;left:1rem;right:1rem;height:1px;background:var(--clr-gold);transform:scaleX(0);transform-origin:left;transition:transform 0.3s ease;}
+.filter-btn:hover{color:var(--clr-text-muted);}
+.filter-btn.active{color:var(--clr-gold);}
+.filter-btn.active::after{transform:scaleX(1);}
+.filter-btn:focus-visible{outline:2px solid var(--clr-gold);outline-offset:2px;}
+.filter-count{font-family:'DM Mono',monospace;font-size:0.5rem;color:var(--clr-text-faint);margin-left:0.3em;vertical-align:middle;transition:color 0.2s ease;}
+.filter-btn.active .filter-count{color:var(--clr-gold-dim);}
+
+/* PORTFOLIO GRID */
+.port-grid{max-width:1400px;margin:0 auto;padding:2rem;display:grid;grid-template-columns:1fr;gap:3px;background:transparent;}
+@media(min-width:640px){.port-grid{grid-template-columns:repeat(2,1fr);gap:3px;background:var(--clr-border);}}
+@media(min-width:1024px){.port-grid{grid-template-columns:repeat(3,1fr);}}
+
+.port-item{
+  position:relative;overflow:hidden;cursor:pointer;
+  background:var(--clr-surface);
+  aspect-ratio:4/3;
+  transition:opacity 0.25s ease,transform 0.25s ease;
+}
+@media(min-width:1024px){
+  .port-item.featured{grid-column:span 2;aspect-ratio:21/9;}
+  .port-item.featured .port-num{font-size:7.5rem;}
+  .port-item.featured .port-title{font-size:clamp(1.75rem,3vw,2.5rem);}
+}
+.port-item img{width:100%;height:100%;object-fit:cover;transition:transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94),filter 0.5s ease;}
+.port-item:hover img{transform:scale(1.06);filter:brightness(0.6);}
+.port-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,8,0.98) 0%,rgba(8,8,8,0.45) 48%,rgba(8,8,8,0.05) 100%);}
+.port-tint{position:absolute;inset:0;background:rgba(200,169,110,0.04);mix-blend-mode:multiply;pointer-events:none;}
+.port-num{position:absolute;top:1rem;left:1.25rem;font-family:'Cormorant',serif;font-size:4.5rem;font-weight:300;font-style:italic;color:rgba(200,169,110,0.06);line-height:1;pointer-events:none;user-select:none;transition:color 0.5s ease;z-index:1;}
+.port-item:hover .port-num{color:rgba(200,169,110,0.1);}
+.port-meta{position:absolute;bottom:0;left:0;right:0;padding:1.5rem;z-index:2;}
+.port-cat{font-family:'DM Mono',monospace;font-size:0.5625rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--clr-gold);margin-bottom:0.5rem;display:block;opacity:0.85;transition:opacity 0.3s ease;}
+.port-item:hover .port-cat{opacity:1;}
+.port-line{height:1px;background:var(--clr-gold);width:0;margin-bottom:0.75rem;transition:width 0.45s cubic-bezier(0.25,0.46,0.45,0.94) 0.05s;opacity:0.5;}
+.port-item:hover .port-line{width:2.5rem;}
+.port-title{font-family:'Cormorant',serif;font-size:clamp(1.1rem,2vw,1.5rem);font-weight:300;font-style:italic;color:var(--clr-text);line-height:1.2;letter-spacing:-0.01em;transform:translateY(4px);transition:transform 0.35s ease;}
+.port-item:hover .port-title{transform:translateY(0);}
+.port-cta{display:block;font-family:'DM Mono',monospace;font-size:0.5625rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--clr-gold);margin-top:0.75rem;opacity:0;transform:translateY(4px);transition:opacity 0.3s ease 0.1s,transform 0.3s ease 0.1s;}
+.port-item:hover .port-cta{opacity:0.65;transform:translateY(0);}
+.port-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:52px;height:52px;border-radius:50%;border:1px solid rgba(200,169,110,0.5);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.3s ease,transform 0.3s ease,border-color 0.2s ease;}
+.port-item:hover .port-play{opacity:1;transform:translate(-50%,-50%) scale(1.0);}
+.port-item:hover .port-play:hover{border-color:var(--clr-gold);background:rgba(200,169,110,0.1);}
+.port-item::after{content:'';position:absolute;inset:0;border:1px solid rgba(200,169,110,0);transition:border-color 0.3s ease;pointer-events:none;z-index:3;}
+.port-item:hover::after{border-color:rgba(200,169,110,0.3);}
+.port-item:focus-visible{outline:2px solid var(--clr-gold);outline-offset:2px;}
+
+/* LOAD MORE */
+.load-more-wrap{max-width:1400px;margin:0 auto;padding:2rem 2rem 5rem;text-align:center;}
+.btn-outline{font-family:'DM Sans',sans-serif;font-size:var(--fs-sm);font-weight:400;background:transparent;color:var(--clr-gold);border:1px solid var(--clr-gold);padding:0.875rem 2.25rem;cursor:pointer;text-decoration:none;display:inline-block;transition:background-color 0.2s ease,color 0.2s ease,transform 0.2s ease;}
+.btn-outline:hover{background:var(--clr-gold);color:var(--clr-base);transform:translateY(-2px);}
+.btn-outline:active{transform:translateY(0);}
+
+/* LIGHTBOX */
+.lb{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.3s ease;}
+.lb.open{opacity:1;pointer-events:all;}
+.lb-bg{position:absolute;inset:0;background:rgba(8,8,8,0.97);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);}
+.lb-inner{position:relative;z-index:1;max-width:88vw;width:100%;max-height:90vh;}
+.lb-media{width:100%;aspect-ratio:16/9;background:var(--clr-surface);display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.lb-media img{width:100%;height:100%;object-fit:contain;border:none;}
+.lb-media iframe{width:100%;height:100%;border:none;}
+.lb-media.portrait{aspect-ratio:3/4;max-width:55vw;margin:0 auto;}
+.lb-close{position:fixed;top:1.5rem;right:1.5rem;background:none;border:none;color:var(--clr-text-muted);font-size:1.5rem;cursor:pointer;padding:0.5rem;z-index:2;transition:color 0.2s ease,transform 0.2s ease;}
+.lb-close:hover{color:var(--clr-gold);transform:rotate(90deg);}
+.lb-nav{position:absolute;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--clr-text-muted);font-size:1.25rem;cursor:pointer;padding:1rem 0.75rem;z-index:2;transition:color 0.2s ease,transform 0.2s ease;}
+.lb-prev{left:-3.5rem;}.lb-next{right:-3.5rem;}
+@media(max-width:900px){.lb-prev{left:0.5rem;}.lb-next{right:0.5rem;}.lb-prev,.lb-next{top:auto;bottom:1rem;transform:none;background:rgba(8,8,8,0.7);border:1px solid var(--clr-border);}}
+.lb-nav:hover{color:var(--clr-gold);}
+.lb-info{padding:1rem 0 0;display:flex;align-items:center;gap:1.5rem;}
+.lb-cat{font-family:'DM Mono',monospace;font-size:var(--fs-label);letter-spacing:0.15em;text-transform:uppercase;color:var(--clr-gold);}
+.lb-title{font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:500;color:var(--clr-text);}
+.lb-counter{font-family:'DM Mono',monospace;font-size:var(--fs-label);color:var(--clr-text-faint);margin-left:auto;}
+
+/* SHARED */
+.sec-label{font-family:'DM Mono',monospace;font-size:var(--fs-label);letter-spacing:0.2em;text-transform:uppercase;color:var(--clr-gold);}
+.sec-head{font-family:'Cormorant',serif;font-weight:300;font-style:italic;letter-spacing:-0.02em;color:var(--clr-text);}
+.gold-rule{width:100%;height:1px;background:linear-gradient(to right,transparent,rgba(200,169,110,0.25),transparent);}
+[data-reveal]{opacity:0;transform:translateY(22px);transition:opacity 0.7s ease,transform 0.7s ease;}
+[data-reveal].on{opacity:1;transform:none;}
+[data-reveal][data-d="1"]{transition-delay:0.1s;}[data-reveal][data-d="2"]{transition-delay:0.2s;}[data-reveal][data-d="3"]{transition-delay:0.3s;}
+
+/* FOOTER */
+footer{background:var(--clr-surface);border-top:1px solid rgba(200,169,110,0.12);}
+.foot-grid{display:grid;grid-template-columns:1fr;gap:2.5rem;}
+@media(min-width:640px){.foot-grid{grid-template-columns:1fr 1fr;}}
+@media(min-width:1024px){.foot-grid{grid-template-columns:1.5fr 1fr 1fr;}}
+.foot-social{color:var(--clr-text-faint);display:inline-flex;transition:color 0.2s ease,transform 0.2s ease;}
+.foot-social:hover{color:var(--clr-gold);transform:translateY(-2px);}
+.foot-link{font-family:'DM Sans',sans-serif;font-size:var(--fs-sm);font-weight:300;color:var(--clr-text-muted);text-decoration:none;display:block;margin-bottom:0.625rem;transition:color 0.2s ease;}
+.foot-link:hover{color:var(--clr-text);}
+
+@media(max-width:768px){.nav-links,.nav-cta{display:none!important;}.hamburger{display:flex!important;}.nav{padding:1rem 1.25rem;}}
+</style>
+</head>
+<body>
+
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true">
+  <button class="mobile-close" id="mobileClose" aria-label="Close menu">&#x2715;</button>
+  <a href="corporate.html">Corporate</a>
+  <a href="real-estate.html">Real Estate</a>
+  <a href="music.html">Music</a>
+  <a href="camera-op.html">Camera Op</a>
+  <a href="work.html" style="color:var(--clr-gold)">Work</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<nav class="nav" id="mainNav">
+  <a href="index.html" aria-label="ANM Home"><img src="brand_assets/ANM Profile Pic WHITE BIGGER.svg" alt="Atlas Narrative Media" class="nav-logo"></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li class="nav-dropdown"><a href="#">Services</a>
+      <div class="nav-dd-menu"><a href="corporate.html">Corporate Videos</a><a href="real-estate.html">Real Estate Media</a><a href="music.html">Music Media</a><a href="camera-op.html">Camera Operation</a></div>
+    </li>
+    <li><a href="work.html" class="active">Work</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Contact</a>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- Page Hero -->
+<header class="page-hero">
+  <div class="hero-vid-wrap" aria-hidden="true">
+    <iframe src="https://player.vimeo.com/video/901769964?background=1&autoplay=1&loop=1&muted=1&playsinline=1" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+  </div>
+  <div class="page-hero-overlay" aria-hidden="true"></div>
+  <div class="page-hero-grain" aria-hidden="true"></div>
+  <div class="page-hero-content">
+    <span class="sec-label" style="display:block;margin-bottom:1.25rem;" data-reveal>Portfolio</span>
+    <h1 class="sec-head" style="font-size:var(--fs-display);line-height:0.95;" data-reveal data-d="1">Our Work</h1>
+    <p class="work-hero-stat" data-reveal data-d="2">12 Projects &nbsp;·&nbsp; 4 Disciplines</p>
+  </div>
+  <div class="hero-scroll" aria-hidden="true">
+    <div class="hero-scroll-line"></div>
+    <span class="hero-scroll-label">Scroll</span>
+  </div>
+</header>
+
+<!-- Filter Bar -->
+<div class="filter-bar" role="navigation" aria-label="Portfolio filter">
+  <div class="filter-inner">
+    <button class="filter-btn active" data-filter="all" aria-selected="true">All <span class="filter-count">12</span></button>
+    <button class="filter-btn" data-filter="corporate" aria-selected="false">Corporate <span class="filter-count">3</span></button>
+    <button class="filter-btn" data-filter="real-estate" aria-selected="false">Real Estate <span class="filter-count">3</span></button>
+    <button class="filter-btn" data-filter="music" aria-selected="false">Music <span class="filter-count">3</span></button>
+    <button class="filter-btn" data-filter="camera" aria-selected="false">Camera Op <span class="filter-count">3</span></button>
+  </div>
+</div>
+
+<!-- Portfolio Grid -->
+<main>
+<div class="port-grid" id="portGrid">
+
+  <!-- Corporate -->
+  <div class="port-item" data-cat="corporate" data-type="video" data-src="https://player.vimeo.com/video/901769964?autoplay=1" data-title="Executive Brand Film" data-desc="A corporate brand film that positioned the company as an industry leader." tabindex="0" role="button" aria-label="Open Executive Brand Film">
+    <img src="https://placehold.co/800x600/111111/C8A96E?text=Corporate+01" alt="Executive Brand Film" loading="lazy">
+    <div class="port-overlay"></div><div class="port-tint"></div>
+    <span class="port-num" aria-hidden="true">01</span>
+    <div class="port-meta">
+      <span class="port-cat">Corporate · Brand Film</span>
+      <div class="port-line"></div>
+      <p class="port-title">Executive Brand Film</p>
+      <span class="port-cta">▶ Play Project</span>
+    </div>
+  </div>
+
+  <div class="port-item" data-cat="corporate" data-type="photo" data-src="https://placehold.co/1600x900/111111/C8A96E?text=Product+Launch" data-title="Product Launch Film" data-desc="A dynamic product launch video that drove 200% engagement on release day." tabindex="0" role="button" aria-label="Open Product Launch Film">
+    <img src="https://placehold.co/800x600/141414/C8A96E?text=Corporate+02" alt="Product Launch Film" loading="lazy">
+    <div class="port-overlay"></div><div class="port-tint"></div>
+    <span class="port-num" aria-hidden="true">02</span>
+    <div class="port-meta">
+      <span class="port-cat">Corporate · Launch</span>
+      <div class="port-line"></div>
+      <p class="port-title">Product Launch Film</p>
+      <span class="port-cta">Open Project →</span>
+    </div>
+  </div>
+
+  <div class="port-item" data-cat="corporate" data-type="photo" data-src="https://placehold.co/1600x900/111111/C8A96E?text=Culture+Documentary" data-title="Culture Documentary" data-desc="An internal culture documentary that became the company's most-shared content." tabindex="0" role="button" aria-label="Open Culture Documentary">
+    <img src="https://placehold.co/800x600/0E0E0E/C8A96E?text=Corporate+03" alt="Culture Documentary" loading="lazy">
+    <div class="port-overlay"></div><div class="port-tint"></div>
+    <span class="port-num" aria-hidden="true">03</span>
+    <div class="port-meta">
+      <span class="port-cat">Corporate · Documentary</span>
+      <div class="port-line"></div>
+      <p class="port-title">Culture Documentary</p>
+      <span class="port-cta">Open Project →</span>
+    </div>
+  </div>
+
+  <!-- Real Estate -->
+  <div class="port-item" data-cat="real-estate" data-type="photo" data-src="https://placehold.co/1600x900/0D0C0A/C8A96E?text=Luxury+Listing" data-title="Luxury Listing Showcase" data-desc="A cinematic property reveal that sold above asking within 48 hours." tabindex="0" role="button" aria-label="Open Luxury Listing Showcase">
+    <img src="https://placehold.co/800x600/0D0C0A/C8A96E?text=Real+Estate+01" alt="Luxury Listing Showcase" loading="lazy">
+    <div class="port-overlay"></div><div class="port-tint"></div>
+    <span class="port-num" aria-hidden="true">04</span>
+    <div class="port-meta">
+      <span class="port-cat">Real Estate · Luxury</span>
+      <div class="port-line"></div>
+      <p class="port-title">Luxury Listing Showcase</p>
+      <span class="port-cta">Open Project →</span>
+    </div>
+  </div>
+
+  <div class="port-item" data-cat="real-estate" data-type="video" data-src="https://player.vimeo.com/video/901769964?autoplay=1" data-title="Aerial Estate Tour" data-desc="Drone coverage of a 5-acre estate that generated 40+ qualified leads in one week." tabindex="0" role="button" aria-label="Open Aerial Estate Tour">
+    <img src="https://placehold.co/800x600/0F0E0C/C8A96E?text=Real+Estate+02" alt="Aerial Estate Tour" loading="lazy">
+    <div class="port-overlay"></div><div class="port-tint"></div>
+    <span class="port-num" aria-hidden="true">05</span>
+    <div class="port-meta">
+      <span class="port-cat">Real Estate · Aerial</span>
+      <div class="port-line"></div>
+      <p class="port-title">Aerial Estate Tour</p>
+      <span class="port-cta">▶ Play Project</span>
+    </div>
+  </div>
+
+  <div class="port-item" data-cat="real-estate" data-type="photo" data-src="https://placehold.co/800x1000/0D0C0A/C8A96E?text=Commercial+Property" data-title="Commercial Development" data-desc="A full media package for a mixed-use development from groundbreaking to occupancy." tabindex="0" role="button" aria-label="Open Commercial Development">
+    <img src="https://placehold.co/800x600/0C0B09/C8A96E?text=Real+Estate+03" alt="Commercial Development" loading="lazy">
+    <div class="port-overlay"></div><div class="port-tint"></div>
+    <span class="port-num" aria-hidden="true">06</span>
+    <div class="port-meta">
+      <span class="port-cat">Real Estate · Commercial</span>
+      <div class="port-line"></div>
+      <p class="port-title">Commercial Development</p>
+      <span class="port-cta">Open Project →</span>
+    </div>
+  </div>
+
+  <!-- Music -->
+  <div class="port-item" data-cat="music" data-type="video" data-src="https://player.vimeo.com/video/901769964?autoplay=1" data-title="Artist Visual Identity" data-desc="A debut music video that helped the artist gain 10K new followers in two weeks." tabindex="0" role="button" aria-label="Open Artist Visual Identity">
+    <img src="https://placehold.co/800x600/0A0A0E/C8A96E?text=Music+01" alt="Artist Visual Identity" loading="lazy">
+    <div class="port-overlay"></div><div class="port-tint"></div>
+    <span class="port-num" aria-hidden="true">07</span>
+    <div class="port-meta">
+      <span class="port-cat">Music · Visual Identity</span>
+      <div class="port-line"></div>
+      <p class="port-title">Artist Visual Identity</p>
+      <span class="port-cta">▶ Play Project</span>
+    </div>
+  </div>
+
+  <div class="port-item" data-cat="music" data-type="photo" data-src="https://placehold.co/800x1000/0A0A0E/C8A96E?text=Concert+Coverage" data-title="Live Concert Coverage" data-desc="Full concert documentation for a sold-out headlining show." tabindex="0" role="button" aria-label="Open Live Concert Coverage">
+    <img src="https://placehold.co/800x600/0B0B10/C8A96E?text=Music+02" alt="Live Concert Coverage" loading="lazy">
+    <div class="port-overlay"></div><div class="port-tint"></div>
+    <span class="port-num" aria-hidden="true">08</span>
+    <div class="port-meta">
+      <span class="port-cat">Music · Live</span>
+      <div class="port-line"></div>
+      <p class="port-title">Live Concert Coverage</p>
+      <span class="port-cta">Open Project →</span>
+    </div>
+  </div>
+
+  <div class="port-item" data-cat="music" data-type="photo" data-src="https://placehold.co/1600x900/0A0A0E/C8A96E?text=EP+Campaign" data-title="EP Release Campaign" data-desc="A cohesive visual package for an independent EP release across all platforms." tabindex="0" role="button" aria-label="Open EP Release Campaign">
+    <img src="https://placehold.co/800x600/090910/C8A96E?text=Music+03" alt="EP Release Campaign" loading="lazy">
+    <div class="port-overlay"></div><div class="port-tint"></div>
+    <span class="port-num" aria-hidden="true">09</span>
+    <div class="port-meta">
+      <span class="port-cat">Music · Campaign</span>
+      <div class="port-line"></div>
+      <p class="port-title">EP Release Campaign</p>
+      <span class="port-cta">Open Project →</span>
+    </div>
+  </div>
+
+  <!-- Camera Op -->
+  <div class="port-item" data-cat="camera" data-type="photo" data-src="https://placehold.co/1600x900/111111/C8A96E?text=Commercial+Shoot" data-title="National Commercial" data-desc="Lead camera operator on a 3-day national commercial shoot." tabindex="0" role="button" aria-label="Open National Commercial">
+    <img src="https://placehold.co/800x600/111111/C8A96E?text=Camera+01" alt="National Commercial" loading="lazy">
+    <div class="port-overlay"></div><div class="port-tint"></div>
+    <span class="port-num" aria-hidden="true">10</span>
+    <div class="port-meta">
+      <span class="port-cat">Camera Op · Commercial</span>
+      <div class="port-line"></div>
+      <p class="port-title">National Commercial</p>
+      <span class="port-cta">Open Project →</span>
+    </div>
+  </div>
+
+  <div class="port-item" data-cat="camera" data-type="video" data-src="https://player.vimeo.com/video/901769964?autoplay=1" data-title="Feature Film Reel" data-desc="Segment from a narrative feature film — camera operation across 18 shooting days." tabindex="0" role="button" aria-label="Open Feature Film Reel">
+    <img src="https://placehold.co/800x600/131311/C8A96E?text=Camera+02" alt="Feature Film Reel" loading="lazy">
+    <div class="port-overlay"></div><div class="port-tint"></div>
+    <span class="port-num" aria-hidden="true">11</span>
+    <div class="port-meta">
+      <span class="port-cat">Camera Op · Narrative</span>
+      <div class="port-line"></div>
+      <p class="port-title">Feature Film Reel</p>
+      <span class="port-cta">▶ Play Project</span>
+    </div>
+  </div>
+
+  <div class="port-item" data-cat="camera" data-type="photo" data-src="https://placehold.co/1600x900/111111/C8A96E?text=Live+Event" data-title="Live Event Production" data-desc="Multi-camera operation for a 5,000-person live event broadcast." tabindex="0" role="button" aria-label="Open Live Event Production">
+    <img src="https://placehold.co/800x600/121210/C8A96E?text=Camera+03" alt="Live Event Production" loading="lazy">
+    <div class="port-overlay"></div><div class="port-tint"></div>
+    <span class="port-num" aria-hidden="true">12</span>
+    <div class="port-meta">
+      <span class="port-cat">Camera Op · Live Event</span>
+      <div class="port-line"></div>
+      <p class="port-title">Live Event Production</p>
+      <span class="port-cta">Open Project →</span>
+    </div>
+  </div>
+
+</div>
+
+<div class="load-more-wrap">
+  <button class="btn-outline" id="loadMoreBtn" style="display:none;">Load More</button>
+</div>
+</main>
+
+<!-- Footer -->
+<footer>
+  <div style="max-width:1400px;margin:0 auto;padding:4rem 2rem 2rem;">
+    <div class="foot-grid" style="margin-bottom:3rem;">
+      <div>
+        <img src="brand_assets/ANM Profile Pic WHITE BIGGER.svg" alt="Atlas Narrative Media" style="height:52px;width:auto;margin-bottom:1.25rem;display:block;">
+        <p style="font-family:'Cormorant',serif;font-style:italic;font-weight:300;font-size:1rem;color:var(--clr-text-muted);line-height:1.65;margin-bottom:1.5rem;max-width:280px;">Crafting visual stories that move audiences and build brands worth remembering.</p>
+        <div style="display:flex;gap:1rem;">
+          <a href="#" class="foot-social" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="#" class="foot-social" aria-label="YouTube"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.95C18.88 4 12 4 12 4s-6.88 0-8.59.47a2.78 2.78 0 0 0-1.95 1.95C1 8.12 1 12 1 12s0 3.88.46 5.58a2.78 2.78 0 0 0 1.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 0 0 1.95-1.95C23 15.88 23 12 23 12s0-3.88-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg></a>
+          <a href="#" class="foot-social" aria-label="Vimeo"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 7.4c-.09 2.1-1.55 4.95-4.36 8.57C14.8 19.67 12.4 21.5 10.4 21.5c-1.28 0-2.36-1.18-3.24-3.54l-1.76-6.5C4.74 9.1 4.12 8 3.38 8c-.16 0-.7.33-1.63.98L.63 7.5C1.65 6.6 2.66 5.7 3.65 4.8 5.01 3.62 6.03 3 6.71 2.94c1.61-.15 2.6.94 2.98 3.28.4 2.52.68 4.08.84 4.68.47 2.12.98 3.18 1.54 3.18.44 0 1.09-.69 1.97-2.07.88-1.38 1.35-2.43 1.41-3.15.12-1.19-.34-1.79-1.41-1.79-.5 0-1.02.11-1.55.35 1.03-3.38 3-5.02 5.91-4.92C20.1 2.63 22.1 4.1 22 7.4z"/></svg></a>
+          <a href="#" class="foot-social" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <p style="font-family:'DM Mono',monospace;font-size:var(--fs-label);letter-spacing:0.2em;text-transform:uppercase;color:var(--clr-text-faint);margin-bottom:1.25rem;">Explore</p>
+        <nav aria-label="Footer navigation">
+          <a href="index.html" class="foot-link">Home</a><a href="corporate.html" class="foot-link">Corporate Videos</a><a href="real-estate.html" class="foot-link">Real Estate Media</a><a href="music.html" class="foot-link">Music Media</a><a href="camera-op.html" class="foot-link">Camera Operation</a><a href="work.html" class="foot-link">Our Work</a><a href="about.html" class="foot-link">About</a><a href="contact.html" class="foot-link">Contact</a>
+        </nav>
+      </div>
+      <div>
+        <p style="font-family:'DM Mono',monospace;font-size:var(--fs-label);letter-spacing:0.2em;text-transform:uppercase;color:var(--clr-text-faint);margin-bottom:1.25rem;">Get in Touch</p>
+        <a href="mailto:hello@atlasnarrativemedia.com" style="display:block;font-size:var(--fs-sm);color:var(--clr-gold);text-decoration:none;margin-bottom:0.75rem;transition:opacity 0.2s ease;" onmouseover="this.style.opacity='.7'" onmouseout="this.style.opacity='1'">hello@atlasnarrativemedia.com</a>
+        <a href="tel:+15550000000" style="display:block;font-size:var(--fs-sm);color:var(--clr-text-muted);text-decoration:none;margin-bottom:0.75rem;transition:color 0.2s ease;" onmouseover="this.style.color='var(--clr-gold)'" onmouseout="this.style.color='var(--clr-text-muted)'">+1 (555) 000-0000</a>
+        <p style="font-size:var(--fs-sm);color:var(--clr-text-faint);">Available Worldwide</p>
+      </div>
+    </div>
+    <div style="border-top:1px solid var(--clr-border);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.75rem;">
+      <p style="font-family:'DM Mono',monospace;font-size:var(--fs-label);color:var(--clr-text-faint);">© 2026 Atlas Narrative Media. All rights reserved.</p>
+      <p style="font-family:'DM Mono',monospace;font-size:var(--fs-label);color:var(--clr-text-faint);">Crafted with Precision.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Lightbox -->
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Media viewer">
+  <div class="lb-bg" id="lbBg"></div>
+  <div class="lb-inner">
+    <button class="lb-close" id="lbClose" aria-label="Close">✕</button>
+    <div style="position:relative;">
+      <div class="lb-media" id="lbMedia"></div>
+      <button class="lb-nav lb-prev" id="lbPrev" aria-label="Previous">←</button>
+      <button class="lb-nav lb-next" id="lbNext" aria-label="Next">→</button>
+    </div>
+    <div class="lb-info">
+      <span class="lb-cat" id="lbCat"></span>
+      <span class="lb-title" id="lbTitle"></span>
+      <span class="lb-counter" id="lbCounter"></span>
+    </div>
+  </div>
+</div>
+
+<script>
+// Nav
+const nav=document.getElementById('mainNav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>60),{passive:true});
+
+// Mobile menu
+const burger=document.getElementById('hamburger'),mMenu=document.getElementById('mobileMenu');
+burger.addEventListener('click',()=>{const o=mMenu.classList.toggle('open');burger.classList.toggle('open',o);burger.setAttribute('aria-expanded',o);document.body.style.overflow=o?'hidden':'';});
+mMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mMenu.classList.remove('open');burger.classList.remove('open');burger.setAttribute('aria-expanded','false');document.body.style.overflow='';}));
+const mClose=document.getElementById('mobileClose');
+if(mClose)mClose.addEventListener('click',()=>{mMenu.classList.remove('open');burger.classList.remove('open');burger.setAttribute('aria-expanded','false');document.body.style.overflow='';});
+
+// Scroll reveal
+const ro=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');ro.unobserve(e.target);}});},{threshold:0.12});
+document.querySelectorAll('[data-reveal]').forEach(el=>ro.observe(el));
+
+// ── Portfolio Filter ─────────────────────────────────────
+const items = [...document.querySelectorAll('.port-item')];
+const filterBtns = document.querySelectorAll('.filter-btn');
+let currentFilter = 'all';
+
+function assignFeatured() {
+  items.forEach(i => i.classList.remove('featured'));
+  const visible = items.filter(i => i.style.display !== 'none');
+  if (visible[0]) visible[0].classList.add('featured');
+}
+
+function applyFilter(filter) {
+  currentFilter = filter;
+  // Fade out non-matching
+  items.forEach(item => {
+    const match = filter === 'all' || item.dataset.cat === filter;
+    if (!match) {
+      item.style.opacity = '0';
+      item.style.transform = 'scale(0.95)';
+      item.style.pointerEvents = 'none';
+      setTimeout(() => { item.style.display = 'none'; }, 250);
+    } else {
+      item.style.display = '';
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        item.style.opacity = '';
+        item.style.transform = '';
+        item.style.pointerEvents = '';
+      }));
+    }
+  });
+  // Re-assign featured + rebuild lightbox after transition
+  setTimeout(() => {
+    assignFeatured();
+    buildLightboxItems();
+  }, 260);
+}
+
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterBtns.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected','false'); });
+    btn.classList.add('active'); btn.setAttribute('aria-selected','true');
+    applyFilter(btn.dataset.filter);
+  });
+});
+
+// Initial featured assignment
+assignFeatured();
+
+// ── Lightbox ─────────────────────────────────────────────
+const lb=document.getElementById('lb'), lbBg=document.getElementById('lbBg');
+const lbClose=document.getElementById('lbClose'), lbPrev=document.getElementById('lbPrev');
+const lbNext=document.getElementById('lbNext'), lbMedia=document.getElementById('lbMedia');
+const lbCat=document.getElementById('lbCat'), lbTitle=document.getElementById('lbTitle');
+const lbCounter=document.getElementById('lbCounter');
+
+let lbItems=[], lbIdx=0;
+
+function buildLightboxItems(){
+  lbItems = items.filter(i => i.style.display !== 'none');
+}
+buildLightboxItems();
+
+function openLb(idx){
+  lbIdx=idx;
+  renderLb();
+  lb.classList.add('open');
+  document.body.style.overflow='hidden';
+  lbClose.focus();
+}
+function closeLb(){
+  lb.classList.remove('open');
+  document.body.style.overflow='';
+  setTimeout(()=>{lbMedia.innerHTML='';},300);
+}
+function renderLb(){
+  const item=lbItems[lbIdx];
+  if(!item)return;
+  lbMedia.innerHTML='';
+  lbMedia.className='lb-media';
+  if(item.dataset.type==='video'){
+    const ifr=document.createElement('iframe');
+    ifr.src=item.dataset.src;
+    ifr.setAttribute('allowfullscreen','');
+    ifr.setAttribute('allow','autoplay; fullscreen');
+    ifr.style.cssText='width:100%;height:100%;border:none;';
+    lbMedia.appendChild(ifr);
+  } else {
+    const img=document.createElement('img');
+    img.src=item.dataset.src; img.alt=item.dataset.title||'';
+    lbMedia.appendChild(img);
+  }
+  lbCat.textContent=item.dataset.cat?.replace('-',' ').replace(/\b\w/g,c=>c.toUpperCase())||'';
+  lbTitle.textContent=item.dataset.title||'';
+  lbCounter.textContent=(lbIdx+1)+' / '+lbItems.length;
+  lbPrev.style.opacity=lbIdx>0?'1':'0.3';
+  lbNext.style.opacity=lbIdx<lbItems.length-1?'1':'0.3';
+}
+function navigate(dir){
+  const next=lbIdx+dir;
+  if(next>=0&&next<lbItems.length){lbMedia.innerHTML='';lbIdx=next;renderLb();}
+}
+
+items.forEach((item,i)=>{
+  const handler=()=>{buildLightboxItems();openLb(lbItems.indexOf(item));};
+  item.addEventListener('click',handler);
+  item.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();handler();}});
+});
+
+lbClose.addEventListener('click',closeLb);
+lbBg.addEventListener('click',closeLb);
+lbPrev.addEventListener('click',()=>navigate(-1));
+lbNext.addEventListener('click',()=>navigate(1));
+document.addEventListener('keydown',e=>{
+  if(!lb.classList.contains('open'))return;
+  if(e.key==='Escape')closeLb();
+  if(e.key==='ArrowLeft')navigate(-1);
+  if(e.key==='ArrowRight')navigate(1);
+});
+</script>
+</body>
+</html>
