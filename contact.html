@@ -764,9 +764,12 @@ form.addEventListener('submit',e=>{
     submitBtn.textContent='Sending...';
     submitBtn.disabled=true;
     submitBtn.style.opacity='0.6';
+    const rawData=new FormData(form);
+    const filteredData=new FormData();
+    rawData.forEach((value,key)=>{if(value.toString().trim()!=='')filteredData.append(key,value);});
     fetch('https://formspree.io/f/meerrnqq',{
       method:'POST',
-      body:new FormData(form),
+      body:filteredData,
       headers:{Accept:'application/json'}
     }).then(res=>{
       if(res.ok){
