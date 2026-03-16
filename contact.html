@@ -208,27 +208,27 @@ footer{border-top:1px solid var(--clr-border);}
     </div>
 
     <form id="contactForm" method="POST" action="https://formspree.io/f/meerrnqq" novalidate>
-      <input type="hidden" name="niche" id="niche-hidden" value="general">
+      <input type="hidden" name="Inquiry Type" id="niche-hidden" value="general">
 
       <!-- Common fields -->
       <div class="form-grid" style="margin-bottom:1.25rem;" data-reveal data-d="1">
         <div class="form-field" id="f-name">
           <label class="form-label" for="c-name">Full Name *</label>
-          <input class="form-input" type="text" id="c-name" name="name" placeholder="Your name" autocomplete="name">
+          <input class="form-input" type="text" id="c-name" name="Full Name"placeholder="Your name" autocomplete="name">
           <span class="form-err">Name is required</span>
         </div>
         <div class="form-field" id="f-email">
           <label class="form-label" for="c-email">Email *</label>
-          <input class="form-input" type="email" id="c-email" name="email" placeholder="you@email.com" autocomplete="email">
+          <input class="form-input" type="email" id="c-email" name="Email"placeholder="you@email.com" autocomplete="email">
           <span class="form-err">Valid email is required</span>
         </div>
         <div class="form-field">
           <label class="form-label" for="c-phone">Phone <span style="color:var(--clr-text-faint);font-size:0.6em;">OPTIONAL</span></label>
-          <input class="form-input" type="tel" id="c-phone" name="phone" placeholder="+1 (555) 000-0000" autocomplete="tel">
+          <input class="form-input" type="tel" id="c-phone" name="Phone"placeholder="+1 (555) 000-0000" autocomplete="tel">
         </div>
         <div class="form-field" id="f-timeline">
           <label class="form-label" for="c-timeline">Timeline</label>
-          <select class="form-select" id="c-timeline" name="timeline">
+          <select class="form-select" id="c-timeline" name="Timeline">
             <option value="" disabled selected>Select timeline</option>
             <option>ASAP (within 1–2 weeks)</option>
             <option>Within a month</option>
@@ -245,17 +245,17 @@ footer{border-top:1px solid var(--clr-border);}
           <div class="form-field" id="f-g-budget">
             <label class="form-label">Budget Range *</label>
             <div class="pill-group">
-              <div class="pill-opt"><input type="radio" name="g-budget" id="gb1" value="under1k"><label for="gb1">Under $1K</label></div>
-              <div class="pill-opt"><input type="radio" name="g-budget" id="gb2" value="1k-5k"><label for="gb2">$1K–$5K</label></div>
-              <div class="pill-opt"><input type="radio" name="g-budget" id="gb3" value="5k-10k"><label for="gb3">$5K–$10K</label></div>
-              <div class="pill-opt"><input type="radio" name="g-budget" id="gb4" value="10k+"><label for="gb4">$10K+</label></div>
+              <div class="pill-opt"><input type="radio" name="Budget Range" id="gb1" value="under1k"><label for="gb1">Under $1K</label></div>
+              <div class="pill-opt"><input type="radio" name="Budget Range" id="gb2" value="1k-5k"><label for="gb2">$1K–$5K</label></div>
+              <div class="pill-opt"><input type="radio" name="Budget Range" id="gb3" value="5k-10k"><label for="gb3">$5K–$10K</label></div>
+              <div class="pill-opt"><input type="radio" name="Budget Range" id="gb4" value="10k+"><label for="gb4">$10K+</label></div>
             </div>
             <span class="form-err">Please select a budget range</span>
           </div>
         </div>
         <div class="form-field full" id="f-g-desc" style="margin-bottom:1.25rem;">
           <label class="form-label" for="g-desc">Tell us about your project *</label>
-          <textarea class="form-textarea" id="g-desc" name="g-desc" placeholder="What are you working on? Any details, goals, or references are helpful..." rows="5"></textarea>
+          <textarea class="form-textarea" id="g-desc" name="Project Description" placeholder="What are you working on? Any details, goals, or references are helpful..." rows="5"></textarea>
           <span class="form-err">Please describe your project</span>
         </div>
       </div>
@@ -265,54 +265,54 @@ footer{border-top:1px solid var(--clr-border);}
         <div class="form-grid" style="margin-bottom:1.25rem;">
           <div class="form-field" id="f-corp-company">
             <label class="form-label" for="corp-company">Company Name *</label>
-            <input class="form-input" type="text" id="corp-company" name="corp-company" placeholder="Your company">
+            <input class="form-input" type="text" id="corp-company" name="Company Name" placeholder="Your company">
             <span class="form-err">Company name is required</span>
           </div>
           <div class="form-field">
             <label class="form-label" for="corp-industry">Industry / Sector</label>
-            <input class="form-input" type="text" id="corp-industry" name="corp-industry" placeholder="e.g. Healthcare, Finance, Tech">
+            <input class="form-input" type="text" id="corp-industry" name="Industry" placeholder="e.g. Healthcare, Finance, Tech">
           </div>
         </div>
         <div class="form-field full" id="f-corp-vidtype" style="margin-bottom:1.25rem;">
           <label class="form-label">Video Type *</label>
           <div class="pill-group">
-            <div class="pill-opt"><input type="radio" name="corp-vidtype" id="cvt1" value="brand-film"><label for="cvt1">Brand Film</label></div>
-            <div class="pill-opt"><input type="radio" name="corp-vidtype" id="cvt2" value="product-launch"><label for="cvt2">Product Launch</label></div>
-            <div class="pill-opt"><input type="radio" name="corp-vidtype" id="cvt3" value="culture-training"><label for="cvt3">Culture / Training</label></div>
-            <div class="pill-opt"><input type="radio" name="corp-vidtype" id="cvt4" value="exec-interview"><label for="cvt4">Executive Interview</label></div>
-            <div class="pill-opt"><input type="radio" name="corp-vidtype" id="cvt5" value="other"><label for="cvt5">Other</label></div>
+            <div class="pill-opt"><input type="radio" name="Video Type" id="cvt1" value="brand-film"><label for="cvt1">Brand Film</label></div>
+            <div class="pill-opt"><input type="radio" name="Video Type" id="cvt2" value="product-launch"><label for="cvt2">Product Launch</label></div>
+            <div class="pill-opt"><input type="radio" name="Video Type" id="cvt3" value="culture-training"><label for="cvt3">Culture / Training</label></div>
+            <div class="pill-opt"><input type="radio" name="Video Type" id="cvt4" value="exec-interview"><label for="cvt4">Executive Interview</label></div>
+            <div class="pill-opt"><input type="radio" name="Video Type" id="cvt5" value="other"><label for="cvt5">Other</label></div>
           </div>
           <span class="form-err">Please select a video type</span>
         </div>
         <div class="form-field full" style="margin-bottom:1.25rem;">
           <label class="form-label">Intended Platform</label>
           <div class="pill-group">
-            <div class="pill-opt"><input type="checkbox" name="corp-platform" id="cpf1" value="website"><label for="cpf1">Website</label></div>
-            <div class="pill-opt"><input type="checkbox" name="corp-platform" id="cpf2" value="linkedin"><label for="cpf2">LinkedIn</label></div>
-            <div class="pill-opt"><input type="checkbox" name="corp-platform" id="cpf3" value="event"><label for="cpf3">Event</label></div>
-            <div class="pill-opt"><input type="checkbox" name="corp-platform" id="cpf4" value="broadcast"><label for="cpf4">Broadcast</label></div>
-            <div class="pill-opt"><input type="checkbox" name="corp-platform" id="cpf5" value="internal"><label for="cpf5">Internal</label></div>
+            <div class="pill-opt"><input type="checkbox" name="Platform" id="cpf1" value="website"><label for="cpf1">Website</label></div>
+            <div class="pill-opt"><input type="checkbox" name="Platform" id="cpf2" value="linkedin"><label for="cpf2">LinkedIn</label></div>
+            <div class="pill-opt"><input type="checkbox" name="Platform" id="cpf3" value="event"><label for="cpf3">Event</label></div>
+            <div class="pill-opt"><input type="checkbox" name="Platform" id="cpf4" value="broadcast"><label for="cpf4">Broadcast</label></div>
+            <div class="pill-opt"><input type="checkbox" name="Platform" id="cpf5" value="internal"><label for="cpf5">Internal</label></div>
           </div>
         </div>
         <div class="form-grid" style="margin-bottom:1.25rem;">
           <div class="form-field">
             <label class="form-label" for="corp-numvids">Number of Videos</label>
-            <input class="form-input" type="text" id="corp-numvids" name="corp-numvids" placeholder="e.g. 1, 3, ongoing series">
+            <input class="form-input" type="text" id="corp-numvids" name="Number of Videos" placeholder="e.g. 1, 3, ongoing series">
           </div>
         </div>
         <div class="form-field full" id="f-corp-budget" style="margin-bottom:1.25rem;">
           <label class="form-label">Budget Range *</label>
           <div class="pill-group">
-            <div class="pill-opt"><input type="radio" name="corp-budget" id="cob1" value="under1k"><label for="cob1">Under $1K</label></div>
-            <div class="pill-opt"><input type="radio" name="corp-budget" id="cob2" value="1k-5k"><label for="cob2">$1K–$5K</label></div>
-            <div class="pill-opt"><input type="radio" name="corp-budget" id="cob3" value="5k-10k"><label for="cob3">$5K–$10K</label></div>
-            <div class="pill-opt"><input type="radio" name="corp-budget" id="cob4" value="10k+"><label for="cob4">$10K+</label></div>
+            <div class="pill-opt"><input type="radio" name="Budget Range" id="cob1" value="under1k"><label for="cob1">Under $1K</label></div>
+            <div class="pill-opt"><input type="radio" name="Budget Range" id="cob2" value="1k-5k"><label for="cob2">$1K–$5K</label></div>
+            <div class="pill-opt"><input type="radio" name="Budget Range" id="cob3" value="5k-10k"><label for="cob3">$5K–$10K</label></div>
+            <div class="pill-opt"><input type="radio" name="Budget Range" id="cob4" value="10k+"><label for="cob4">$10K+</label></div>
           </div>
           <span class="form-err">Please select a budget range</span>
         </div>
         <div class="form-field full" id="f-corp-desc" style="margin-bottom:1.25rem;">
           <label class="form-label" for="corp-desc">Project Description *</label>
-          <textarea class="form-textarea" id="corp-desc" name="corp-desc" placeholder="What's the story you're trying to tell? Include any creative direction, references, or goals..." rows="5"></textarea>
+          <textarea class="form-textarea" id="corp-desc" name="Project Description" placeholder="What's the story you're trying to tell? Include any creative direction, references, or goals..." rows="5"></textarea>
           <span class="form-err">Please describe your project</span>
         </div>
       </div>
@@ -322,12 +322,12 @@ footer{border-top:1px solid var(--clr-border);}
         <div class="form-grid" style="margin-bottom:1.25rem;">
           <div class="form-field full" id="f-re-address">
             <label class="form-label" for="re-address">Property Address / Name *</label>
-            <input class="form-input" type="text" id="re-address" name="re-address" placeholder="123 Main Street, City, State">
+            <input class="form-input" type="text" id="re-address" name="Property Address" placeholder="123 Main Street, City, State">
             <span class="form-err">Property address is required</span>
           </div>
           <div class="form-field">
             <label class="form-label" for="re-type">Property Type</label>
-            <select class="form-select" id="re-type" name="re-type">
+            <select class="form-select" id="re-type" name="Property Type">
               <option value="" disabled selected>Select type</option>
               <option>Residential</option>
               <option>Luxury</option>
@@ -338,27 +338,27 @@ footer{border-top:1px solid var(--clr-border);}
           </div>
           <div class="form-field">
             <label class="form-label" for="re-sqft">Property Size</label>
-            <input class="form-input" type="text" id="re-sqft" name="re-sqft" placeholder="Approx. sq ft or acreage">
+            <input class="form-input" type="text" id="re-sqft" name="Property Size" placeholder="Approx. sq ft or acreage">
           </div>
         </div>
         <div class="form-field full" id="f-re-services" style="margin-bottom:1.25rem;">
           <label class="form-label">Services Needed *</label>
           <div class="pill-group">
-            <div class="pill-opt"><input type="checkbox" name="re-services" id="res1" value="video"><label for="res1">Property Video</label></div>
-            <div class="pill-opt"><input type="checkbox" name="re-services" id="res2" value="drone"><label for="res2">Aerial Drone</label></div>
-            <div class="pill-opt"><input type="checkbox" name="re-services" id="res3" value="photo"><label for="res3">Photography</label></div>
-            <div class="pill-opt"><input type="checkbox" name="re-services" id="res4" value="virtual-tour"><label for="res4">Virtual Tour</label></div>
+            <div class="pill-opt"><input type="checkbox" name="Services Needed" id="res1" value="video"><label for="res1">Property Video</label></div>
+            <div class="pill-opt"><input type="checkbox" name="Services Needed" id="res2" value="drone"><label for="res2">Aerial Drone</label></div>
+            <div class="pill-opt"><input type="checkbox" name="Services Needed" id="res3" value="photo"><label for="res3">Photography</label></div>
+            <div class="pill-opt"><input type="checkbox" name="Services Needed" id="res4" value="virtual-tour"><label for="res4">Virtual Tour</label></div>
           </div>
           <span class="form-err">Please select at least one service</span>
         </div>
         <div class="form-grid" style="margin-bottom:1.25rem;">
           <div class="form-field">
             <label class="form-label" for="re-listdate">Listing Date / Desired Delivery</label>
-            <input class="form-input" type="text" id="re-listdate" name="re-listdate" placeholder="e.g. March 25, 2026">
+            <input class="form-input" type="text" id="re-listdate" name="Listing Date" placeholder="e.g. March 25, 2026">
           </div>
           <div class="form-field">
             <label class="form-label" for="re-role">Agent or Developer?</label>
-            <select class="form-select" id="re-role" name="re-role">
+            <select class="form-select" id="re-role" name="Role">
               <option value="" disabled selected>Select role</option>
               <option>Real Estate Agent</option>
               <option>Developer / Builder</option>
@@ -371,16 +371,16 @@ footer{border-top:1px solid var(--clr-border);}
         <div class="form-field full" id="f-re-budget" style="margin-bottom:1.25rem;">
           <label class="form-label">Budget Range *</label>
           <div class="pill-group">
-            <div class="pill-opt"><input type="radio" name="re-budget" id="reb1" value="under500"><label for="reb1">Under $500</label></div>
-            <div class="pill-opt"><input type="radio" name="re-budget" id="reb2" value="500-1k"><label for="reb2">$500–$1K</label></div>
-            <div class="pill-opt"><input type="radio" name="re-budget" id="reb3" value="1k-3k"><label for="reb3">$1K–$3K</label></div>
-            <div class="pill-opt"><input type="radio" name="re-budget" id="reb4" value="3k+"><label for="reb4">$3K+</label></div>
+            <div class="pill-opt"><input type="radio" name="Budget Range" id="reb1" value="under500"><label for="reb1">Under $500</label></div>
+            <div class="pill-opt"><input type="radio" name="Budget Range" id="reb2" value="500-1k"><label for="reb2">$500–$1K</label></div>
+            <div class="pill-opt"><input type="radio" name="Budget Range" id="reb3" value="1k-3k"><label for="reb3">$1K–$3K</label></div>
+            <div class="pill-opt"><input type="radio" name="Budget Range" id="reb4" value="3k+"><label for="reb4">$3K+</label></div>
           </div>
           <span class="form-err">Please select a budget range</span>
         </div>
         <div class="form-field full" style="margin-bottom:1.25rem;">
           <label class="form-label" for="re-notes">Additional Notes</label>
-          <textarea class="form-textarea" id="re-notes" name="re-notes" placeholder="Access instructions, styling notes, specific features to highlight..." rows="4"></textarea>
+          <textarea class="form-textarea" id="re-notes" name="Additional Notes" placeholder="Access instructions, styling notes, specific features to highlight..." rows="4"></textarea>
         </div>
       </div>
 
@@ -389,40 +389,40 @@ footer{border-top:1px solid var(--clr-border);}
         <div class="form-grid" style="margin-bottom:1.25rem;">
           <div class="form-field" id="f-mu-artist">
             <label class="form-label" for="mu-artist">Artist / Band Name *</label>
-            <input class="form-input" type="text" id="mu-artist" name="mu-artist" placeholder="Your artist name">
+            <input class="form-input" type="text" id="mu-artist" name="Artist Name" placeholder="Your artist name">
             <span class="form-err">Artist name is required</span>
           </div>
           <div class="form-field">
             <label class="form-label" for="mu-genre">Genre</label>
-            <input class="form-input" type="text" id="mu-genre" name="mu-genre" placeholder="e.g. R&B, Hip-Hop, Indie Pop">
+            <input class="form-input" type="text" id="mu-genre" name="Genre" placeholder="e.g. R&B, Hip-Hop, Indie Pop">
           </div>
           <div class="form-field">
             <label class="form-label" for="mu-song">Song / Project Title</label>
-            <input class="form-input" type="text" id="mu-song" name="mu-song" placeholder="Working title is fine">
+            <input class="form-input" type="text" id="mu-song" name="Song Title" placeholder="Working title is fine">
           </div>
         </div>
         <div class="form-field full" id="f-mu-projtype" style="margin-bottom:1.25rem;">
           <label class="form-label">Project Type *</label>
           <div class="pill-group">
-            <div class="pill-opt"><input type="radio" name="mu-projtype" id="mup1" value="music-video"><label for="mup1">Music Video</label></div>
-            <div class="pill-opt"><input type="radio" name="mu-projtype" id="mup2" value="concert"><label for="mup2">Concert / Live</label></div>
-            <div class="pill-opt"><input type="radio" name="mu-projtype" id="mup3" value="branding"><label for="mup3">Artist Branding</label></div>
-            <div class="pill-opt"><input type="radio" name="mu-projtype" id="mup4" value="lyric-visualizer"><label for="mup4">Lyric / Visualizer</label></div>
+            <div class="pill-opt"><input type="radio" name="Project Type" id="mup1" value="music-video"><label for="mup1">Music Video</label></div>
+            <div class="pill-opt"><input type="radio" name="Project Type" id="mup2" value="concert"><label for="mup2">Concert / Live</label></div>
+            <div class="pill-opt"><input type="radio" name="Project Type" id="mup3" value="branding"><label for="mup3">Artist Branding</label></div>
+            <div class="pill-opt"><input type="radio" name="Project Type" id="mup4" value="lyric-visualizer"><label for="mup4">Lyric / Visualizer</label></div>
           </div>
           <span class="form-err">Please select a project type</span>
         </div>
         <div class="form-field full" style="margin-bottom:1.25rem;">
           <label class="form-label">Do you have a concept?</label>
           <div class="pill-group">
-            <div class="pill-opt"><input type="radio" name="mu-concept" id="muc1" value="yes"><label for="muc1">Yes — I'll describe it below</label></div>
-            <div class="pill-opt"><input type="radio" name="mu-concept" id="muc2" value="partial"><label for="muc2">Partial idea</label></div>
-            <div class="pill-opt"><input type="radio" name="mu-concept" id="muc3" value="open"><label for="muc3">Open to creative direction</label></div>
+            <div class="pill-opt"><input type="radio" name="Has Concept" id="muc1" value="yes"><label for="muc1">Yes — I'll describe it below</label></div>
+            <div class="pill-opt"><input type="radio" name="Has Concept" id="muc2" value="partial"><label for="muc2">Partial idea</label></div>
+            <div class="pill-opt"><input type="radio" name="Has Concept" id="muc3" value="open"><label for="muc3">Open to creative direction</label></div>
           </div>
         </div>
         <div class="form-grid" style="margin-bottom:1.25rem;">
           <div class="form-field">
             <label class="form-label" for="mu-platform">Distribution Platform</label>
-            <select class="form-select" id="mu-platform" name="mu-platform">
+            <select class="form-select" id="mu-platform" name="Distribution Platform">
               <option value="" disabled selected>Select platform</option>
               <option>YouTube</option>
               <option>Spotify Canvas</option>
@@ -433,22 +433,22 @@ footer{border-top:1px solid var(--clr-border);}
           </div>
           <div class="form-field">
             <label class="form-label" for="mu-release">Target Release Date</label>
-            <input class="form-input" type="text" id="mu-release" name="mu-release" placeholder="e.g. April 2026 or flexible">
+            <input class="form-input" type="text" id="mu-release" name="Release Date" placeholder="e.g. April 2026 or flexible">
           </div>
         </div>
         <div class="form-field full" id="f-mu-budget" style="margin-bottom:1.25rem;">
           <label class="form-label">Budget Range *</label>
           <div class="pill-group">
-            <div class="pill-opt"><input type="radio" name="mu-budget" id="mub1" value="under1k"><label for="mub1">Under $1K</label></div>
-            <div class="pill-opt"><input type="radio" name="mu-budget" id="mub2" value="1k-3k"><label for="mub2">$1K–$3K</label></div>
-            <div class="pill-opt"><input type="radio" name="mu-budget" id="mub3" value="3k-7k"><label for="mub3">$3K–$7K</label></div>
-            <div class="pill-opt"><input type="radio" name="mu-budget" id="mub4" value="7k+"><label for="mub4">$7K+</label></div>
+            <div class="pill-opt"><input type="radio" name="Budget Range" id="mub1" value="under1k"><label for="mub1">Under $1K</label></div>
+            <div class="pill-opt"><input type="radio" name="Budget Range" id="mub2" value="1k-3k"><label for="mub2">$1K–$3K</label></div>
+            <div class="pill-opt"><input type="radio" name="Budget Range" id="mub3" value="3k-7k"><label for="mub3">$3K–$7K</label></div>
+            <div class="pill-opt"><input type="radio" name="Budget Range" id="mub4" value="7k+"><label for="mub4">$7K+</label></div>
           </div>
           <span class="form-err">Please select a budget range</span>
         </div>
         <div class="form-field full" id="f-mu-vision" style="margin-bottom:1.25rem;">
           <label class="form-label" for="mu-vision">Vision / Mood / References *</label>
-          <textarea class="form-textarea" id="mu-vision" name="mu-vision" placeholder="Describe the feel, color palette, references (other music videos, films, photographers), and any must-haves..." rows="5"></textarea>
+          <textarea class="form-textarea" id="mu-vision" name="Vision and Mood" placeholder="Describe the feel, color palette, references (other music videos, films, photographers), and any must-haves..." rows="5"></textarea>
           <span class="form-err">Please share your vision or mood for this project</span>
         </div>
       </div>
@@ -458,12 +458,12 @@ footer{border-top:1px solid var(--clr-border);}
         <div class="form-grid" style="margin-bottom:1.25rem;">
           <div class="form-field" id="f-cam-prod">
             <label class="form-label" for="cam-prod">Production Company / Individual *</label>
-            <input class="form-input" type="text" id="cam-prod" name="cam-prod" placeholder="Production company or your name">
+            <input class="form-input" type="text" id="cam-prod" name="Production Company" placeholder="Production company or your name">
             <span class="form-err">Production name is required</span>
           </div>
           <div class="form-field">
             <label class="form-label" for="cam-projtype">Project Type</label>
-            <select class="form-select" id="cam-projtype" name="cam-projtype">
+            <select class="form-select" id="cam-projtype" name="Project Type">
               <option value="" disabled selected>Select type</option>
               <option>Feature Film</option>
               <option>Short Film</option>
@@ -476,7 +476,7 @@ footer{border-top:1px solid var(--clr-border);}
           </div>
           <div class="form-field">
             <label class="form-label" for="cam-duration">Shoot Duration</label>
-            <select class="form-select" id="cam-duration" name="cam-duration">
+            <select class="form-select" id="cam-duration" name="Shoot Duration">
               <option value="" disabled selected>Select duration</option>
               <option>Half-day (4–5 hrs)</option>
               <option>Full day (8–10 hrs)</option>
@@ -486,34 +486,34 @@ footer{border-top:1px solid var(--clr-border);}
           </div>
           <div class="form-field">
             <label class="form-label" for="cam-location">Location(s)</label>
-            <input class="form-input" type="text" id="cam-location" name="cam-location" placeholder="City, State or describe">
+            <input class="form-input" type="text" id="cam-location" name="Location" placeholder="City, State or describe">
           </div>
           <div class="form-field">
             <label class="form-label" for="cam-dates">Shoot Dates</label>
-            <input class="form-input" type="text" id="cam-dates" name="cam-dates" placeholder="e.g. April 14–16, 2026 or TBD">
+            <input class="form-input" type="text" id="cam-dates" name="Shoot Dates" placeholder="e.g. April 14–16, 2026 or TBD">
           </div>
         </div>
         <div class="form-field full" style="margin-bottom:1.25rem;">
           <label class="form-label">Equipment</label>
           <div class="pill-group">
-            <div class="pill-opt"><input type="radio" name="cam-equip" id="ceq1" value="client"><label for="ceq1">Client Provides</label></div>
-            <div class="pill-opt"><input type="radio" name="cam-equip" id="ceq2" value="anm"><label for="ceq2">ANM Provides</label></div>
-            <div class="pill-opt"><input type="radio" name="cam-equip" id="ceq3" value="discuss"><label for="ceq3">Let's Discuss</label></div>
+            <div class="pill-opt"><input type="radio" name="Equipment" id="ceq1" value="client"><label for="ceq1">Client Provides</label></div>
+            <div class="pill-opt"><input type="radio" name="Equipment" id="ceq2" value="anm"><label for="ceq2">ANM Provides</label></div>
+            <div class="pill-opt"><input type="radio" name="Equipment" id="ceq3" value="discuss"><label for="ceq3">Let's Discuss</label></div>
           </div>
         </div>
         <div class="form-field full" id="f-cam-rate" style="margin-bottom:1.25rem;">
           <label class="form-label">Rate Budget *</label>
           <div class="pill-group">
-            <div class="pill-opt"><input type="radio" name="cam-rate" id="crt1" value="under500"><label for="crt1">Under $500/day</label></div>
-            <div class="pill-opt"><input type="radio" name="cam-rate" id="crt2" value="500-1k"><label for="crt2">$500–$1K/day</label></div>
-            <div class="pill-opt"><input type="radio" name="cam-rate" id="crt3" value="1k+"><label for="crt3">$1K+/day</label></div>
-            <div class="pill-opt"><input type="radio" name="cam-rate" id="crt4" value="discuss"><label for="crt4">Let's Discuss</label></div>
+            <div class="pill-opt"><input type="radio" name="Daily Rate" id="crt1" value="under500"><label for="crt1">Under $500/day</label></div>
+            <div class="pill-opt"><input type="radio" name="Daily Rate" id="crt2" value="500-1k"><label for="crt2">$500–$1K/day</label></div>
+            <div class="pill-opt"><input type="radio" name="Daily Rate" id="crt3" value="1k+"><label for="crt3">$1K+/day</label></div>
+            <div class="pill-opt"><input type="radio" name="Daily Rate" id="crt4" value="discuss"><label for="crt4">Let's Discuss</label></div>
           </div>
           <span class="form-err">Please select a rate range</span>
         </div>
         <div class="form-field full" id="f-cam-brief" style="margin-bottom:1.25rem;">
           <label class="form-label" for="cam-brief">Project Brief *</label>
-          <textarea class="form-textarea" id="cam-brief" name="cam-brief" placeholder="Describe the project, any camera notes, style references, crew context, or anything that helps us understand the shoot..." rows="5"></textarea>
+          <textarea class="form-textarea" id="cam-brief" name="Project Brief" placeholder="Describe the project, any camera notes, style references, crew context, or anything that helps us understand the shoot..." rows="5"></textarea>
           <span class="form-err">Please describe the project</span>
         </div>
       </div>
@@ -683,7 +683,7 @@ pills.forEach(pill=>{
       else{el.classList.remove('active');}
     });
     activeNiche=niche;
-    document.getElementById('niche-hidden').value=niche;
+    document.getElementById('niche-hidden').value=niche.charAt(0).toUpperCase()+niche.slice(1);
     // Clear errors when switching
     document.querySelectorAll('.has-error').forEach(el=>el.classList.remove('has-error'));
   });
@@ -738,25 +738,25 @@ form.addEventListener('submit',e=>{
 
   // Niche-specific
   if(activeNiche==='general'){
-    if(!validateField('f-g-budget',()=>!!form.querySelector('[name="g-budget"]:checked')))valid=false;
+    if(!validateField('f-g-budget',()=>!!document.getElementById('f-g-budget').querySelector(':checked')))valid=false;
     if(!validateField('f-g-desc',()=>document.getElementById('g-desc').value.trim().length>10))valid=false;
   } else if(activeNiche==='corporate'){
     if(!validateField('f-corp-company',()=>document.getElementById('corp-company').value.trim().length>0))valid=false;
-    if(!validateField('f-corp-vidtype',()=>!!form.querySelector('[name="corp-vidtype"]:checked')))valid=false;
-    if(!validateField('f-corp-budget',()=>!!form.querySelector('[name="corp-budget"]:checked')))valid=false;
+    if(!validateField('f-corp-vidtype',()=>!!document.getElementById('f-corp-vidtype').querySelector(':checked')))valid=false;
+    if(!validateField('f-corp-budget',()=>!!document.getElementById('f-corp-budget').querySelector(':checked')))valid=false;
     if(!validateField('f-corp-desc',()=>document.getElementById('corp-desc').value.trim().length>10))valid=false;
   } else if(activeNiche==='realestate'){
     if(!validateField('f-re-address',()=>document.getElementById('re-address').value.trim().length>0))valid=false;
-    if(!validateField('f-re-services',()=>!!form.querySelector('[name="re-services"]:checked')))valid=false;
-    if(!validateField('f-re-budget',()=>!!form.querySelector('[name="re-budget"]:checked')))valid=false;
+    if(!validateField('f-re-services',()=>!!document.getElementById('f-re-services').querySelector(':checked')))valid=false;
+    if(!validateField('f-re-budget',()=>!!document.getElementById('f-re-budget').querySelector(':checked')))valid=false;
   } else if(activeNiche==='music'){
     if(!validateField('f-mu-artist',()=>document.getElementById('mu-artist').value.trim().length>0))valid=false;
-    if(!validateField('f-mu-projtype',()=>!!form.querySelector('[name="mu-projtype"]:checked')))valid=false;
-    if(!validateField('f-mu-budget',()=>!!form.querySelector('[name="mu-budget"]:checked')))valid=false;
+    if(!validateField('f-mu-projtype',()=>!!document.getElementById('f-mu-projtype').querySelector(':checked')))valid=false;
+    if(!validateField('f-mu-budget',()=>!!document.getElementById('f-mu-budget').querySelector(':checked')))valid=false;
     if(!validateField('f-mu-vision',()=>document.getElementById('mu-vision').value.trim().length>10))valid=false;
   } else if(activeNiche==='camera'){
     if(!validateField('f-cam-prod',()=>document.getElementById('cam-prod').value.trim().length>0))valid=false;
-    if(!validateField('f-cam-rate',()=>!!form.querySelector('[name="cam-rate"]:checked')))valid=false;
+    if(!validateField('f-cam-rate',()=>!!document.getElementById('f-cam-rate').querySelector(':checked')))valid=false;
     if(!validateField('f-cam-brief',()=>document.getElementById('cam-brief').value.trim().length>10))valid=false;
   }
 
