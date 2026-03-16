@@ -207,7 +207,8 @@ footer{border-top:1px solid var(--clr-border);}
       </div>
     </div>
 
-    <form id="contactForm" novalidate>
+    <form id="contactForm" method="POST" action="https://formspree.io/f/meerrnqq" novalidate>
+      <input type="hidden" name="niche" id="niche-hidden" value="general">
 
       <!-- Common fields -->
       <div class="form-grid" style="margin-bottom:1.25rem;" data-reveal data-d="1">
@@ -682,6 +683,7 @@ pills.forEach(pill=>{
       else{el.classList.remove('active');}
     });
     activeNiche=niche;
+    document.getElementById('niche-hidden').value=niche;
     // Clear errors when switching
     document.querySelectorAll('.has-error').forEach(el=>el.classList.remove('has-error'));
   });
@@ -762,12 +764,27 @@ form.addEventListener('submit',e=>{
     submitBtn.textContent='Sending...';
     submitBtn.disabled=true;
     submitBtn.style.opacity='0.6';
-    setTimeout(()=>{
-      form.querySelectorAll('.form-field,.niche-pills,#submitBtn,[data-reveal]').forEach(el=>el.style.display='none');
-      // Hide niche selector label too
-      form.parentElement.querySelector('[data-reveal]') && (form.parentElement.querySelector('[data-reveal]').style.display='none');
-      formSuccess.classList.add('show');
-    },1000);
+    fetch('https://formspree.io/f/meerrnqq',{
+      method:'POST',
+      body:new FormData(form),
+      headers:{Accept:'application/json'}
+    }).then(res=>{
+      if(res.ok){
+        form.querySelectorAll('.form-field,.niche-pills,#submitBtn,[data-reveal]').forEach(el=>el.style.display='none');
+        form.parentElement.querySelector('[data-reveal]')&&(form.parentElement.querySelector('[data-reveal]').style.display='none');
+        formSuccess.classList.add('show');
+      } else {
+        submitBtn.textContent='Send Message';
+        submitBtn.disabled=false;
+        submitBtn.style.opacity='1';
+        alert('Something went wrong. Please try again or email us directly.');
+      }
+    }).catch(()=>{
+      submitBtn.textContent='Send Message';
+      submitBtn.disabled=false;
+      submitBtn.style.opacity='1';
+      alert('Network error. Please check your connection and try again.');
+    });
   } else {
     // Scroll to first error
     const firstErr=form.querySelector('.has-error');
