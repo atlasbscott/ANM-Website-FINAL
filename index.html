@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="brand_assets/ANM Profile Pic BLACK BIGGER.svg">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Atlas Narrative Media — Visual Storytelling</title>
+<title>Atlas Narrative Media</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -209,7 +210,7 @@ body::after{
 
 /* Scroll indicator */
 .scroll-ind{
-  position:absolute;bottom:2.25rem;left:50%;transform:translateX(-50%);
+  position:absolute;bottom:2.25rem;left:0;right:0;margin:0 auto;width:fit-content;
   z-index:2;display:flex;flex-direction:column;align-items:center;gap:0.5rem;
   opacity:0;transition:opacity 0.6s ease;
 }
@@ -399,7 +400,7 @@ footer{background:var(--clr-surface);border-top:1px solid rgba(200,169,110,0.12)
 .lb-info{padding:1rem 0 0;}
 .lb-cat{font-family:'DM Mono',monospace;font-size:var(--fs-label);letter-spacing:0.15em;text-transform:uppercase;color:var(--clr-gold);display:block;margin-bottom:0.25rem;}
 .lb-title{font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:500;color:var(--clr-text);}
-@media(max-width:767px){.nav-links,.nav-cta{display:none;}.hamburger{display:flex;}.nav{padding:1rem 1.25rem;}}
+@media(max-width:767px){.nav-links,.nav-cta{display:none;}.hamburger{display:flex;grid-column:3;justify-self:end;}.nav{padding:1rem 1.25rem;}}
 </style>
 </head>
 <body>
