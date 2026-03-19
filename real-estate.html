@@ -10,10 +10,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
 <style>
-:root{--clr-base:#080808;--clr-surface:#111111;--clr-elevated:#1A1A1A;--clr-floating:#242424;--clr-border:#2A2A2A;--clr-gold:#C8A96E;--clr-text:#F0EDE6;--clr-text-muted:#8A8278;--clr-text-faint:#4A4642;--fs-display:clamp(3.25rem,9vw,7.5rem);--fs-h1:clamp(2rem,5vw,4rem);--fs-h2:clamp(1.625rem,3vw,2.5rem);--fs-label:0.6875rem;--fs-sm:0.875rem;}
+:root{--clr-base:#080808;--clr-surface:#111111;--clr-elevated:#1A1A1A;--clr-floating:#242424;--clr-border:#2A2A2A;--clr-gold:#C8A96E;--clr-gold-light:#E8D5A3;--clr-text:#F0EDE6;--clr-text-muted:#8A8278;--clr-text-faint:#4A4642;--fs-display:clamp(3.25rem,9vw,7.5rem);--fs-h1:clamp(2rem,5vw,4rem);--fs-h2:clamp(1.625rem,3vw,2.5rem);--fs-label:0.6875rem;--fs-sm:0.875rem;}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
-body{background:var(--clr-base);color:var(--clr-text);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.7;overflow-x:hidden;background-image:radial-gradient(ellipse 60% 50% at 95% 20%, rgba(200,169,110,0.06) 0%, transparent 60%),radial-gradient(ellipse 55% 65% at 5% 80%, rgba(200,169,110,0.04) 0%, transparent 55%);}
+body{background:var(--clr-base);color:var(--clr-text);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.7;overflow-x:hidden;background-image:radial-gradient(ellipse 60% 50% at 80% 20%, rgba(200,169,110,0.05) 0%, transparent 60%),radial-gradient(ellipse 50% 65% at 20% 85%, rgba(200,169,110,0.04) 0%, transparent 55%);}
 body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");opacity:0.032;pointer-events:none;z-index:9998;mix-blend-mode:overlay;}
+
 .nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:1.125rem 2rem;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;background:transparent;border-bottom:1px solid transparent;transition:background-color 0.4s ease,border-color 0.4s ease;}
 .nav-cta{justify-self:end;}
 .nav.scrolled{background:rgba(8,8,8,0.93);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom-color:var(--clr-border);}
@@ -47,77 +48,90 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 .mobile-close{position:absolute;top:1.5rem;right:1.5rem;background:none;border:none;color:var(--clr-text-muted);font-family:'DM Mono',monospace;font-size:1.5rem;line-height:1;cursor:pointer;padding:0.5rem;z-index:210;transition:color 0.2s ease,transform 0.2s ease;}
 .mobile-close:hover{color:var(--clr-gold);transform:rotate(90deg);}
 .mobile-close:focus-visible{outline:2px solid var(--clr-gold);outline-offset:2px;}
+
 .sec-label{font-family:'DM Mono',monospace;font-size:var(--fs-label);letter-spacing:0.2em;text-transform:uppercase;color:var(--clr-gold);}
 .sec-head{font-family:'Cormorant',serif;font-weight:300;font-style:italic;letter-spacing:-0.02em;color:var(--clr-text);}
 .gold-rule{width:100%;height:1px;background:linear-gradient(to right,transparent,rgba(200,169,110,0.25),transparent);}
 [data-reveal]{opacity:0;transform:translateY(22px);transition:opacity 0.7s ease,transform 0.7s ease;}
 [data-reveal].on{opacity:1;transform:none;}
 [data-reveal][data-d="1"]{transition-delay:0.1s;}[data-reveal][data-d="2"]{transition-delay:0.2s;}[data-reveal][data-d="3"]{transition-delay:0.3s;}[data-reveal][data-d="4"]{transition-delay:0.4s;}
+
 .btn-gold{font-family:'DM Sans',sans-serif;font-size:var(--fs-sm);font-weight:500;background:var(--clr-gold);color:var(--clr-base);padding:0.875rem 2.25rem;text-decoration:none;display:inline-block;border:none;cursor:pointer;transition:filter 0.2s ease,transform 0.2s ease;}
 .btn-gold:hover{filter:brightness(1.1);transform:translateY(-2px);}
-.niche-hero{position:relative;min-height:70vh;display:flex;align-items:flex-end;overflow:hidden;}
-.niche-hero-img{position:absolute;inset:0;z-index:0;}
-.niche-hero-img img{width:100%;height:100%;object-fit:cover;filter:brightness(0.32);}
-.niche-hero-img .tint{position:absolute;inset:0;background:rgba(200,169,110,0.04);mix-blend-mode:multiply;}
-.niche-hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(to top,rgba(8,8,8,0.98) 0%,rgba(8,8,8,0.3) 50%,rgba(8,8,8,0.2) 100%);}
-.niche-hero-content{position:relative;z-index:2;max-width:1400px;width:100%;margin:0 auto;padding:8rem 2rem 5rem;}
-.del-grid{display:grid;grid-template-columns:1fr;gap:1.5rem;}
-@media(min-width:640px){.del-grid{grid-template-columns:repeat(2,1fr);}}
-@media(min-width:1024px){.del-grid{grid-template-columns:repeat(4,1fr);}}
-.del-card{background:var(--clr-surface);border:1px solid var(--clr-border);padding:2rem 1.75rem;position:relative;overflow:hidden;transition:border-color 0.3s ease;}
-.del-card:hover{border-color:rgba(200,169,110,0.3);}
-.del-num{font-family:'Cormorant',serif;font-size:3.5rem;font-weight:300;font-style:italic;color:rgba(200,169,110,0.1);line-height:1;position:absolute;top:1rem;right:1.5rem;}
-.del-title{font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:500;color:var(--clr-text);margin-bottom:0.625rem;}
-.del-desc{font-size:var(--fs-sm);color:var(--clr-text-muted);line-height:1.65;}
-.work-grid{display:grid;grid-template-columns:1fr;gap:2px;background:var(--clr-border);}
-@media(min-width:640px){.work-grid{grid-template-columns:repeat(2,1fr);}}
-@media(min-width:1024px){.work-grid{grid-template-columns:repeat(3,1fr);}}
-.wcard{position:relative;overflow:hidden;cursor:pointer;background:var(--clr-surface);aspect-ratio:16/10;}
-.wcard img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s ease;}
-.wcard:hover img{transform:scale(1.05);}
-.wcard-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,8,0.92) 0%,transparent 60%);}
-.wcard-tint{position:absolute;inset:0;background:rgba(200,169,110,0.03);mix-blend-mode:multiply;pointer-events:none;}
-.wcard-meta{position:absolute;bottom:0;left:0;right:0;padding:1.25rem;opacity:0.75;transform:translateY(5px);transition:opacity 0.3s ease,transform 0.3s ease;}
-.wcard:hover .wcard-meta{opacity:1;transform:none;}
-.wcard-cat{font-family:'DM Mono',monospace;font-size:var(--fs-label);letter-spacing:0.15em;text-transform:uppercase;color:var(--clr-gold);margin-bottom:0.25rem;}
-.wcard-title{font-family:'DM Sans',sans-serif;font-size:0.9375rem;font-weight:500;color:var(--clr-text);}
-.wcard::after{content:'';position:absolute;inset:0;border:1px solid rgba(200,169,110,0);transition:border-color 0.3s ease;pointer-events:none;z-index:1;}
-.wcard:hover::after{border-color:rgba(200,169,110,0.3);}
-.wcard:focus-visible{outline:2px solid var(--clr-gold);outline-offset:2px;}
-/* Showcase — asymmetric featured layout */
-.sc-grid{display:grid;grid-template-columns:1fr;gap:3px;background:var(--clr-border);}
-@media(min-width:720px){.sc-grid{grid-template-columns:2fr 1fr;}.sc-card:first-child{grid-row:span 2;}}
-.sc-card{position:relative;overflow:hidden;cursor:pointer;background:var(--clr-elevated);aspect-ratio:16/9;}
-.sc-card img{width:100%;height:100%;object-fit:cover;transition:transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94),filter 0.5s ease;}
-.sc-card:hover img{transform:scale(1.06);filter:brightness(0.6);}
-.sc-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,8,0.98) 0%,rgba(8,8,8,0.45) 48%,rgba(8,8,8,0.05) 100%);}
-.sc-tint{position:absolute;inset:0;background:rgba(200,169,110,0.04);mix-blend-mode:multiply;pointer-events:none;}
-.sc-num{position:absolute;top:1.25rem;left:1.5rem;font-family:'Cormorant',serif;font-size:5.5rem;font-weight:300;font-style:italic;color:rgba(200,169,110,0.06);line-height:1;pointer-events:none;user-select:none;transition:color 0.5s ease;z-index:1;}
-.sc-card:hover .sc-num{color:rgba(200,169,110,0.11);}
-.sc-card:first-child .sc-num{font-size:7.5rem;}
-.sc-meta{position:absolute;bottom:0;left:0;right:0;padding:1.75rem;z-index:2;}
-.sc-cat{font-family:'DM Mono',monospace;font-size:0.5625rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--clr-gold);margin-bottom:0.625rem;display:block;opacity:0.85;transition:opacity 0.3s ease;}
-.sc-card:hover .sc-cat{opacity:1;}
-.sc-line{height:1px;background:var(--clr-gold);width:0;margin-bottom:0.875rem;transition:width 0.45s cubic-bezier(0.25,0.46,0.45,0.94) 0.05s;opacity:0.5;}
-.sc-card:hover .sc-line{width:2.75rem;}
-.sc-title{font-family:'Cormorant',serif;font-size:clamp(1.25rem,2.5vw,2rem);font-weight:300;font-style:italic;color:var(--clr-text);line-height:1.2;letter-spacing:-0.015em;transform:translateY(5px);transition:transform 0.35s ease;}
-.sc-card:hover .sc-title{transform:translateY(0);}
-.sc-cta{display:block;font-family:'DM Mono',monospace;font-size:0.5625rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--clr-gold);margin-top:0.875rem;opacity:0;transform:translateY(5px);transition:opacity 0.3s ease 0.1s,transform 0.3s ease 0.1s;}
-.sc-card:hover .sc-cta{opacity:0.65;transform:translateY(0);}
-.sc-card::after{content:'';position:absolute;inset:0;border:1px solid rgba(200,169,110,0);transition:border-color 0.3s ease;pointer-events:none;z-index:3;}
-.sc-card:hover::after{border-color:rgba(200,169,110,0.3);}
-.sc-card:focus-visible{outline:2px solid var(--clr-gold);outline-offset:2px;}
-.val-grid{display:grid;grid-template-columns:1fr;gap:2rem;}
-@media(min-width:640px){.val-grid{grid-template-columns:repeat(2,1fr);}}
-@media(min-width:1024px){.val-grid{grid-template-columns:repeat(4,1fr);}}
-.val-card{border-left:1px solid rgba(200,169,110,0.25);padding-left:1.25rem;}
-.val-title{font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:500;color:var(--clr-text);margin-bottom:0.5rem;}
-.val-desc{font-size:var(--fs-sm);color:var(--clr-text-muted);line-height:1.65;}
-.proc-grid{display:grid;grid-template-columns:1fr;gap:2.5rem;}
-@media(min-width:768px){.proc-grid{grid-template-columns:repeat(4,1fr);}}
-.proc-num{font-family:'Cormorant',serif;font-size:4rem;font-weight:300;font-style:italic;color:rgba(200,169,110,0.12);line-height:1;margin-bottom:0.5rem;}
-.proc-title{font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:500;color:var(--clr-text);margin-bottom:0.5rem;}
-.proc-desc{font-size:var(--fs-sm);color:var(--clr-text-muted);line-height:1.65;}
+.btn-gold:active{transform:translateY(0);}
+
+/* ===== FULL-WIDTH HERO ===== */
+.re-hero{position:relative;min-height:85vh;display:flex;align-items:flex-end;overflow:hidden;}
+.re-hero-bg{position:absolute;inset:0;z-index:0;}
+.re-hero-bg img{width:100%;height:100%;object-fit:cover;filter:brightness(0.3);}
+.re-hero-bg .tint{position:absolute;inset:0;background:rgba(200,169,110,0.04);mix-blend-mode:multiply;}
+.re-hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(to top,rgba(8,8,8,0.98) 0%,rgba(8,8,8,0.4) 40%,rgba(8,8,8,0.15) 100%);}
+.re-hero-content{position:relative;z-index:2;max-width:1400px;width:100%;margin:0 auto;padding:6rem 2rem 5rem;}
+
+/* ===== RESULTS STRIP ===== */
+.results-strip{display:grid;grid-template-columns:1fr;gap:1px;background:var(--clr-border);}
+@media(min-width:768px){.results-strip{grid-template-columns:repeat(3,1fr);}}
+.result-item{background:var(--clr-surface);padding:2.25rem 2rem;text-align:center;}
+.result-stat{font-family:'Cormorant',serif;font-size:clamp(1.75rem,4vw,2.5rem);font-weight:300;font-style:italic;color:var(--clr-gold);line-height:1.1;margin-bottom:0.5rem;}
+.result-desc{font-family:'DM Mono',monospace;font-size:var(--fs-label);letter-spacing:0.15em;text-transform:uppercase;color:var(--clr-text-muted);}
+
+/* ===== SERVICE CARDS ===== */
+.re-svc-grid{display:grid;grid-template-columns:1fr;gap:1.5rem;}
+@media(min-width:640px){.re-svc-grid{grid-template-columns:repeat(2,1fr);}}
+@media(min-width:1024px){.re-svc-grid{grid-template-columns:repeat(4,1fr);}}
+.re-svc-card{background:var(--clr-surface);border:1px solid var(--clr-border);overflow:hidden;transition:border-color 0.3s ease,transform 0.3s ease;}
+.re-svc-card:hover{border-color:rgba(200,169,110,0.3);transform:translateY(-4px);}
+.re-svc-img{position:relative;aspect-ratio:4/3;overflow:hidden;}
+.re-svc-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s ease;filter:brightness(0.5);}
+.re-svc-card:hover .re-svc-img img{transform:scale(1.06);}
+.re-svc-img .svc-tint{position:absolute;inset:0;background:rgba(200,169,110,0.04);mix-blend-mode:multiply;}
+.re-svc-body{padding:1.5rem;}
+.re-svc-title{font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:500;color:var(--clr-text);margin-bottom:0.5rem;}
+.re-svc-desc{font-size:var(--fs-sm);color:var(--clr-text-muted);line-height:1.65;}
+
+/* ===== WHO WE WORK WITH ===== */
+.audience-grid{display:grid;grid-template-columns:1fr;gap:1.5rem;}
+@media(min-width:768px){.audience-grid{grid-template-columns:repeat(3,1fr);}}
+.audience-card{padding:2.25rem 2rem;background:var(--clr-elevated);border-bottom:2px solid transparent;transition:border-color 0.3s ease,transform 0.3s ease;}
+.audience-card:hover{border-bottom-color:var(--clr-gold);transform:translateY(-3px);}
+.audience-icon{width:32px;height:32px;color:var(--clr-gold);margin-bottom:1.25rem;opacity:0.8;}
+.audience-name{font-family:'Cormorant',serif;font-size:1.375rem;font-weight:400;font-style:italic;color:var(--clr-text);margin-bottom:0.75rem;}
+.audience-desc{font-size:var(--fs-sm);color:var(--clr-text-muted);line-height:1.65;}
+
+/* ===== GALLERY MASONRY ===== */
+.gallery{columns:1;column-gap:4px;}
+@media(min-width:640px){.gallery{columns:2;}}
+@media(min-width:1024px){.gallery{columns:3;}}
+.gallery-item{break-inside:avoid;margin-bottom:4px;position:relative;overflow:hidden;cursor:pointer;}
+.gallery-item img{width:100%;display:block;filter:brightness(0.5);transition:transform 0.6s ease,filter 0.4s ease;}
+.gallery-item:hover img{transform:scale(1.04);filter:brightness(0.7);}
+.gallery-item::after{content:'';position:absolute;inset:0;border:1px solid rgba(200,169,110,0);transition:border-color 0.3s ease;pointer-events:none;}
+.gallery-item:hover::after{border-color:rgba(200,169,110,0.3);}
+
+/* ===== PACKAGES ===== */
+.pkg-grid{display:grid;grid-template-columns:1fr;gap:1.5rem;}
+@media(min-width:768px){.pkg-grid{grid-template-columns:repeat(3,1fr);}}
+.pkg-card{background:var(--clr-surface);border:1px solid var(--clr-border);padding:2.5rem 2rem;position:relative;transition:border-color 0.3s ease,transform 0.3s ease;}
+.pkg-card:hover{transform:translateY(-4px);}
+.pkg-card.featured{border-color:rgba(200,169,110,0.4);}
+.pkg-badge{position:absolute;top:0;right:1.5rem;background:var(--clr-gold);color:var(--clr-base);font-family:'DM Mono',monospace;font-size:0.5625rem;letter-spacing:0.15em;text-transform:uppercase;padding:0.375rem 0.75rem;font-weight:400;}
+.pkg-name{font-family:'Cormorant',serif;font-size:1.75rem;font-weight:300;font-style:italic;color:var(--clr-text);margin-bottom:0.5rem;}
+.pkg-desc{font-size:var(--fs-sm);color:var(--clr-text-muted);margin-bottom:1.5rem;line-height:1.65;}
+.pkg-list{list-style:none;margin-bottom:2rem;}
+.pkg-list li{font-family:'DM Sans',sans-serif;font-size:var(--fs-sm);color:var(--clr-text-muted);padding:0.5rem 0;border-bottom:1px solid var(--clr-border);display:flex;align-items:center;gap:0.625rem;}
+.pkg-list li:last-child{border-bottom:none;}
+.pkg-check{color:var(--clr-gold);flex-shrink:0;}
+
+/* ===== PROCESS FLOW ===== */
+.flow{display:grid;grid-template-columns:1fr;gap:2rem;}
+@media(min-width:768px){.flow{grid-template-columns:repeat(4,1fr);gap:0.5rem;}}
+.flow-step{position:relative;padding:1.5rem;text-align:center;}
+@media(min-width:768px){.flow-step:not(:last-child)::after{content:'→';position:absolute;right:-0.75rem;top:50%;transform:translateY(-50%);font-family:'Cormorant',serif;font-size:1.5rem;color:rgba(200,169,110,0.3);}}
+.flow-num{font-family:'Cormorant',serif;font-size:3rem;font-weight:300;font-style:italic;color:rgba(200,169,110,0.12);line-height:1;margin-bottom:0.5rem;}
+.flow-title{font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:500;color:var(--clr-text);margin-bottom:0.5rem;}
+.flow-desc{font-size:var(--fs-sm);color:var(--clr-text-muted);line-height:1.65;}
+
+/* ===== FORM ===== */
 .form-section{background:var(--clr-surface);padding:5rem 2rem;}
 .form-grid{display:grid;grid-template-columns:1fr;gap:1.25rem;}
 @media(min-width:768px){.form-grid{grid-template-columns:repeat(2,1fr);}}
@@ -134,20 +148,12 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 .pill-label input{position:absolute;opacity:0;pointer-events:none;}
 .pill-btn{font-family:'DM Mono',monospace;font-size:var(--fs-label);letter-spacing:0.1em;text-transform:uppercase;color:var(--clr-text-muted);border:1px solid var(--clr-border);padding:0.5rem 1rem;display:inline-block;transition:border-color 0.2s ease,color 0.2s ease,background-color 0.2s ease;}
 .pill-label input:checked+.pill-btn{border-color:var(--clr-gold);color:var(--clr-gold);background:rgba(200,169,110,0.08);}
+.pill-btn:hover{border-color:rgba(200,169,110,0.4);color:var(--clr-text-muted);}
 .form-error{font-family:'DM Mono',monospace;font-size:0.625rem;letter-spacing:0.1em;color:#E05252;display:none;}
 .form-field.has-error .form-input,.form-field.has-error .form-select,.form-field.has-error .form-textarea{border-color:#E05252;}
 .form-field.has-error .form-error{display:block;}
-.lb{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.3s ease;}
-.lb.open{opacity:1;pointer-events:all;}
-.lb-bg{position:absolute;inset:0;background:rgba(8,8,8,0.97);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);}
-.lb-inner{position:relative;z-index:1;max-width:88vw;width:100%;}
-.lb-media{width:100%;aspect-ratio:16/9;background:var(--clr-surface);display:flex;align-items:center;justify-content:center;overflow:hidden;}
-.lb-media img,.lb-media iframe{width:100%;height:100%;object-fit:contain;border:none;}
-.lb-close{position:fixed;top:1.5rem;right:1.5rem;background:none;border:none;color:var(--clr-text-muted);font-size:1.5rem;cursor:pointer;padding:0.5rem;z-index:2;transition:color 0.2s ease,transform 0.2s ease;}
-.lb-close:hover{color:var(--clr-gold);transform:rotate(90deg);}
-.lb-info{padding:1rem 0 0;display:flex;align-items:center;gap:1rem;}
-.lb-cat{font-family:'DM Mono',monospace;font-size:var(--fs-label);letter-spacing:0.15em;text-transform:uppercase;color:var(--clr-gold);}
-.lb-title{font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:500;color:var(--clr-text);}
+
+/* Footer */
 footer{background:var(--clr-surface);border-top:1px solid rgba(200,169,110,0.12);}
 .foot-grid{display:grid;grid-template-columns:1fr;gap:2.5rem;}
 @media(min-width:640px){.foot-grid{grid-template-columns:1fr 1fr;}}
@@ -156,125 +162,306 @@ footer{background:var(--clr-surface);border-top:1px solid rgba(200,169,110,0.12)
 .foot-social:hover{color:var(--clr-gold);transform:translateY(-2px);}
 .foot-link{font-family:'DM Sans',sans-serif;font-size:var(--fs-sm);font-weight:300;color:var(--clr-text-muted);text-decoration:none;display:block;margin-bottom:0.625rem;transition:color 0.2s ease;}
 .foot-link:hover{color:var(--clr-text);}
+
 @media(max-width:768px){.nav-links,.nav-cta{display:none!important;}.hamburger{display:flex!important;}.nav{padding:1rem 1.25rem;}}
 </style>
 </head>
 <body>
+
 <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true">
   <button class="mobile-close" id="mobileClose" aria-label="Close menu">&#x2715;</button>
   <a href="corporate.html">Corporate</a>
   <a href="real-estate.html" style="color:var(--clr-gold)">Real Estate</a>
-  <a href="music.html">Music</a>
   <a href="camera-op.html">Camera Op</a>
   <a href="work.html">Work</a>
   <a href="about.html">About</a>
   <a href="contact.html">Contact</a>
 </div>
+
 <nav class="nav" id="mainNav">
   <a href="index.html" aria-label="ANM Home"><img src="brand_assets/ANM Profile Pic WHITE BIGGER.svg" alt="Atlas Narrative Media" class="nav-logo"></a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li class="nav-dropdown"><a href="#" class="active">Services</a>
-      <div class="nav-dd-menu"><a href="corporate.html">Corporate Videos</a><a href="real-estate.html" class="active">Real Estate Media</a><a href="music.html">Music Media</a><a href="camera-op.html">Camera Operation</a></div>
+      <div class="nav-dd-menu"><a href="corporate.html">Corporate Videos</a><a href="real-estate.html" class="active">Real Estate Media</a><a href="camera-op.html">Camera Operation</a></div>
     </li>
-    <li><a href="work.html">Work</a></li><li><a href="about.html">About</a></li>
+    <li><a href="work.html">Work</a></li>
+    <li><a href="about.html">About</a></li>
   </ul>
   <a href="contact.html" class="nav-cta">Contact</a>
   <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav>
 
-<header class="niche-hero">
-  <div class="niche-hero-img"><img src="https://placehold.co/1920x1080/090908/C8A96E?text=" alt="Real estate media hero"><div class="tint"></div></div>
-  <div class="niche-hero-overlay" aria-hidden="true"></div>
-  <div class="niche-hero-content">
+<!-- ===== FULL-WIDTH HERO ===== -->
+<header class="re-hero">
+  <div class="re-hero-bg">
+    <img src="https://placehold.co/1920x1080/0A0A08/C8A96E?text=" alt="Luxury property at dusk">
+    <div class="tint"></div>
+  </div>
+  <div class="re-hero-overlay" aria-hidden="true"></div>
+  <div class="re-hero-content">
     <span class="sec-label" style="display:block;margin-bottom:1rem;" data-reveal>Services — 02</span>
-    <h1 style="font-family:'Cormorant',serif;font-weight:300;font-style:italic;font-size:var(--fs-display);letter-spacing:-0.03em;line-height:1.0;color:var(--clr-text);max-width:700px;margin-bottom:1.25rem;" data-reveal data-d="1">Real Estate<br>Media</h1>
-    <p style="font-size:1.125rem;color:var(--clr-text-muted);max-width:520px;line-height:1.75;margin-bottom:2.5rem;" data-reveal data-d="2">Visuals that sell before the showing. From luxury estates to commercial developments, we make every property impossible to scroll past.</p>
+    <h1 style="font-family:'Cormorant',serif;font-weight:300;font-style:italic;font-size:var(--fs-display);letter-spacing:-0.03em;line-height:1.0;color:var(--clr-text);max-width:800px;margin-bottom:1.5rem;" data-reveal data-d="1">Make Every Listing<br>Unforgettable</h1>
+    <p style="font-size:1.125rem;color:var(--clr-text-muted);max-width:520px;line-height:1.75;margin-bottom:2.5rem;" data-reveal data-d="2">Visuals that sell before the showing. From luxury estates to new developments, we make every property impossible to scroll past.</p>
     <a href="#contact-form" class="btn-gold" data-reveal data-d="3">Get a Quote</a>
   </div>
 </header>
 
-<section style="padding:5rem 0;">
+<!-- ===== RESULTS STRIP ===== -->
+<section aria-label="Results">
+  <div class="results-strip">
+    <div class="result-item" data-reveal>
+      <div class="result-stat">30% Faster</div>
+      <div class="result-desc">Average time to close with professional media</div>
+    </div>
+    <div class="result-item" data-reveal data-d="1">
+      <div class="result-stat">3x Engagement</div>
+      <div class="result-desc">Online listing views vs. phone photos</div>
+    </div>
+    <div class="result-item" data-reveal data-d="2">
+      <div class="result-stat">48hr Turnaround</div>
+      <div class="result-desc">Rush delivery available on all packages</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICES ===== -->
+<section style="padding:5rem 0;" aria-label="Services offered">
   <div style="max-width:1400px;margin:0 auto;padding:0 2rem;">
     <div style="display:flex;align-items:center;gap:1.25rem;margin-bottom:3rem;" data-reveal>
-      <span class="sec-label">What's Included</span><div class="gold-rule" style="flex:1;"></div>
+      <span class="sec-label">What We Deliver</span>
+      <div class="gold-rule" style="flex:1;"></div>
     </div>
-    <div class="del-grid">
-      <div class="del-card" data-reveal data-d="1"><span class="del-num" aria-hidden="true">01</span><h3 class="del-title">Property Videos</h3><p class="del-desc">Cinematic walk-throughs that sell the lifestyle, not just the square footage.</p></div>
-      <div class="del-card" data-reveal data-d="2"><span class="del-num" aria-hidden="true">02</span><h3 class="del-title">Aerial Drone</h3><p class="del-desc">Licensed drone coverage that captures scale, setting, and surroundings no ground shot can replicate.</p></div>
-      <div class="del-card" data-reveal data-d="3"><span class="del-num" aria-hidden="true">03</span><h3 class="del-title">Photography</h3><p class="del-desc">Professional real estate photography — day and twilight — optimized for MLS and marketing materials.</p></div>
-      <div class="del-card" data-reveal data-d="4"><span class="del-num" aria-hidden="true">04</span><h3 class="del-title">Virtual Tours</h3><p class="del-desc">Interactive 3D and video walkthroughs that let buyers experience the space remotely before booking a showing.</p></div>
+    <div class="re-svc-grid">
+      <div class="re-svc-card" data-reveal data-d="1">
+        <div class="re-svc-img">
+          <img src="https://placehold.co/600x450/111111/C8A96E?text=Property+Video" alt="Property video" loading="lazy">
+          <div class="svc-tint"></div>
+        </div>
+        <div class="re-svc-body">
+          <h3 class="re-svc-title">Property Videos</h3>
+          <p class="re-svc-desc">Cinematic walk-through tours that give buyers the experience of being there before they schedule a visit.</p>
+        </div>
+      </div>
+      <div class="re-svc-card" data-reveal data-d="2">
+        <div class="re-svc-img">
+          <img src="https://placehold.co/600x450/0E0E0E/C8A96E?text=Aerial+Drone" alt="Aerial drone" loading="lazy">
+          <div class="svc-tint"></div>
+        </div>
+        <div class="re-svc-body">
+          <h3 class="re-svc-title">Aerial Drone</h3>
+          <p class="re-svc-desc">Licensed drone coverage that reveals property scale, neighborhood context, and landscape features.</p>
+        </div>
+      </div>
+      <div class="re-svc-card" data-reveal data-d="3">
+        <div class="re-svc-img">
+          <img src="https://placehold.co/600x450/121212/C8A96E?text=Photography" alt="Photography" loading="lazy">
+          <div class="svc-tint"></div>
+        </div>
+        <div class="re-svc-body">
+          <h3 class="re-svc-title">Photography</h3>
+          <p class="re-svc-desc">Professional real estate photography — MLS-ready, HDR interiors, and twilight exteriors included.</p>
+        </div>
+      </div>
+      <div class="re-svc-card" data-reveal data-d="4">
+        <div class="re-svc-img">
+          <img src="https://placehold.co/600x450/0A0A0A/C8A96E?text=Virtual+Tour" alt="Virtual tour" loading="lazy">
+          <div class="svc-tint"></div>
+        </div>
+        <div class="re-svc-body">
+          <h3 class="re-svc-title">Virtual Tours</h3>
+          <p class="re-svc-desc">Interactive 3D and video walkthroughs that let remote buyers explore every room at their own pace.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <div class="gold-rule" style="max-width:1400px;margin:0 auto;padding:0 2rem;"></div>
 
-<section style="padding:5rem 0;">
-  <div style="max-width:1400px;margin:0 auto;padding:0 2rem 2.5rem;">
-    <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem;" data-reveal>
-      <h2 class="sec-head" style="font-size:var(--fs-h1);">Property Work</h2>
+<!-- ===== WHO WE WORK WITH ===== -->
+<section style="padding:5rem 0;" aria-label="Who we work with">
+  <div style="max-width:1100px;margin:0 auto;padding:0 2rem;">
+    <div style="margin-bottom:3rem;" data-reveal>
+      <span class="sec-label" style="display:block;margin-bottom:1rem;">Who We Work With</span>
+      <h2 class="sec-head" style="font-size:var(--fs-h1);">Built for Your Business</h2>
+    </div>
+    <div class="audience-grid">
+      <div class="audience-card" data-reveal data-d="1">
+        <svg class="audience-icon" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="8" height="8"/><rect x="16" y="4" width="8" height="8"/><rect x="4" y="16" width="8" height="8"/><rect x="16" y="16" width="8" height="8"/></svg>
+        <h3 class="audience-name">Real Estate Agents</h3>
+        <p class="audience-desc">Listings that sell themselves. MLS-ready photos, cinematic video tours, and drone footage that make buyers call before the open house.</p>
+      </div>
+      <div class="audience-card" data-reveal data-d="2">
+        <svg class="audience-icon" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M4 24V10l10-6 10 6v14"/><path d="M10 24v-8h8v8"/></svg>
+        <h3 class="audience-name">General Contractors</h3>
+        <p class="audience-desc">Showcase your craftsmanship. Document builds from foundation to finish with media that wins you the next project.</p>
+      </div>
+      <div class="audience-card" data-reveal data-d="3">
+        <svg class="audience-icon" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14h6l4-4 4 4h6"/><rect x="6" y="18" width="16" height="6"/></svg>
+        <h3 class="audience-name">Home Stagers</h3>
+        <p class="audience-desc">Bring your staging to life. Photography and video that highlight every design detail and make the space unforgettable.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROPERTY GALLERY ===== -->
+<section style="padding:5rem 0;background:var(--clr-surface);" aria-label="Property showcase">
+  <div style="max-width:1400px;margin:0 auto;padding:0 2rem;">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:3rem;" data-reveal>
+      <div>
+        <span class="sec-label" style="display:block;margin-bottom:0.75rem;">Portfolio</span>
+        <h2 class="sec-head" style="font-size:var(--fs-h1);">Property Work</h2>
+      </div>
       <a href="work.html" style="font-family:'DM Mono',monospace;font-size:var(--fs-label);letter-spacing:0.12em;text-transform:uppercase;color:var(--clr-gold);text-decoration:none;transition:opacity 0.2s ease;" onmouseover="this.style.opacity='.65'" onmouseout="this.style.opacity='1'">View All →</a>
     </div>
-  </div>
-  <div class="work-grid" style="max-width:1400px;margin:0 auto;padding:0 2rem;">
-    <div class="wcard" tabindex="0" role="button" data-src="https://placehold.co/1600x900/0D0C0A/C8A96E?text=Luxury+Estate" data-type="photo" data-title="Luxury Listing Showcase" data-cat="Real Estate" aria-label="View Luxury Listing Showcase"><img src="https://placehold.co/800x500/0D0C0A/C8A96E?text=Luxury+Listing" alt="Luxury Listing" loading="lazy"><div class="wcard-overlay"></div><div class="wcard-tint"></div><div class="wcard-meta"><p class="wcard-cat">Real Estate</p><p class="wcard-title">Luxury Listing Showcase</p></div></div>
-    <div class="wcard" tabindex="0" role="button" data-src="https://player.vimeo.com/video/901769964?autoplay=1" data-type="video" data-title="Aerial Estate Tour" data-cat="Real Estate" aria-label="Play Aerial Estate Tour"><img src="https://placehold.co/800x500/0F0E0C/C8A96E?text=Aerial+Tour" alt="Aerial Tour" loading="lazy"><div class="wcard-overlay"></div><div class="wcard-tint"></div><div class="wcard-meta"><p class="wcard-cat">Real Estate</p><p class="wcard-title">Aerial Estate Tour</p></div></div>
-    <div class="wcard" tabindex="0" role="button" data-src="https://placehold.co/1600x900/0C0B09/C8A96E?text=Development" data-type="photo" data-title="Commercial Development" data-cat="Real Estate" aria-label="View Commercial Development"><img src="https://placehold.co/800x500/0C0B09/C8A96E?text=Commercial+Dev" alt="Commercial Development" loading="lazy"><div class="wcard-overlay"></div><div class="wcard-tint"></div><div class="wcard-meta"><p class="wcard-cat">Real Estate</p><p class="wcard-title">Commercial Development</p></div></div>
-  </div>
-</section>
-
-<section style="padding:5rem 0;background:var(--clr-surface);">
-  <div style="max-width:1400px;margin:0 auto;padding:0 2rem;">
-    <div style="margin-bottom:3rem;" data-reveal><span class="sec-label" style="display:block;margin-bottom:1rem;">Why ANM</span><h2 class="sec-head" style="font-size:var(--fs-h1);">Why Agents &amp;<br>Developers Choose Us</h2></div>
-    <div class="val-grid">
-      <div class="val-card" data-reveal data-d="1"><h3 class="val-title">Craft</h3><p class="val-desc">A property's story lives in its light, angles, and atmosphere. We capture those details that interior shots miss.</p></div>
-      <div class="val-card" data-reveal data-d="2"><h3 class="val-title">Precision</h3><p class="val-desc">We know listing deadlines are real. We plan thoroughly so shoot day runs flawlessly and delivery is on time.</p></div>
-      <div class="val-card" data-reveal data-d="3"><h3 class="val-title">Impact</h3><p class="val-desc">We measure results in bookings and offers. Our media is designed to move buyers from curiosity to action.</p></div>
-      <div class="val-card" data-reveal data-d="4"><h3 class="val-title">Collaboration</h3><p class="val-desc">You know the property and the buyer. We know how to show it at its best. Together, we close faster.</p></div>
+    <div class="gallery" data-reveal>
+      <div class="gallery-item"><img src="https://placehold.co/600x800/111111/C8A96E?text=Luxury+Exterior" alt="Luxury home exterior" loading="lazy"></div>
+      <div class="gallery-item"><img src="https://placehold.co/600x400/0E0E0E/C8A96E?text=Modern+Kitchen" alt="Modern kitchen" loading="lazy"></div>
+      <div class="gallery-item"><img src="https://placehold.co/600x450/131313/C8A96E?text=Aerial+Estate" alt="Aerial estate view" loading="lazy"></div>
+      <div class="gallery-item"><img src="https://placehold.co/600x500/0A0A0A/C8A96E?text=Living+Room" alt="Staged living room" loading="lazy"></div>
+      <div class="gallery-item"><img src="https://placehold.co/600x700/121212/C8A96E?text=Twilight+Shot" alt="Twilight exterior" loading="lazy"></div>
+      <div class="gallery-item"><img src="https://placehold.co/600x400/0C0C0C/C8A96E?text=Pool+%26+Patio" alt="Pool and patio area" loading="lazy"></div>
     </div>
   </div>
 </section>
 
-<section style="padding:5rem 0;">
-  <div style="max-width:1400px;margin:0 auto;padding:0 2rem;">
-    <div style="text-align:center;margin-bottom:3.5rem;" data-reveal><span class="sec-label" style="display:block;margin-bottom:1rem;">The Process</span><h2 class="sec-head" style="font-size:var(--fs-h1);">From Listing to Live</h2></div>
-    <div class="proc-grid">
-      <div data-reveal data-d="1"><div class="proc-num">01</div><h3 class="proc-title">Property Brief</h3><p class="proc-desc">We gather listing details, key selling points, target buyer profile, and any brand guidelines from the agency.</p></div>
-      <div data-reveal data-d="2"><div class="proc-num">02</div><h3 class="proc-title">Scout &amp; Schedule</h3><p class="proc-desc">We visit or review the property and plan the ideal time of day for lighting. Golden hour when it matters.</p></div>
-      <div data-reveal data-d="3"><div class="proc-num">03</div><h3 class="proc-title">Shoot Day</h3><p class="proc-desc">Photo, video, drone — all in one day where possible to minimize disruption to the sellers and agents.</p></div>
-      <div data-reveal data-d="4"><div class="proc-num">04</div><h3 class="proc-title">Delivery</h3><p class="proc-desc">Edited photos and videos delivered within 48 hours. MLS-ready, social-ready, and print-ready formats included.</p></div>
+<!-- ===== PACKAGES ===== -->
+<section style="padding:5rem 0;" aria-label="Service packages">
+  <div style="max-width:1100px;margin:0 auto;padding:0 2rem;">
+    <div style="text-align:center;margin-bottom:3.5rem;" data-reveal>
+      <span class="sec-label" style="display:block;margin-bottom:1rem;">Packages</span>
+      <h2 class="sec-head" style="font-size:var(--fs-h1);">Pick Your Package</h2>
+      <p style="color:var(--clr-text-muted);font-size:var(--fs-sm);margin-top:1rem;">All packages include professional editing and platform-ready exports. Contact for custom pricing.</p>
+    </div>
+    <div class="pkg-grid">
+      <div class="pkg-card" data-reveal data-d="1">
+        <h3 class="pkg-name">Essential</h3>
+        <p class="pkg-desc">For quick listings that need to look great without the full production.</p>
+        <ul class="pkg-list">
+          <li><svg class="pkg-check" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="2,7 5.5,10.5 12,3.5"/></svg>Professional photography (25+ photos)</li>
+          <li><svg class="pkg-check" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="2,7 5.5,10.5 12,3.5"/></svg>Basic editing &amp; color correction</li>
+          <li><svg class="pkg-check" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="2,7 5.5,10.5 12,3.5"/></svg>MLS-ready exports</li>
+          <li><svg class="pkg-check" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="2,7 5.5,10.5 12,3.5"/></svg>48-hour delivery</li>
+        </ul>
+        <a href="#contact-form" class="btn-gold" style="width:100%;text-align:center;padding:0.75rem;">Get a Quote</a>
+      </div>
+      <div class="pkg-card featured" data-reveal data-d="2">
+        <span class="pkg-badge">Recommended</span>
+        <h3 class="pkg-name">Professional</h3>
+        <p class="pkg-desc">The full package. Photo, video, and drone — everything a serious listing needs.</p>
+        <ul class="pkg-list">
+          <li><svg class="pkg-check" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="2,7 5.5,10.5 12,3.5"/></svg>Everything in Essential</li>
+          <li><svg class="pkg-check" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="2,7 5.5,10.5 12,3.5"/></svg>Cinematic property video (60-90s)</li>
+          <li><svg class="pkg-check" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="2,7 5.5,10.5 12,3.5"/></svg>Aerial drone footage</li>
+          <li><svg class="pkg-check" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="2,7 5.5,10.5 12,3.5"/></svg>Social media cuts included</li>
+        </ul>
+        <a href="#contact-form" class="btn-gold" style="width:100%;text-align:center;padding:0.75rem;">Get a Quote</a>
+      </div>
+      <div class="pkg-card" data-reveal data-d="3">
+        <h3 class="pkg-name">Premium</h3>
+        <p class="pkg-desc">For luxury and high-end listings that demand the absolute best presentation.</p>
+        <ul class="pkg-list">
+          <li><svg class="pkg-check" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="2,7 5.5,10.5 12,3.5"/></svg>Everything in Professional</li>
+          <li><svg class="pkg-check" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="2,7 5.5,10.5 12,3.5"/></svg>3D virtual tour</li>
+          <li><svg class="pkg-check" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="2,7 5.5,10.5 12,3.5"/></svg>Twilight exterior session</li>
+          <li><svg class="pkg-check" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="2,7 5.5,10.5 12,3.5"/></svg>24-hour rush delivery</li>
+        </ul>
+        <a href="#contact-form" class="btn-gold" style="width:100%;text-align:center;padding:0.75rem;">Get a Quote</a>
+      </div>
     </div>
   </div>
 </section>
 
-<section style="padding:5rem 2rem;background:var(--clr-surface);">
+<div class="gold-rule" style="max-width:1400px;margin:0 auto;padding:0 2rem;"></div>
+
+<!-- ===== PROCESS FLOW ===== -->
+<section style="padding:5rem 0;" aria-label="Our process">
+  <div style="max-width:1100px;margin:0 auto;padding:0 2rem;">
+    <div style="text-align:center;margin-bottom:3.5rem;" data-reveal>
+      <span class="sec-label" style="display:block;margin-bottom:1rem;">The Process</span>
+      <h2 class="sec-head" style="font-size:var(--fs-h1);">From Listing to Live</h2>
+    </div>
+    <div class="flow">
+      <div class="flow-step" data-reveal data-d="1">
+        <div class="flow-num">01</div>
+        <h3 class="flow-title">Property Brief</h3>
+        <p class="flow-desc">We gather listing details, key selling points, and target buyer profile.</p>
+      </div>
+      <div class="flow-step" data-reveal data-d="2">
+        <div class="flow-num">02</div>
+        <h3 class="flow-title">Scout & Schedule</h3>
+        <p class="flow-desc">We plan the ideal time of day for lighting. Golden hour when it matters.</p>
+      </div>
+      <div class="flow-step" data-reveal data-d="3">
+        <div class="flow-num">03</div>
+        <h3 class="flow-title">Shoot Day</h3>
+        <p class="flow-desc">Photo, video, drone — all captured in one efficient visit.</p>
+      </div>
+      <div class="flow-step" data-reveal data-d="4">
+        <div class="flow-num">04</div>
+        <h3 class="flow-title">48hr Delivery</h3>
+        <p class="flow-desc">MLS-ready, social-ready, and print-ready formats delivered fast.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIAL ===== -->
+<section style="padding:5rem 2rem;background:var(--clr-surface);" aria-label="Client testimonial">
   <div style="max-width:800px;margin:0 auto;text-align:center;" data-reveal>
     <blockquote>
-      <p style="font-family:'Cormorant',serif;font-size:var(--fs-h2);font-weight:300;font-style:italic;letter-spacing:-0.02em;line-height:1.35;color:var(--clr-text);margin-bottom:1.75rem;">"Our listings moved 30% faster after we started using ANM. The drone footage alone changes how buyers perceive a property before they ever step inside."</p>
+      <span style="font-family:'Cormorant',serif;font-size:5rem;font-weight:300;font-style:italic;color:rgba(200,169,110,0.1);line-height:1;display:block;margin-bottom:-1rem;" aria-hidden="true">"</span>
+      <p style="font-family:'Cormorant',serif;font-size:var(--fs-h2);font-weight:300;font-style:italic;letter-spacing:-0.02em;line-height:1.35;color:var(--clr-text);margin-bottom:1.75rem;">
+        "Our listings moved 30% faster after we started using ANM. The drone footage alone changes how buyers perceive a property before they ever step inside."
+      </p>
       <footer><cite style="font-family:'DM Mono',monospace;font-size:var(--fs-label);letter-spacing:0.15em;text-transform:uppercase;color:var(--clr-gold);font-style:normal;">— Senior Agent · Luxury Real Estate Firm</cite></footer>
     </blockquote>
   </div>
 </section>
 
-<section id="contact-form" class="form-section">
+<!-- ===== CONTACT FORM ===== -->
+<section id="contact-form" class="form-section" aria-label="Real estate inquiry">
   <div style="max-width:800px;margin:0 auto;">
     <div style="margin-bottom:3rem;" data-reveal>
       <span class="sec-label" style="display:block;margin-bottom:1rem;">Get a Quote</span>
       <h2 class="sec-head" style="font-size:var(--fs-h1);">Tell Us About<br>Your Property</h2>
-      <p style="color:var(--clr-text-muted);font-size:var(--fs-sm);margin-top:1rem;line-height:1.75;">Fields marked with <span style="color:var(--clr-gold);">*</span> are required. We respond within 24 hours.</p>
+      <p style="color:var(--clr-text-muted);font-size:var(--fs-sm);margin-top:1rem;line-height:1.75;">Most quotes delivered same day. Fields marked with <span style="color:var(--clr-gold);">*</span> are required.</p>
     </div>
     <form id="reForm" novalidate>
       <div class="form-grid">
-        <div class="form-field" id="f-name"><label class="form-label" for="name">Your Name <span style="color:var(--clr-gold)">*</span></label><input class="form-input" type="text" id="name" name="name" placeholder="Jane Smith" autocomplete="name"><span class="form-error">Please enter your name.</span></div>
-        <div class="form-field" id="f-email"><label class="form-label" for="email">Email Address <span style="color:var(--clr-gold)">*</span></label><input class="form-input" type="email" id="email" name="email" placeholder="jane@realestate.com" autocomplete="email"><span class="form-error">Please enter a valid email.</span></div>
-        <div class="form-field full" id="f-address"><label class="form-label" for="address">Property Address <span style="color:var(--clr-gold)">*</span></label><input class="form-input" type="text" id="address" name="address" placeholder="123 Main St, City, State"><span class="form-error">Please enter the property address.</span></div>
+        <div class="form-field" id="f-name">
+          <label class="form-label" for="name">Your Name <span style="color:var(--clr-gold)">*</span></label>
+          <input class="form-input" type="text" id="name" name="name" placeholder="Jane Smith" autocomplete="name">
+          <span class="form-error">Please enter your name.</span>
+        </div>
+        <div class="form-field" id="f-email">
+          <label class="form-label" for="email">Email Address <span style="color:var(--clr-gold)">*</span></label>
+          <input class="form-input" type="email" id="email" name="email" placeholder="jane@realestate.com" autocomplete="email">
+          <span class="form-error">Please enter a valid email.</span>
+        </div>
+        <div class="form-field full" id="f-address">
+          <label class="form-label" for="address">Property Address <span style="color:var(--clr-gold)">*</span></label>
+          <input class="form-input" type="text" id="address" name="address" placeholder="123 Main St, City, State">
+          <span class="form-error">Please enter the property address.</span>
+        </div>
         <div class="form-field" id="f-proptype">
           <label class="form-label" for="proptype">Property Type <span style="color:var(--clr-gold)">*</span></label>
-          <select class="form-select" id="proptype" name="proptype"><option value="" disabled selected>Select type</option><option value="residential">Residential</option><option value="luxury">Luxury / High-End</option><option value="commercial">Commercial</option><option value="land">Land / Lot</option><option value="development">New Development</option></select>
+          <select class="form-select" id="proptype" name="proptype">
+            <option value="" disabled selected>Select type</option>
+            <option value="residential">Residential</option>
+            <option value="luxury">Luxury / High-End</option>
+            <option value="commercial">Commercial</option>
+            <option value="land">Land / Lot</option>
+            <option value="development">New Development</option>
+          </select>
           <span class="form-error">Please select a property type.</span>
         </div>
-        <div class="form-field" id="f-size"><label class="form-label" for="size">Property Size</label><input class="form-input" type="text" id="size" name="size" placeholder="e.g. 3,200 sq ft / 0.8 acres"></div>
+        <div class="form-field" id="f-size">
+          <label class="form-label" for="size">Property Size</label>
+          <input class="form-input" type="text" id="size" name="size" placeholder="e.g. 3,200 sq ft / 0.8 acres">
+        </div>
         <div class="form-field full" id="f-services">
           <label class="form-label">Services Needed <span style="color:var(--clr-gold)">*</span></label>
           <div class="pill-group">
@@ -287,9 +474,20 @@ footer{background:var(--clr-surface);border-top:1px solid rgba(200,169,110,0.12)
         </div>
         <div class="form-field" id="f-role">
           <label class="form-label" for="role">You Are</label>
-          <select class="form-select" id="role" name="role"><option value="" disabled selected>Select role</option><option value="agent">Real Estate Agent</option><option value="developer">Property Developer</option><option value="owner">Private Owner</option><option value="other">Other</option></select>
+          <select class="form-select" id="role" name="role">
+            <option value="" disabled selected>Select role</option>
+            <option value="agent">Real Estate Agent</option>
+            <option value="contractor">General Contractor</option>
+            <option value="stager">Home Stager</option>
+            <option value="developer">Property Developer</option>
+            <option value="owner">Private Owner</option>
+            <option value="other">Other</option>
+          </select>
         </div>
-        <div class="form-field" id="f-listdate"><label class="form-label" for="listdate">Listing / Desired Delivery Date</label><input class="form-input" type="text" id="listdate" name="listdate" placeholder="e.g. April 15, 2026"></div>
+        <div class="form-field" id="f-listdate">
+          <label class="form-label" for="listdate">Listing / Desired Delivery Date</label>
+          <input class="form-input" type="text" id="listdate" name="listdate" placeholder="e.g. April 15, 2026">
+        </div>
         <div class="form-field full" id="f-budget">
           <label class="form-label">Budget Range <span style="color:var(--clr-gold)">*</span></label>
           <div class="pill-group">
@@ -300,8 +498,13 @@ footer{background:var(--clr-surface);border-top:1px solid rgba(200,169,110,0.12)
           </div>
           <span class="form-error">Please select a budget range.</span>
         </div>
-        <div class="form-field full" id="f-notes"><label class="form-label" for="notes">Additional Notes</label><textarea class="form-textarea" id="notes" name="notes" placeholder="Any access instructions, unique features to highlight, staging details, or special requests..."></textarea></div>
-        <div class="form-field full"><button type="submit" class="btn-gold" style="width:100%;padding:1.125rem;font-size:1rem;text-align:center;">Send Inquiry →</button></div>
+        <div class="form-field full" id="f-notes">
+          <label class="form-label" for="notes">Additional Notes</label>
+          <textarea class="form-textarea" id="notes" name="notes" placeholder="Any access instructions, unique features to highlight, staging details, or special requests..."></textarea>
+        </div>
+        <div class="form-field full" style="margin-top:0.5rem;">
+          <button type="submit" class="btn-gold" style="width:100%;padding:1.125rem;font-size:1rem;text-align:center;">Send Inquiry →</button>
+        </div>
       </div>
     </form>
     <div id="formSuccess" style="display:none;text-align:center;padding:3rem 0;">
@@ -311,12 +514,35 @@ footer{background:var(--clr-surface);border-top:1px solid rgba(200,169,110,0.12)
   </div>
 </section>
 
-<footer><div style="max-width:1400px;margin:0 auto;padding:4rem 2rem 2rem;"><div class="foot-grid" style="margin-bottom:3rem;"><div><img src="brand_assets/ANM Profile Pic WHITE BIGGER.svg" alt="Atlas Narrative Media" style="height:52px;width:auto;margin-bottom:1.25rem;display:block;"><p style="font-family:'Cormorant',serif;font-style:italic;font-weight:300;font-size:1rem;color:var(--clr-text-muted);line-height:1.65;margin-bottom:1.5rem;max-width:280px;">Crafting visual stories that move audiences and build brands worth remembering.</p><div style="display:flex;gap:1rem;"><a href="https://www.instagram.com/atlasnarrativemedia/" class="foot-social" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a><a href="https://vimeo.com/atlasnarrativemedia" class="foot-social" aria-label="Vimeo"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 7.4c-.09 2.1-1.55 4.95-4.36 8.57C14.8 19.67 12.4 21.5 10.4 21.5c-1.28 0-2.36-1.18-3.24-3.54l-1.76-6.5C4.74 9.1 4.12 8 3.38 8c-.16 0-.7.33-1.63.98L.63 7.5C1.65 6.6 2.66 5.7 3.65 4.8 5.01 3.62 6.03 3 6.71 2.94c1.61-.15 2.6.94 2.98 3.28.4 2.52.68 4.08.84 4.68.47 2.12.98 3.18 1.54 3.18.44 0 1.09-.69 1.97-2.07.88-1.38 1.35-2.43 1.41-3.15.12-1.19-.34-1.79-1.41-1.79-.5 0-1.02.11-1.55.35 1.03-3.38 3-5.02 5.91-4.92C20.1 2.63 22.1 4.1 22 7.4z"/></svg></a></div></div>
-<div><p style="font-family:'DM Mono',monospace;font-size:var(--fs-label);letter-spacing:0.2em;text-transform:uppercase;color:var(--clr-text-faint);margin-bottom:1.25rem;">Explore</p><nav><a href="index.html" class="foot-link">Home</a><a href="corporate.html" class="foot-link">Corporate Videos</a><a href="real-estate.html" class="foot-link">Real Estate Media</a><a href="music.html" class="foot-link">Music Media</a><a href="camera-op.html" class="foot-link">Camera Operation</a><a href="work.html" class="foot-link">Our Work</a><a href="about.html" class="foot-link">About</a><a href="contact.html" class="foot-link">Contact</a></nav></div>
-<div><p style="font-family:'DM Mono',monospace;font-size:var(--fs-label);letter-spacing:0.2em;text-transform:uppercase;color:var(--clr-text-faint);margin-bottom:1.25rem;">Get in Touch</p><a href="mailto:atlas@atlasnarrative.media" style="display:block;font-size:var(--fs-sm);color:var(--clr-gold);text-decoration:none;margin-bottom:0.75rem;transition:opacity 0.2s ease;" onmouseover="this.style.opacity='.7'" onmouseout="this.style.opacity='1'">atlas@atlasnarrative.media</a><a href="tel:+12146830746" style="display:block;font-size:var(--fs-sm);color:var(--clr-text-muted);text-decoration:none;margin-bottom:0.75rem;transition:color 0.2s ease;" onmouseover="this.style.color='var(--clr-gold)'" onmouseout="this.style.color='var(--clr-text-muted)'">(214) 683-0746</a><p style="font-size:var(--fs-sm);color:var(--clr-text-faint);">Available Worldwide</p></div></div>
-<div style="border-top:1px solid var(--clr-border);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.75rem;"><p style="font-family:'DM Mono',monospace;font-size:var(--fs-label);color:var(--clr-text-faint);">© 2026 Atlas Narrative Media. All rights reserved.</p><p style="font-family:'DM Mono',monospace;font-size:var(--fs-label);color:var(--clr-text-faint);">Crafted with Precision.</p></div></div></footer>
-
-<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Media viewer"><div class="lb-bg" id="lbBg"></div><div class="lb-inner"><button class="lb-close" id="lbClose" aria-label="Close">✕</button><div class="lb-media" id="lbMedia"></div><div class="lb-info"><span class="lb-cat" id="lbCat"></span><span class="lb-title" id="lbTitle"></span></div></div></div>
+<!-- Footer -->
+<footer>
+  <div style="max-width:1400px;margin:0 auto;padding:4rem 2rem 2rem;">
+    <div class="foot-grid" style="margin-bottom:3rem;">
+      <div>
+        <img src="brand_assets/ANM Profile Pic WHITE BIGGER.svg" alt="Atlas Narrative Media" style="height:52px;width:auto;margin-bottom:1.25rem;display:block;">
+        <p style="font-family:'Cormorant',serif;font-style:italic;font-weight:300;font-size:1rem;color:var(--clr-text-muted);line-height:1.65;margin-bottom:1.5rem;max-width:280px;">Crafting visual stories that move audiences and build brands worth remembering.</p>
+        <div style="display:flex;gap:1rem;">
+          <a href="https://www.instagram.com/atlasnarrativemedia/" class="foot-social" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="https://vimeo.com/atlasnarrativemedia" class="foot-social" aria-label="Vimeo" target="_blank" rel="noopener noreferrer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 7.4c-.09 2.1-1.55 4.95-4.36 8.57C14.8 19.67 12.4 21.5 10.4 21.5c-1.28 0-2.36-1.18-3.24-3.54l-1.76-6.5C4.74 9.1 4.12 8 3.38 8c-.16 0-.7.33-1.63.98L.63 7.5C1.65 6.6 2.66 5.7 3.65 4.8 5.01 3.62 6.03 3 6.71 2.94c1.61-.15 2.6.94 2.98 3.28.4 2.52.68 4.08.84 4.68.47 2.12.98 3.18 1.54 3.18.44 0 1.09-.69 1.97-2.07.88-1.38 1.35-2.43 1.41-3.15.12-1.19-.34-1.79-1.41-1.79-.5 0-1.02.11-1.55.35 1.03-3.38 3-5.02 5.91-4.92C20.1 2.63 22.1 4.1 22 7.4z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <p style="font-family:'DM Mono',monospace;font-size:var(--fs-label);letter-spacing:0.2em;text-transform:uppercase;color:var(--clr-text-faint);margin-bottom:1.25rem;">Explore</p>
+        <nav><a href="index.html" class="foot-link">Home</a><a href="corporate.html" class="foot-link">Corporate Videos</a><a href="real-estate.html" class="foot-link">Real Estate Media</a><a href="camera-op.html" class="foot-link">Camera Operation</a><a href="work.html" class="foot-link">Our Work</a><a href="about.html" class="foot-link">About</a><a href="contact.html" class="foot-link">Contact</a></nav>
+      </div>
+      <div>
+        <p style="font-family:'DM Mono',monospace;font-size:var(--fs-label);letter-spacing:0.2em;text-transform:uppercase;color:var(--clr-text-faint);margin-bottom:1.25rem;">Get in Touch</p>
+        <a href="mailto:atlas@atlasnarrative.media" style="display:block;font-size:var(--fs-sm);color:var(--clr-gold);text-decoration:none;margin-bottom:0.75rem;transition:opacity 0.2s ease;" onmouseover="this.style.opacity='.7'" onmouseout="this.style.opacity='1'">atlas@atlasnarrative.media</a>
+        <a href="tel:+12146830746" style="display:block;font-size:var(--fs-sm);color:var(--clr-text-muted);text-decoration:none;margin-bottom:0.75rem;transition:color 0.2s ease;" onmouseover="this.style.color='var(--clr-gold)'" onmouseout="this.style.color='var(--clr-text-muted)'">(214) 683-0746</a>
+        <p style="font-size:var(--fs-sm);color:var(--clr-text-faint);">Available Worldwide</p>
+      </div>
+    </div>
+    <div style="border-top:1px solid var(--clr-border);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.75rem;">
+      <p style="font-family:'DM Mono',monospace;font-size:var(--fs-label);color:var(--clr-text-faint);">© 2026 Atlas Narrative Media. All rights reserved.</p>
+      <p style="font-family:'DM Mono',monospace;font-size:var(--fs-label);color:var(--clr-text-faint);">Crafted with Precision.</p>
+    </div>
+  </div>
+</footer>
 
 <script>
 const nav=document.getElementById('mainNav');
@@ -328,29 +554,23 @@ const mClose=document.getElementById('mobileClose');
 if(mClose)mClose.addEventListener('click',()=>{mMenu.classList.remove('open');burger.classList.remove('open');burger.setAttribute('aria-expanded','false');document.body.style.overflow='';});
 const ro=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');ro.unobserve(e.target);}});},{threshold:0.12});
 document.querySelectorAll('[data-reveal]').forEach(el=>ro.observe(el));
-const lb=document.getElementById('lb'),lbBg=document.getElementById('lbBg'),lbClose=document.getElementById('lbClose');
-const lbMedia=document.getElementById('lbMedia'),lbCat=document.getElementById('lbCat'),lbTitle=document.getElementById('lbTitle');
-function openLb(el){lbMedia.innerHTML='';if(el.dataset.type==='video'){const ifr=document.createElement('iframe');ifr.src=el.dataset.src;ifr.setAttribute('allowfullscreen','');ifr.setAttribute('allow','autoplay; fullscreen');ifr.style.cssText='width:100%;height:100%;border:none;';lbMedia.appendChild(ifr);}else{const img=document.createElement('img');img.src=el.dataset.src;img.alt=el.dataset.title||'';img.style.cssText='max-width:100%;max-height:75vh;object-fit:contain;width:100%;';lbMedia.appendChild(img);}lbCat.textContent=el.dataset.cat||'';lbTitle.textContent=el.dataset.title||'';lb.classList.add('open');document.body.style.overflow='hidden';lbClose.focus();}
-function closeLb(){lb.classList.remove('open');document.body.style.overflow='';setTimeout(()=>{lbMedia.innerHTML='';},300);}
-document.querySelectorAll('.sc-card').forEach(c=>{c.addEventListener('click',()=>openLb(c));c.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openLb(c);}});});
-lbClose.addEventListener('click',closeLb);lbBg.addEventListener('click',closeLb);
-document.addEventListener('keydown',e=>{if(e.key==='Escape'&&lb.classList.contains('open'))closeLb();});
+
+// Form
 const form=document.getElementById('reForm');
 form.addEventListener('submit',e=>{
   e.preventDefault();let valid=true;
-  const svcChecked=!!form.querySelector('[name="services"]:checked');
-  const servicesErr=document.getElementById('services-error');
   const checks=[
     {id:'f-name',test:()=>document.getElementById('name').value.trim().length>0},
     {id:'f-email',test:()=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(document.getElementById('email').value)},
-    {id:'f-address',test:()=>document.getElementById('address').value.trim().length>5},
+    {id:'f-address',test:()=>document.getElementById('address').value.trim().length>0},
     {id:'f-proptype',test:()=>document.getElementById('proptype').value!==''},
+    {id:'f-services',test:()=>!!form.querySelector('[name="services"]:checked')},
     {id:'f-budget',test:()=>!!form.querySelector('[name="budget"]:checked')},
   ];
-  checks.forEach(({id,test})=>{const el=document.getElementById(id);if(!test()){el.classList.add('has-error');valid=false;}else el.classList.remove('has-error');});
-  if(!svcChecked){servicesErr.style.display='block';valid=false;}else servicesErr.style.display='none';
+  checks.forEach(({id,test})=>{const el=document.getElementById(id);if(!test()){el.classList.add('has-error');valid=false;if(id==='f-services')document.getElementById('services-error').style.display='block';}else{el.classList.remove('has-error');if(id==='f-services')document.getElementById('services-error').style.display='none';}});
   if(valid){const fd=new FormData(form);fetch('https://formspree.io/f/meerrnqq',{method:'POST',body:fd,headers:{'Accept':'application/json'}}).finally(()=>{form.style.display='none';document.getElementById('formSuccess').style.display='block';window.scrollTo({top:document.getElementById('contact-form').offsetTop,behavior:'smooth'});});}
 });
+form.querySelectorAll('input,select,textarea').forEach(el=>el.addEventListener('blur',()=>{const f=el.closest('.form-field');if(f&&f.classList.contains('has-error'))f.classList.remove('has-error');}));
 </script>
 </body>
 </html>

@@ -54,99 +54,98 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 .gold-rule{width:100%;height:1px;background:linear-gradient(to right,transparent,rgba(200,169,110,0.25),transparent);}
 [data-reveal]{opacity:0;transform:translateY(22px);transition:opacity 0.7s ease,transform 0.7s ease;}
 [data-reveal].on{opacity:1;transform:none;}
-[data-reveal][data-d="1"]{transition-delay:0.1s;}[data-reveal][data-d="2"]{transition-delay:0.2s;}[data-reveal][data-d="3"]{transition-delay:0.3s;}[data-reveal][data-d="4"]{transition-delay:0.4s;}
+[data-reveal][data-d="1"]{transition-delay:0.1s;}[data-reveal][data-d="2"]{transition-delay:0.2s;}[data-reveal][data-d="3"]{transition-delay:0.3s;}[data-reveal][data-d="4"]{transition-delay:0.4s;}[data-reveal][data-d="5"]{transition-delay:0.5s;}[data-reveal][data-d="6"]{transition-delay:0.6s;}
 
 .btn-gold{font-family:'DM Sans',sans-serif;font-size:var(--fs-sm);font-weight:500;background:var(--clr-gold);color:var(--clr-base);padding:0.875rem 2.25rem;text-decoration:none;display:inline-block;border:none;cursor:pointer;transition:filter 0.2s ease,transform 0.2s ease;}
 .btn-gold:hover{filter:brightness(1.1);transform:translateY(-2px);}
 .btn-gold:active{transform:translateY(0);}
 
-/* Niche hero */
-.niche-hero{position:relative;min-height:70vh;display:flex;align-items:flex-end;overflow:hidden;}
-.niche-hero-img{position:absolute;inset:0;z-index:0;}
-.niche-hero-img img{width:100%;height:100%;object-fit:cover;filter:brightness(0.35);}
-.niche-hero-img .tint{position:absolute;inset:0;background:rgba(200,169,110,0.04);mix-blend-mode:multiply;}
-.niche-hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(to top,rgba(8,8,8,0.98) 0%,rgba(8,8,8,0.3) 50%,rgba(8,8,8,0.2) 100%);}
-.niche-hero-content{position:relative;z-index:2;max-width:1400px;width:100%;margin:0 auto;padding:8rem 2rem 5rem;}
+/* ===== SPLIT HERO ===== */
+.split-hero{display:grid;grid-template-columns:1fr;min-height:85vh;align-items:center;}
+@media(min-width:900px){.split-hero{grid-template-columns:1fr 1fr;}}
+.split-hero-text{padding:8rem 2rem 4rem;max-width:640px;margin-left:auto;margin-right:auto;}
+@media(min-width:900px){.split-hero-text{padding:8rem 3rem 5rem 2rem;margin-left:max(2rem,calc((100vw - 1400px)/2));margin-right:0;}}
+.split-hero-img{position:relative;height:100%;min-height:340px;overflow:hidden;}
+.split-hero-img img{width:100%;height:100%;object-fit:cover;filter:brightness(0.4);}
+.split-hero-img .tint{position:absolute;inset:0;background:rgba(200,169,110,0.05);mix-blend-mode:multiply;}
+.split-hero-img .grad{position:absolute;inset:0;background:linear-gradient(to right,var(--clr-base) 0%,transparent 35%);}
+@media(max-width:899px){.split-hero-img .grad{background:linear-gradient(to top,var(--clr-base) 0%,transparent 40%);}}
 
-/* Deliverables */
-.del-grid{display:grid;grid-template-columns:1fr;gap:1.5rem;}
-@media(min-width:640px){.del-grid{grid-template-columns:repeat(2,1fr);}}
-@media(min-width:1024px){.del-grid{grid-template-columns:repeat(4,1fr);}}
-.del-card{background:var(--clr-surface);border:1px solid var(--clr-border);padding:2rem 1.75rem;position:relative;overflow:hidden;transition:border-color 0.3s ease;}
-.del-card:hover{border-color:rgba(200,169,110,0.3);}
-.del-num{font-family:'Cormorant',serif;font-size:3.5rem;font-weight:300;font-style:italic;color:rgba(200,169,110,0.1);line-height:1;position:absolute;top:1rem;right:1.5rem;}
-.del-title{font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:500;color:var(--clr-text);margin-bottom:0.625rem;}
-.del-desc{font-size:var(--fs-sm);color:var(--clr-text-muted);line-height:1.65;}
+/* ===== METRICS BAR ===== */
+.metrics-bar{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--clr-border);}
+@media(min-width:768px){.metrics-bar{grid-template-columns:repeat(4,1fr);}}
+.metric-item{background:var(--clr-surface);padding:2.5rem 2rem;text-align:center;}
+.metric-num{font-family:'Cormorant',serif;font-size:clamp(2.5rem,5vw,3.5rem);font-weight:300;font-style:italic;color:var(--clr-gold);line-height:1;margin-bottom:0.5rem;}
+.metric-label{font-family:'DM Mono',monospace;font-size:var(--fs-label);letter-spacing:0.18em;text-transform:uppercase;color:var(--clr-text-muted);}
 
-/* Work cards */
-.work-grid{display:grid;grid-template-columns:1fr;gap:2px;background:var(--clr-border);}
-@media(min-width:640px){.work-grid{grid-template-columns:repeat(2,1fr);}}
-@media(min-width:1024px){.work-grid{grid-template-columns:repeat(3,1fr);}}
-.wcard{position:relative;overflow:hidden;cursor:pointer;background:var(--clr-surface);aspect-ratio:16/10;}
-.wcard img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s ease;}
-.wcard:hover img{transform:scale(1.05);}
-.wcard-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,8,0.92) 0%,transparent 60%);}
-.wcard-tint{position:absolute;inset:0;background:rgba(200,169,110,0.03);mix-blend-mode:multiply;pointer-events:none;}
-.wcard-meta{position:absolute;bottom:0;left:0;right:0;padding:1.25rem;opacity:0.75;transform:translateY(5px);transition:opacity 0.3s ease,transform 0.3s ease;}
-.wcard:hover .wcard-meta{opacity:1;transform:none;}
-.wcard-cat{font-family:'DM Mono',monospace;font-size:var(--fs-label);letter-spacing:0.15em;text-transform:uppercase;color:var(--clr-gold);margin-bottom:0.25rem;}
-.wcard-title{font-family:'DM Sans',sans-serif;font-size:0.9375rem;font-weight:500;color:var(--clr-text);}
-.wcard::after{content:'';position:absolute;inset:0;border:1px solid rgba(200,169,110,0);transition:border-color 0.3s ease;pointer-events:none;z-index:1;}
-.wcard:hover::after{border-color:rgba(200,169,110,0.3);}
-.wcard:focus-visible{outline:2px solid var(--clr-gold);outline-offset:2px;}
-/* Showcase — asymmetric featured layout */
-.sc-grid{display:grid;grid-template-columns:1fr;gap:3px;background:var(--clr-border);}
-@media(min-width:720px){.sc-grid{grid-template-columns:2fr 1fr;}.sc-card:first-child{grid-row:span 2;}}
-.sc-card{position:relative;overflow:hidden;cursor:pointer;background:var(--clr-elevated);aspect-ratio:16/9;}
-.sc-card img{width:100%;height:100%;object-fit:cover;transition:transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94),filter 0.5s ease;}
-.sc-card:hover img{transform:scale(1.06);filter:brightness(0.6);}
-.sc-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,8,0.98) 0%,rgba(8,8,8,0.45) 48%,rgba(8,8,8,0.05) 100%);}
-.sc-tint{position:absolute;inset:0;background:rgba(200,169,110,0.04);mix-blend-mode:multiply;pointer-events:none;}
-.sc-num{position:absolute;top:1.25rem;left:1.5rem;font-family:'Cormorant',serif;font-size:5.5rem;font-weight:300;font-style:italic;color:rgba(200,169,110,0.06);line-height:1;pointer-events:none;user-select:none;transition:color 0.5s ease;z-index:1;}
-.sc-card:hover .sc-num{color:rgba(200,169,110,0.11);}
-.sc-card:first-child .sc-num{font-size:7.5rem;}
-.sc-meta{position:absolute;bottom:0;left:0;right:0;padding:1.75rem;z-index:2;}
-.sc-cat{font-family:'DM Mono',monospace;font-size:0.5625rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--clr-gold);margin-bottom:0.625rem;display:block;opacity:0.85;transition:opacity 0.3s ease;}
-.sc-card:hover .sc-cat{opacity:1;}
-.sc-line{height:1px;background:var(--clr-gold);width:0;margin-bottom:0.875rem;transition:width 0.45s cubic-bezier(0.25,0.46,0.45,0.94) 0.05s;opacity:0.5;}
-.sc-card:hover .sc-line{width:2.75rem;}
-.sc-title{font-family:'Cormorant',serif;font-size:clamp(1.25rem,2.5vw,2rem);font-weight:300;font-style:italic;color:var(--clr-text);line-height:1.2;letter-spacing:-0.015em;transform:translateY(5px);transition:transform 0.35s ease;}
-.sc-card:hover .sc-title{transform:translateY(0);}
-.sc-cta{display:block;font-family:'DM Mono',monospace;font-size:0.5625rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--clr-gold);margin-top:0.875rem;opacity:0;transform:translateY(5px);transition:opacity 0.3s ease 0.1s,transform 0.3s ease 0.1s;}
-.sc-card:hover .sc-cta{opacity:0.65;transform:translateY(0);}
-.sc-card::after{content:'';position:absolute;inset:0;border:1px solid rgba(200,169,110,0);transition:border-color 0.3s ease;pointer-events:none;z-index:3;}
-.sc-card:hover::after{border-color:rgba(200,169,110,0.3);}
-.sc-card:focus-visible{outline:2px solid var(--clr-gold);outline-offset:2px;}
+/* ===== SERVICES GRID (2x2) ===== */
+.svc-grid{display:grid;grid-template-columns:1fr;gap:1.5rem;}
+@media(min-width:640px){.svc-grid{grid-template-columns:repeat(2,1fr);}}
+.svc-card{background:var(--clr-surface);border:1px solid var(--clr-border);padding:2.25rem 2rem;position:relative;overflow:hidden;transition:border-color 0.3s ease,transform 0.3s ease;}
+.svc-card:hover{border-color:rgba(200,169,110,0.3);transform:translateY(-4px);}
+.svc-num{font-family:'Cormorant',serif;font-size:4rem;font-weight:300;font-style:italic;color:rgba(200,169,110,0.08);line-height:1;position:absolute;top:0.75rem;right:1.25rem;}
+.svc-icon{width:32px;height:32px;color:var(--clr-gold);margin-bottom:1.25rem;opacity:0.8;}
+.svc-title{font-family:'DM Sans',sans-serif;font-size:1.0625rem;font-weight:500;color:var(--clr-text);margin-bottom:0.625rem;}
+.svc-desc{font-size:var(--fs-sm);color:var(--clr-text-muted);line-height:1.65;}
 
-/* Values */
-.val-grid{display:grid;grid-template-columns:1fr;gap:2rem;}
-@media(min-width:640px){.val-grid{grid-template-columns:repeat(2,1fr);}}
-@media(min-width:1024px){.val-grid{grid-template-columns:repeat(4,1fr);}}
-.val-card{border-left:1px solid rgba(200,169,110,0.25);padding-left:1.25rem;}
-.val-title{font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:500;color:var(--clr-text);margin-bottom:0.5rem;}
-.val-desc{font-size:var(--fs-sm);color:var(--clr-text-muted);line-height:1.65;}
+/* ===== CASE STUDY CARDS ===== */
+.case-grid{display:grid;grid-template-columns:1fr;gap:2px;background:var(--clr-border);}
+@media(min-width:768px){.case-grid{grid-template-columns:1fr 1fr;}}
+.case-card{display:grid;grid-template-columns:1fr;background:var(--clr-surface);overflow:hidden;transition:transform 0.3s ease;}
+@media(min-width:640px){.case-card{grid-template-columns:2fr 3fr;}}
+.case-card:hover{transform:translateY(-2px);}
+.case-img{position:relative;aspect-ratio:4/3;overflow:hidden;}
+@media(min-width:640px){.case-img{aspect-ratio:auto;}}
+.case-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s ease;filter:brightness(0.5);}
+.case-card:hover .case-img img{transform:scale(1.05);}
+.case-img .case-tint{position:absolute;inset:0;background:rgba(200,169,110,0.04);mix-blend-mode:multiply;}
+.case-body{padding:2rem;display:flex;flex-direction:column;justify-content:center;}
+.case-cat{font-family:'DM Mono',monospace;font-size:var(--fs-label);letter-spacing:0.18em;text-transform:uppercase;color:var(--clr-gold);margin-bottom:0.75rem;}
+.case-title{font-family:'Cormorant',serif;font-size:var(--fs-h2);font-weight:300;font-style:italic;color:var(--clr-text);line-height:1.2;margin-bottom:0.75rem;letter-spacing:-0.015em;}
+.case-desc{font-size:var(--fs-sm);color:var(--clr-text-muted);line-height:1.65;margin-bottom:1.25rem;}
+.case-metric{display:inline-flex;align-items:center;gap:0.75rem;padding:0.625rem 1rem;background:rgba(200,169,110,0.06);border-left:2px solid var(--clr-gold);}
+.case-metric-num{font-family:'Cormorant',serif;font-size:1.5rem;font-weight:600;color:var(--clr-gold);line-height:1;}
+.case-metric-label{font-family:'DM Mono',monospace;font-size:0.625rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--clr-text-muted);}
 
-/* Process */
-.proc-grid{display:grid;grid-template-columns:1fr;gap:2.5rem;}
-@media(min-width:768px){.proc-grid{grid-template-columns:repeat(4,1fr);}}
-.proc-num{font-family:'Cormorant',serif;font-size:4rem;font-weight:300;font-style:italic;color:rgba(200,169,110,0.12);line-height:1;margin-bottom:0.5rem;}
-.proc-title{font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:500;color:var(--clr-text);margin-bottom:0.5rem;}
-.proc-desc{font-size:var(--fs-sm);color:var(--clr-text-muted);line-height:1.65;}
+/* ===== INDUSTRY GRID ===== */
+.ind-grid{display:grid;grid-template-columns:1fr;gap:1.25rem;}
+@media(min-width:640px){.ind-grid{grid-template-columns:repeat(2,1fr);}}
+@media(min-width:1024px){.ind-grid{grid-template-columns:repeat(3,1fr);}}
+.ind-card{padding:1.75rem;background:var(--clr-elevated);border-bottom:2px solid transparent;transition:border-color 0.3s ease,transform 0.3s ease;}
+.ind-card:hover{border-bottom-color:var(--clr-gold);transform:translateY(-3px);}
+.ind-icon{width:28px;height:28px;color:var(--clr-gold);margin-bottom:1rem;opacity:0.7;}
+.ind-name{font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:500;color:var(--clr-text);margin-bottom:0.375rem;}
+.ind-desc{font-size:var(--fs-sm);color:var(--clr-text-muted);line-height:1.6;}
 
-/* Form */
+/* ===== PROCESS TIMELINE ===== */
+.timeline{display:grid;grid-template-columns:1fr;gap:2.5rem;position:relative;}
+@media(min-width:768px){
+  .timeline{grid-template-columns:repeat(4,1fr);gap:0;}
+  .timeline::before{content:'';position:absolute;top:1.75rem;left:12.5%;right:12.5%;height:1px;background:linear-gradient(to right,transparent,rgba(200,169,110,0.3),rgba(200,169,110,0.3),transparent);}
+}
+.tl-step{text-align:center;padding:0 1.25rem;position:relative;}
+.tl-dot{width:14px;height:14px;border:1.5px solid var(--clr-gold);background:var(--clr-base);margin:0 auto 1.5rem;position:relative;z-index:1;transition:background-color 0.3s ease;}
+.tl-step:hover .tl-dot{background:var(--clr-gold);}
+.tl-num{font-family:'Cormorant',serif;font-size:3rem;font-weight:300;font-style:italic;color:rgba(200,169,110,0.1);line-height:1;margin-bottom:0.5rem;}
+.tl-title{font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:500;color:var(--clr-text);margin-bottom:0.5rem;}
+.tl-desc{font-size:var(--fs-sm);color:var(--clr-text-muted);line-height:1.65;}
+
+/* ===== SOCIAL PROOF ===== */
+.proof-grid{display:grid;grid-template-columns:1fr;gap:2rem;}
+@media(min-width:768px){.proof-grid{grid-template-columns:1fr 1fr;}}
+.proof-card{position:relative;padding:2.5rem 2rem;background:var(--clr-elevated);border:1px solid var(--clr-border);}
+.proof-mark{position:absolute;top:1rem;left:1.5rem;font-family:'Cormorant',serif;font-size:5rem;font-weight:300;font-style:italic;color:rgba(200,169,110,0.07);line-height:1;pointer-events:none;user-select:none;}
+.proof-quote{font-family:'Cormorant',serif;font-size:1.25rem;font-weight:300;font-style:italic;color:var(--clr-text);line-height:1.5;margin-bottom:1.5rem;position:relative;z-index:1;}
+.proof-cite{font-family:'DM Mono',monospace;font-size:var(--fs-label);letter-spacing:0.15em;text-transform:uppercase;color:var(--clr-gold);}
+
+/* ===== FORM ===== */
 .form-section{background:var(--clr-surface);padding:5rem 2rem;}
 .form-grid{display:grid;grid-template-columns:1fr;gap:1.25rem;}
 @media(min-width:768px){.form-grid{grid-template-columns:repeat(2,1fr);}}
 .form-field{display:flex;flex-direction:column;gap:0.5rem;}
 .form-field.full{grid-column:1/-1;}
 .form-label{font-family:'DM Mono',monospace;font-size:var(--fs-label);letter-spacing:0.15em;text-transform:uppercase;color:var(--clr-text-muted);}
-.form-input,.form-select,.form-textarea{
-  background:var(--clr-elevated);border:1px solid var(--clr-border);color:var(--clr-text);
-  font-family:'DM Sans',sans-serif;font-size:var(--fs-sm);font-weight:300;
-  padding:0.875rem 1rem;width:100%;
-  transition:border-color 0.2s ease,box-shadow 0.2s ease;
-  outline:none;
-}
+.form-input,.form-select,.form-textarea{background:var(--clr-elevated);border:1px solid var(--clr-border);color:var(--clr-text);font-family:'DM Sans',sans-serif;font-size:var(--fs-sm);font-weight:300;padding:0.875rem 1rem;width:100%;transition:border-color 0.2s ease,box-shadow 0.2s ease;outline:none;}
 .form-input::placeholder,.form-textarea::placeholder{color:var(--clr-text-faint);}
 .form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--clr-gold);box-shadow:0 0 0 3px rgba(200,169,110,0.1);}
 .form-select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7' viewBox='0 0 12 7'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238A8278' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;}
@@ -160,19 +159,6 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 .form-error{font-family:'DM Mono',monospace;font-size:0.625rem;letter-spacing:0.1em;color:#E05252;display:none;}
 .form-field.has-error .form-input,.form-field.has-error .form-select,.form-field.has-error .form-textarea{border-color:#E05252;}
 .form-field.has-error .form-error{display:block;}
-
-/* LB */
-.lb{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.3s ease;}
-.lb.open{opacity:1;pointer-events:all;}
-.lb-bg{position:absolute;inset:0;background:rgba(8,8,8,0.97);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);}
-.lb-inner{position:relative;z-index:1;max-width:88vw;width:100%;}
-.lb-media{width:100%;aspect-ratio:16/9;background:var(--clr-surface);display:flex;align-items:center;justify-content:center;overflow:hidden;}
-.lb-media img,.lb-media iframe{width:100%;height:100%;object-fit:contain;border:none;}
-.lb-close{position:fixed;top:1.5rem;right:1.5rem;background:none;border:none;color:var(--clr-text-muted);font-size:1.5rem;cursor:pointer;padding:0.5rem;z-index:2;transition:color 0.2s ease,transform 0.2s ease;}
-.lb-close:hover{color:var(--clr-gold);transform:rotate(90deg);}
-.lb-info{padding:1rem 0 0;display:flex;align-items:center;gap:1rem;}
-.lb-cat{font-family:'DM Mono',monospace;font-size:var(--fs-label);letter-spacing:0.15em;text-transform:uppercase;color:var(--clr-gold);}
-.lb-title{font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:500;color:var(--clr-text);}
 
 /* Footer */
 footer{background:var(--clr-surface);border-top:1px solid rgba(200,169,110,0.12);}
@@ -193,7 +179,6 @@ footer{background:var(--clr-surface);border-top:1px solid rgba(200,169,110,0.12)
   <button class="mobile-close" id="mobileClose" aria-label="Close menu">&#x2715;</button>
   <a href="corporate.html" style="color:var(--clr-gold)">Corporate</a>
   <a href="real-estate.html">Real Estate</a>
-  <a href="music.html">Music</a>
   <a href="camera-op.html">Camera Op</a>
   <a href="work.html">Work</a>
   <a href="about.html">About</a>
@@ -205,7 +190,7 @@ footer{background:var(--clr-surface);border-top:1px solid rgba(200,169,110,0.12)
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li class="nav-dropdown"><a href="#" class="active">Services</a>
-      <div class="nav-dd-menu"><a href="corporate.html" class="active">Corporate Videos</a><a href="real-estate.html">Real Estate Media</a><a href="music.html">Music Media</a><a href="camera-op.html">Camera Operation</a></div>
+      <div class="nav-dd-menu"><a href="corporate.html" class="active">Corporate Videos</a><a href="real-estate.html">Real Estate Media</a><a href="camera-op.html">Camera Operation</a></div>
     </li>
     <li><a href="work.html">Work</a></li>
     <li><a href="about.html">About</a></li>
@@ -214,48 +199,74 @@ footer{background:var(--clr-surface);border-top:1px solid rgba(200,169,110,0.12)
   <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav>
 
-<!-- Hero -->
-<header class="niche-hero">
-  <div class="niche-hero-img">
-    <img src="https://placehold.co/1920x1080/0A0A08/C8A96E?text=" alt="Corporate video production hero">
-    <div class="tint"></div>
-  </div>
-  <div class="niche-hero-overlay" aria-hidden="true"></div>
-  <div class="niche-hero-content">
+<!-- ===== SPLIT HERO ===== -->
+<header class="split-hero">
+  <div class="split-hero-text">
     <span class="sec-label" style="display:block;margin-bottom:1rem;" data-reveal>Services — 01</span>
-    <h1 style="font-family:'Cormorant',serif;font-weight:300;font-style:italic;font-size:var(--fs-display);letter-spacing:-0.03em;line-height:1.0;color:var(--clr-text);max-width:700px;margin-bottom:1.25rem;" data-reveal data-d="1">Corporate<br>Videos</h1>
-    <p style="font-size:1.125rem;color:var(--clr-text-muted);max-width:520px;line-height:1.75;margin-bottom:2.5rem;" data-reveal data-d="2">Stories that make your company impossible to ignore. We turn internal culture, product launches, and executive voices into content that builds real brand authority.</p>
-    <a href="#contact-form" class="btn-gold" data-reveal data-d="3">Get a Quote</a>
+    <h1 style="font-family:'Cormorant',serif;font-weight:300;font-style:italic;font-size:var(--fs-display);letter-spacing:-0.03em;line-height:1.0;color:var(--clr-text);margin-bottom:1.5rem;" data-reveal data-d="1">Video That Drives<br>Business Forward</h1>
+    <p style="font-size:1.125rem;color:var(--clr-text-muted);max-width:480px;line-height:1.75;margin-bottom:2.5rem;" data-reveal data-d="2">We turn internal culture, product launches, and executive voices into content that builds real brand authority — and moves the numbers that matter.</p>
+    <a href="#contact-form" class="btn-gold" data-reveal data-d="3">Start Your Project</a>
+  </div>
+  <div class="split-hero-img" aria-hidden="true">
+    <img src="https://placehold.co/960x1080/0A0A08/C8A96E?text=" alt="">
+    <div class="tint"></div>
+    <div class="grad"></div>
   </div>
 </header>
 
-<!-- Deliverables -->
-<section style="padding:5rem 0;" aria-label="Services included">
+<!-- ===== METRICS BAR ===== -->
+<section aria-label="Company metrics">
+  <div class="metrics-bar">
+    <div class="metric-item" data-reveal>
+      <div class="metric-num">8+</div>
+      <div class="metric-label">Years in Business</div>
+    </div>
+    <div class="metric-item" data-reveal data-d="1">
+      <div class="metric-num">200+</div>
+      <div class="metric-label">Projects Delivered</div>
+    </div>
+    <div class="metric-item" data-reveal data-d="2">
+      <div class="metric-num">50+</div>
+      <div class="metric-label">Corporate Clients</div>
+    </div>
+    <div class="metric-item" data-reveal data-d="3">
+      <div class="metric-num">100%</div>
+      <div class="metric-label">Client Retention</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICES GRID ===== -->
+<section style="padding:5rem 0;" aria-label="Corporate video services">
   <div style="max-width:1400px;margin:0 auto;padding:0 2rem;">
     <div style="display:flex;align-items:center;gap:1.25rem;margin-bottom:3rem;" data-reveal>
-      <span class="sec-label">What's Included</span>
+      <span class="sec-label">What We Deliver</span>
       <div class="gold-rule" style="flex:1;"></div>
     </div>
-    <div class="del-grid">
-      <div class="del-card" data-reveal data-d="1">
-        <span class="del-num" aria-hidden="true">01</span>
-        <h3 class="del-title">Brand Films</h3>
-        <p class="del-desc">Full-length cinematic films that capture your company's identity and communicate it with authority.</p>
+    <div class="svc-grid">
+      <div class="svc-card" data-reveal data-d="1">
+        <span class="svc-num" aria-hidden="true">01</span>
+        <svg class="svc-icon" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="22" height="15" rx="1"/><polygon points="11,10 11,18 19,14"/></svg>
+        <h3 class="svc-title">Brand Films</h3>
+        <p class="svc-desc">Full-length cinematic films that capture your company's identity and communicate it with authority across every channel.</p>
       </div>
-      <div class="del-card" data-reveal data-d="2">
-        <span class="del-num" aria-hidden="true">02</span>
-        <h3 class="del-title">Product Launches</h3>
-        <p class="del-desc">Dynamic launch videos built to drive engagement at events, on social, and across broadcast channels.</p>
+      <div class="svc-card" data-reveal data-d="2">
+        <span class="svc-num" aria-hidden="true">02</span>
+        <svg class="svc-icon" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22V10l10-6 10 6v12"/><path d="M10 22v-6h8v6"/></svg>
+        <h3 class="svc-title">Product Launches</h3>
+        <p class="svc-desc">Dynamic launch videos built to drive engagement at events, on social, and across broadcast channels.</p>
       </div>
-      <div class="del-card" data-reveal data-d="3">
-        <span class="del-num" aria-hidden="true">03</span>
-        <h3 class="del-title">Culture & Training</h3>
-        <p class="del-desc">Internal videos that communicate company values, onboard talent, and build a culture that people stay for.</p>
+      <div class="svc-card" data-reveal data-d="3">
+        <span class="svc-num" aria-hidden="true">03</span>
+        <svg class="svc-icon" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="10" r="4"/><circle cx="19" cy="10" r="4"/><path d="M3 24c0-4 3-6 6-6h2"/><path d="M17 18h2c3 0 6 2 6 6"/></svg>
+        <h3 class="svc-title">Culture & Training</h3>
+        <p class="svc-desc">Internal videos that communicate company values, onboard talent, and build a culture that people stay for.</p>
       </div>
-      <div class="del-card" data-reveal data-d="4">
-        <span class="del-num" aria-hidden="true">04</span>
-        <h3 class="del-title">Executive Interviews</h3>
-        <p class="del-desc">Polished thought leadership content that positions your key people as the experts they are.</p>
+      <div class="svc-card" data-reveal data-d="4">
+        <span class="svc-num" aria-hidden="true">04</span>
+        <svg class="svc-icon" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h4v14H4z"/><path d="M12 4h4v20h-4z"/><path d="M20 10h4v11h-4z"/></svg>
+        <h3 class="svc-title">Executive Interviews</h3>
+        <p class="svc-desc">Polished thought leadership content that positions your key people as the industry experts they are.</p>
       </div>
     </div>
   </div>
@@ -263,132 +274,173 @@ footer{background:var(--clr-surface);border-top:1px solid rgba(200,169,110,0.12)
 
 <div class="gold-rule" style="max-width:1400px;margin:0 auto;padding:0 2rem;"></div>
 
-<!-- Featured Work -->
-<section style="padding:5rem 0;" aria-label="Corporate work samples">
-  <div style="max-width:1400px;margin:0 auto;padding:0 2rem 2.5rem;">
-    <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem;" data-reveal>
-      <h2 class="sec-head" style="font-size:var(--fs-h1);">Corporate Work</h2>
-      <a href="work.html" style="font-family:'DM Mono',monospace;font-size:var(--fs-label);letter-spacing:0.12em;text-transform:uppercase;color:var(--clr-gold);text-decoration:none;transition:opacity 0.2s ease;" onmouseover="this.style.opacity='.65'" onmouseout="this.style.opacity='1'">View All →</a>
+<!-- ===== CASE STUDIES ===== -->
+<section style="padding:5rem 0;" aria-label="Case studies">
+  <div style="max-width:1400px;margin:0 auto;padding:0 2rem;">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:3rem;" data-reveal>
+      <div>
+        <span class="sec-label" style="display:block;margin-bottom:0.75rem;">Results</span>
+        <h2 class="sec-head" style="font-size:var(--fs-h1);">Case Studies</h2>
+      </div>
+      <a href="work.html" style="font-family:'DM Mono',monospace;font-size:var(--fs-label);letter-spacing:0.12em;text-transform:uppercase;color:var(--clr-gold);text-decoration:none;transition:opacity 0.2s ease;" onmouseover="this.style.opacity='.65'" onmouseout="this.style.opacity='1'">View All Work →</a>
     </div>
-  </div>
-  <div style="max-width:1400px;margin:0 auto;">
-    <div class="sc-grid">
-      <div class="sc-card" tabindex="0" role="button" data-src="https://player.vimeo.com/video/901769964?autoplay=1" data-type="video" data-title="Executive Brand Film" data-cat="Corporate" aria-label="Play Executive Brand Film">
-        <img src="https://placehold.co/1200x750/111111/C8A96E?text=Brand+Film" alt="Executive Brand Film" loading="lazy">
-        <div class="sc-overlay"></div><div class="sc-tint"></div>
-        <span class="sc-num" aria-hidden="true">01</span>
-        <div class="sc-meta">
-          <span class="sc-cat">Corporate · Brand Film</span>
-          <div class="sc-line"></div>
-          <p class="sc-title">Executive Brand Film</p>
-          <span class="sc-cta">Play Project →</span>
+    <div class="case-grid">
+      <div class="case-card" data-reveal data-d="1">
+        <div class="case-img">
+          <img src="https://placehold.co/600x450/111111/C8A96E?text=Brand+Film" alt="Executive brand film" loading="lazy">
+          <div class="case-tint"></div>
+        </div>
+        <div class="case-body">
+          <span class="case-cat">Brand Film · Technology</span>
+          <h3 class="case-title">Executive Brand Film</h3>
+          <p class="case-desc">A cinematic brand story for a tech company's rebrand launch, distributed across LinkedIn, website, and investor presentations.</p>
+          <div class="case-metric">
+            <span class="case-metric-num">47%</span>
+            <span class="case-metric-label">Increase in<br>Engagement</span>
+          </div>
         </div>
       </div>
-      <div class="sc-card" tabindex="0" role="button" data-src="https://placehold.co/1600x900/111111/C8A96E?text=Product+Launch" data-type="photo" data-title="Product Launch Film" data-cat="Corporate" aria-label="View Product Launch Film">
-        <img src="https://placehold.co/800x500/141414/C8A96E?text=Product+Launch" alt="Product Launch Film" loading="lazy">
-        <div class="sc-overlay"></div><div class="sc-tint"></div>
-        <span class="sc-num" aria-hidden="true">02</span>
-        <div class="sc-meta">
-          <span class="sc-cat">Corporate · Product Launch</span>
-          <div class="sc-line"></div>
-          <p class="sc-title">Product Launch Film</p>
-          <span class="sc-cta">View Project →</span>
+      <div class="case-card" data-reveal data-d="2">
+        <div class="case-img">
+          <img src="https://placehold.co/600x450/141414/C8A96E?text=Product+Launch" alt="Product launch film" loading="lazy">
+          <div class="case-tint"></div>
+        </div>
+        <div class="case-body">
+          <span class="case-cat">Product Launch · SaaS</span>
+          <h3 class="case-title">Product Launch Film</h3>
+          <p class="case-desc">A high-energy launch video for a SaaS platform debut, premiered at their annual conference to 2,000 attendees.</p>
+          <div class="case-metric">
+            <span class="case-metric-num">3.2M</span>
+            <span class="case-metric-label">Organic<br>Views</span>
+          </div>
         </div>
       </div>
-      <div class="sc-card" tabindex="0" role="button" data-src="https://placehold.co/1600x900/111111/C8A96E?text=Culture+Doc" data-type="photo" data-title="Culture Documentary" data-cat="Corporate" aria-label="View Culture Documentary">
-        <img src="https://placehold.co/800x500/0E0E0E/C8A96E?text=Culture+Doc" alt="Culture Documentary" loading="lazy">
-        <div class="sc-overlay"></div><div class="sc-tint"></div>
-        <span class="sc-num" aria-hidden="true">03</span>
-        <div class="sc-meta">
-          <span class="sc-cat">Corporate · Culture</span>
-          <div class="sc-line"></div>
-          <p class="sc-title">Culture Documentary</p>
-          <span class="sc-cta">View Project →</span>
+      <div class="case-card" data-reveal data-d="3" style="grid-column:1/-1;">
+        <div class="case-img">
+          <img src="https://placehold.co/600x450/0E0E0E/C8A96E?text=Culture+Doc" alt="Culture documentary" loading="lazy">
+          <div class="case-tint"></div>
+        </div>
+        <div class="case-body">
+          <span class="case-cat">Culture · Healthcare</span>
+          <h3 class="case-title">Culture Documentary</h3>
+          <p class="case-desc">An internal documentary series for a healthcare network, transforming their recruitment pipeline by showcasing real employee stories.</p>
+          <div class="case-metric">
+            <span class="case-metric-num">62%</span>
+            <span class="case-metric-label">Applicant<br>Increase</span>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Why ANM -->
-<section style="padding:5rem 0;background:var(--clr-surface);" aria-label="Why Atlas Narrative Media">
+<!-- ===== INDUSTRY EXPERTISE ===== -->
+<section style="padding:5rem 0;background:var(--clr-surface);" aria-label="Industries served">
   <div style="max-width:1400px;margin:0 auto;padding:0 2rem;">
     <div style="margin-bottom:3rem;" data-reveal>
-      <span class="sec-label" style="display:block;margin-bottom:1rem;">Why ANM</span>
-      <h2 class="sec-head" style="font-size:var(--fs-h1);">What We Bring<br>to Every Brief</h2>
+      <span class="sec-label" style="display:block;margin-bottom:1rem;">Industries</span>
+      <h2 class="sec-head" style="font-size:var(--fs-h1);">Sectors We Serve</h2>
     </div>
-    <div class="val-grid">
-      <div class="val-card" data-reveal data-d="1">
-        <h3 class="val-title">Craft</h3>
-        <p class="val-desc">Every shot is composed with intention. We don't accept "good enough" when it comes to your brand's visual presence.</p>
+    <div class="ind-grid">
+      <div class="ind-card" data-reveal data-d="1">
+        <svg class="ind-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        <h3 class="ind-name">Technology</h3>
+        <p class="ind-desc">SaaS demos, product launches, investor content, and brand stories for startups through enterprise.</p>
       </div>
-      <div class="val-card" data-reveal data-d="2">
-        <h3 class="val-title">Precision</h3>
-        <p class="val-desc">Corporate video is high stakes. We plan meticulously so nothing is left to chance on set or in the edit.</p>
+      <div class="ind-card" data-reveal data-d="2">
+        <svg class="ind-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        <h3 class="ind-name">Healthcare</h3>
+        <p class="ind-desc">Recruitment campaigns, patient stories, facility tours, and compliance-ready training content.</p>
       </div>
-      <div class="val-card" data-reveal data-d="3">
-        <h3 class="val-title">Impact</h3>
-        <p class="val-desc">We measure success by what happens after the video goes live — engagement, perception, and action.</p>
+      <div class="ind-card" data-reveal data-d="3">
+        <svg class="ind-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        <h3 class="ind-name">Finance</h3>
+        <p class="ind-desc">Annual reports, thought leadership, investor relations, and trust-building brand content.</p>
       </div>
-      <div class="val-card" data-reveal data-d="4">
-        <h3 class="val-title">Collaboration</h3>
-        <p class="val-desc">Your stakeholders know the story. We know how to capture it. Together, the result is something neither could build alone.</p>
+      <div class="ind-card" data-reveal data-d="4">
+        <svg class="ind-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20"/><rect x="4" y="8" width="16" height="12"/><path d="M12 4l8 4H4l8-4z"/></svg>
+        <h3 class="ind-name">Manufacturing</h3>
+        <p class="ind-desc">Facility showcases, safety training, supply chain stories, and trade show content.</p>
+      </div>
+      <div class="ind-card" data-reveal data-d="5">
+        <svg class="ind-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+        <h3 class="ind-name">Professional Services</h3>
+        <p class="ind-desc">Law firms, consultancies, and agencies — expertise positioning and talent recruitment.</p>
+      </div>
+      <div class="ind-card" data-reveal data-d="6">
+        <svg class="ind-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        <h3 class="ind-name">Non-Profit</h3>
+        <p class="ind-desc">Fundraising campaigns, impact reports, volunteer stories, and gala event content.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Process -->
-<section style="padding:5rem 0;" aria-label="Corporate video process">
+<!-- ===== PROCESS TIMELINE ===== -->
+<section style="padding:5rem 0;" aria-label="Our process">
   <div style="max-width:1400px;margin:0 auto;padding:0 2rem;">
-    <div style="text-align:center;margin-bottom:3.5rem;" data-reveal>
+    <div style="text-align:center;margin-bottom:4rem;" data-reveal>
       <span class="sec-label" style="display:block;margin-bottom:1rem;">The Process</span>
       <h2 class="sec-head" style="font-size:var(--fs-h1);">From Brief to Broadcast</h2>
     </div>
-    <div class="proc-grid">
-      <div data-reveal data-d="1">
-        <div class="proc-num">01</div>
-        <h3 class="proc-title">Discovery Call</h3>
-        <p class="proc-desc">We learn your goals, audience, and message. No assumptions, just alignment from day one.</p>
+    <div class="timeline">
+      <div class="tl-step" data-reveal data-d="1">
+        <div class="tl-dot"></div>
+        <div class="tl-num">01</div>
+        <h3 class="tl-title">Discovery Call</h3>
+        <p class="tl-desc">We learn your goals, audience, and message. No assumptions — just alignment from day one.</p>
       </div>
-      <div data-reveal data-d="2">
-        <div class="proc-num">02</div>
-        <h3 class="proc-title">Pre-Production</h3>
-        <p class="proc-desc">Script, storyboard, and shot list built around your brand guidelines and distribution plan.</p>
+      <div class="tl-step" data-reveal data-d="2">
+        <div class="tl-dot"></div>
+        <div class="tl-num">02</div>
+        <h3 class="tl-title">Pre-Production</h3>
+        <p class="tl-desc">Script, storyboard, and shot list built around your brand guidelines and distribution plan.</p>
       </div>
-      <div data-reveal data-d="3">
-        <div class="proc-num">03</div>
-        <h3 class="proc-title">Production</h3>
-        <p class="proc-desc">Professional crew, premium gear, and a director focused on telling your story with precision.</p>
+      <div class="tl-step" data-reveal data-d="3">
+        <div class="tl-dot"></div>
+        <div class="tl-num">03</div>
+        <h3 class="tl-title">Production</h3>
+        <p class="tl-desc">Professional crew, premium gear, and a director focused on telling your story with precision.</p>
       </div>
-      <div data-reveal data-d="4">
-        <div class="proc-num">04</div>
-        <h3 class="proc-title">Delivery</h3>
-        <p class="proc-desc">Color-graded, sound-designed, and exported for every platform — ready to go live.</p>
+      <div class="tl-step" data-reveal data-d="4">
+        <div class="tl-dot"></div>
+        <div class="tl-num">04</div>
+        <h3 class="tl-title">Delivery</h3>
+        <p class="tl-desc">Color-graded, sound-designed, and exported for every platform — ready to go live.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Testimonial -->
-<section style="padding:5rem 2rem;background:var(--clr-surface);" aria-label="Client testimonial">
-  <div style="max-width:800px;margin:0 auto;text-align:center;" data-reveal>
-    <blockquote>
-      <p style="font-family:'Cormorant',serif;font-size:var(--fs-h2);font-weight:300;font-style:italic;letter-spacing:-0.02em;line-height:1.35;color:var(--clr-text);margin-bottom:1.75rem;">
-        "ANM turned our annual brand refresh into a video that our team actually shares. It didn't feel corporate — it felt real. That's the difference."
-      </p>
-      <footer><cite style="font-family:'DM Mono',monospace;font-size:var(--fs-label);letter-spacing:0.15em;text-transform:uppercase;color:var(--clr-gold);font-style:normal;">— Marketing Director · Technology Company</cite></footer>
-    </blockquote>
+<!-- ===== SOCIAL PROOF ===== -->
+<section style="padding:5rem 0;background:var(--clr-surface);" aria-label="Client testimonials">
+  <div style="max-width:1100px;margin:0 auto;padding:0 2rem;">
+    <div style="margin-bottom:3rem;" data-reveal>
+      <span class="sec-label" style="display:block;margin-bottom:1rem;">Testimonials</span>
+      <h2 class="sec-head" style="font-size:var(--fs-h1);">What Clients Say</h2>
+    </div>
+    <div class="proof-grid">
+      <div class="proof-card" data-reveal data-d="1">
+        <span class="proof-mark" aria-hidden="true">"</span>
+        <p class="proof-quote">"ANM turned our annual brand refresh into a video that our team actually shares. It didn't feel corporate — it felt real. That's the difference."</p>
+        <cite class="proof-cite">— Marketing Director · Technology Company</cite>
+      </div>
+      <div class="proof-card" data-reveal data-d="2">
+        <span class="proof-mark" aria-hidden="true">"</span>
+        <p class="proof-quote">"We needed a product launch video in three weeks. They delivered in two — and it outperformed every piece of content we've ever produced."</p>
+        <cite class="proof-cite">— VP of Marketing · SaaS Platform</cite>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- Contact Form -->
+<!-- ===== CONTACT FORM ===== -->
 <section id="contact-form" class="form-section" aria-label="Corporate video inquiry">
   <div style="max-width:800px;margin:0 auto;">
     <div style="margin-bottom:3rem;" data-reveal>
-      <span class="sec-label" style="display:block;margin-bottom:1rem;">Get a Quote</span>
+      <span class="sec-label" style="display:block;margin-bottom:1rem;">Start Your Project</span>
       <h2 class="sec-head" style="font-size:var(--fs-h1);">Tell Us About<br>Your Project</h2>
-      <p style="color:var(--clr-text-muted);font-size:var(--fs-sm);margin-top:1rem;line-height:1.75;">We respond to all inquiries within 24 hours. Fields marked with <span style="color:var(--clr-gold);">*</span> are required.</p>
+      <p style="color:var(--clr-text-muted);font-size:var(--fs-sm);margin-top:1rem;line-height:1.75;">Join 50+ companies who trust ANM with their brand story. Fields marked with <span style="color:var(--clr-gold);">*</span> are required.</p>
     </div>
     <form id="corpForm" novalidate>
       <div class="form-grid">
@@ -488,7 +540,7 @@ footer{background:var(--clr-surface);border-top:1px solid rgba(200,169,110,0.12)
       </div>
       <div>
         <p style="font-family:'DM Mono',monospace;font-size:var(--fs-label);letter-spacing:0.2em;text-transform:uppercase;color:var(--clr-text-faint);margin-bottom:1.25rem;">Explore</p>
-        <nav><a href="index.html" class="foot-link">Home</a><a href="corporate.html" class="foot-link">Corporate Videos</a><a href="real-estate.html" class="foot-link">Real Estate Media</a><a href="music.html" class="foot-link">Music Media</a><a href="camera-op.html" class="foot-link">Camera Operation</a><a href="work.html" class="foot-link">Our Work</a><a href="about.html" class="foot-link">About</a><a href="contact.html" class="foot-link">Contact</a></nav>
+        <nav><a href="index.html" class="foot-link">Home</a><a href="corporate.html" class="foot-link">Corporate Videos</a><a href="real-estate.html" class="foot-link">Real Estate Media</a><a href="camera-op.html" class="foot-link">Camera Operation</a><a href="work.html" class="foot-link">Our Work</a><a href="about.html" class="foot-link">About</a><a href="contact.html" class="foot-link">Contact</a></nav>
       </div>
       <div>
         <p style="font-family:'DM Mono',monospace;font-size:var(--fs-label);letter-spacing:0.2em;text-transform:uppercase;color:var(--clr-text-faint);margin-bottom:1.25rem;">Get in Touch</p>
@@ -504,16 +556,6 @@ footer{background:var(--clr-surface);border-top:1px solid rgba(200,169,110,0.12)
   </div>
 </footer>
 
-<!-- Lightbox -->
-<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Media viewer">
-  <div class="lb-bg" id="lbBg"></div>
-  <div class="lb-inner">
-    <button class="lb-close" id="lbClose" aria-label="Close">✕</button>
-    <div class="lb-media" id="lbMedia"></div>
-    <div class="lb-info"><span class="lb-cat" id="lbCat"></span><span class="lb-title" id="lbTitle"></span></div>
-  </div>
-</div>
-
 <script>
 const nav=document.getElementById('mainNav');
 window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>60),{passive:true});
@@ -524,21 +566,6 @@ const mClose=document.getElementById('mobileClose');
 if(mClose)mClose.addEventListener('click',()=>{mMenu.classList.remove('open');burger.classList.remove('open');burger.setAttribute('aria-expanded','false');document.body.style.overflow='';});
 const ro=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');ro.unobserve(e.target);}});},{threshold:0.12});
 document.querySelectorAll('[data-reveal]').forEach(el=>ro.observe(el));
-
-// Lightbox
-const lb=document.getElementById('lb'),lbBg=document.getElementById('lbBg'),lbClose=document.getElementById('lbClose');
-const lbMedia=document.getElementById('lbMedia'),lbCat=document.getElementById('lbCat'),lbTitle=document.getElementById('lbTitle');
-function openLb(el){
-  lbMedia.innerHTML='';
-  if(el.dataset.type==='video'){const ifr=document.createElement('iframe');ifr.src=el.dataset.src;ifr.setAttribute('allowfullscreen','');ifr.setAttribute('allow','autoplay; fullscreen');ifr.style.cssText='width:100%;height:100%;border:none;';lbMedia.appendChild(ifr);}
-  else{const img=document.createElement('img');img.src=el.dataset.src;img.alt=el.dataset.title||'';img.style.cssText='max-width:100%;max-height:75vh;object-fit:contain;width:100%;';lbMedia.appendChild(img);}
-  lbCat.textContent=el.dataset.cat||'';lbTitle.textContent=el.dataset.title||'';
-  lb.classList.add('open');document.body.style.overflow='hidden';lbClose.focus();
-}
-function closeLb(){lb.classList.remove('open');document.body.style.overflow='';setTimeout(()=>{lbMedia.innerHTML='';},300);}
-document.querySelectorAll('.sc-card').forEach(c=>{c.addEventListener('click',()=>openLb(c));c.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openLb(c);}});});
-lbClose.addEventListener('click',closeLb);lbBg.addEventListener('click',closeLb);
-document.addEventListener('keydown',e=>{if(e.key==='Escape'&&lb.classList.contains('open'))closeLb();});
 
 // Form
 const form=document.getElementById('corpForm');
