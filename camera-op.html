@@ -91,7 +91,8 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 
 /* ===== GEAR GRID ===== */
 .gear-grid{display:grid;grid-template-columns:1fr;gap:1.5rem;}
-@media(min-width:640px){.gear-grid{grid-template-columns:repeat(3,1fr);}}
+@media(min-width:640px){.gear-grid{grid-template-columns:repeat(2,1fr);}}
+@media(min-width:1024px){.gear-grid{grid-template-columns:repeat(4,1fr);}}
 .gear-card{background:var(--clr-surface);border:1px solid var(--clr-border);padding:2rem 1.75rem;transition:border-color 0.3s ease;}
 .gear-card:hover{border-color:rgba(200,169,110,0.3);}
 .gear-head{font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:500;color:var(--clr-gold);margin-bottom:1.25rem;padding-bottom:0.75rem;border-bottom:1px solid rgba(200,169,110,0.15);}
@@ -114,6 +115,9 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
   .credit-title{grid-column:1/-1;}
   .credit-year{text-align:left;}
 }
+
+/* ===== TESTIMONIALS ===== */
+@media(min-width:768px){.proof-grid{grid-template-columns:1fr 1fr!important;}}
 
 /* ===== VALUES ===== */
 .val-grid{display:grid;grid-template-columns:1fr;gap:2rem;}
@@ -251,31 +255,35 @@ footer{background:var(--clr-surface);border-top:1px solid rgba(200,169,110,0.12)
       <div class="gear-card" data-reveal data-d="1">
         <h3 class="gear-head">Cameras</h3>
         <ul class="gear-list">
-          <li>RED V-RAPTOR XL</li>
-          <li>ARRI ALEXA Mini</li>
-          <li>Sony FX6</li>
-          <li>Sony FX3</li>
-          <li>Blackmagic URSA Mini Pro</li>
+          <li>Sony A7 IV — Full-Frame 33MP</li>
+          <li>Sony A6300 — APS-C 4K B-Cam</li>
+          <li>Sony A6000 — Lightweight C-Cam / Stills</li>
+          <li>DJI Osmo Action 6 — 4K POV & Extreme Angles</li>
         </ul>
       </div>
       <div class="gear-card" data-reveal data-d="2">
         <h3 class="gear-head">Lenses</h3>
         <ul class="gear-list">
-          <li>Sigma Cine FF High Speed Primes</li>
-          <li>Canon CN-E Primes</li>
-          <li>Sony G Master Zooms</li>
-          <li>Angenieux EZ Series</li>
-          <li>Vintage Anamorphic Set</li>
+          <li>Sigma 14-24mm f/2.8 — Ultra-Wide Zoom</li>
+          <li>Sony 85mm f/1.8 — Portrait Telephoto</li>
+          <li>Helios 44-2 58mm f/2.0 — Vintage Character</li>
+          <li>Vivitar 28mm f/2.5 — Street & Documentary</li>
+          <li>Rokinon 12mm f/2.8 — Full-Frame Fisheye</li>
+          <li>TTArtisan 7.5mm f/2.0 — APS-C Fisheye</li>
         </ul>
       </div>
       <div class="gear-card" data-reveal data-d="3">
-        <h3 class="gear-head">Support & Accessories</h3>
+        <h3 class="gear-head">Support & Motion</h3>
         <ul class="gear-list">
-          <li>DJI Ronin 2 Gimbal</li>
-          <li>Sachtler Video 18 Tripod</li>
-          <li>SmallHD 703 Monitor</li>
-          <li>Teradek Bolt 4K Wireless</li>
-          <li>DJI Inspire 3 Drone</li>
+          <li>Easyrig Minimax — Body-Mount Support</li>
+          <li>DJI Ronin RS4 — 3-Axis Gimbal</li>
+          <li>Manfrotto 502AH + MT055XPRO3 — Fluid Head & Carbon Tripod</li>
+        </ul>
+      </div>
+      <div class="gear-card" data-reveal data-d="4">
+        <h3 class="gear-head">Audio</h3>
+        <ul class="gear-list">
+          <li>Deity S-Mic 3 — Broadcast Short Shotgun</li>
         </ul>
       </div>
     </div>
@@ -366,16 +374,21 @@ footer{background:var(--clr-surface);border-top:1px solid rgba(200,169,110,0.12)
   </div>
 </section>
 
-<!-- ===== TESTIMONIAL ===== -->
-<section style="padding:5rem 2rem;" aria-label="Client testimonial">
-  <div style="max-width:800px;margin:0 auto;text-align:center;" data-reveal>
-    <blockquote>
-      <span style="font-family:'Cormorant',serif;font-size:5rem;font-weight:300;font-style:italic;color:rgba(200,169,110,0.1);line-height:1;display:block;margin-bottom:-1rem;" aria-hidden="true">"</span>
-      <p style="font-family:'Cormorant',serif;font-size:var(--fs-h2);font-weight:300;font-style:italic;letter-spacing:-0.02em;line-height:1.35;color:var(--clr-text);margin-bottom:1.75rem;">
-        "I've worked with a lot of operators. What sets ANM apart is that they actually watch the monitor and care about what the image looks like — not just whether they hit the mark."
-      </p>
-      <footer><cite style="font-family:'DM Mono',monospace;font-size:var(--fs-label);letter-spacing:0.15em;text-transform:uppercase;color:var(--clr-gold);font-style:normal;">— Director · Independent Film Production</cite></footer>
-    </blockquote>
+<!-- ===== TESTIMONIALS ===== -->
+<section style="padding:5rem 2rem;" aria-label="Client testimonials">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div style="display:grid;grid-template-columns:1fr;gap:2rem;" class="proof-grid">
+      <div style="position:relative;padding:2.5rem 2rem;background:var(--clr-elevated);border:1px solid var(--clr-border);" data-reveal data-d="1">
+        <span style="position:absolute;top:1rem;left:1.5rem;font-family:'Cormorant',serif;font-size:5rem;font-weight:300;font-style:italic;color:rgba(200,169,110,0.07);line-height:1;pointer-events:none;user-select:none;" aria-hidden="true">"</span>
+        <p style="font-family:'Cormorant',serif;font-size:1.25rem;font-weight:300;font-style:italic;color:var(--clr-text);line-height:1.5;margin-bottom:1.5rem;position:relative;z-index:1;">"A great DP makes you forget you hired one. Atlas shoots, solves problems, and delivers. He's also genuinely in the project with you. I don't just get great images, I get a creative partner on set."</p>
+        <cite style="font-family:'DM Mono',monospace;font-size:var(--fs-label);letter-spacing:0.15em;text-transform:uppercase;color:var(--clr-gold);font-style:normal;">— Rosie Ruiz · Sleep Pour Productions</cite>
+      </div>
+      <div style="position:relative;padding:2.5rem 2rem;background:var(--clr-elevated);border:1px solid var(--clr-border);" data-reveal data-d="2">
+        <span style="position:absolute;top:1rem;left:1.5rem;font-family:'Cormorant',serif;font-size:5rem;font-weight:300;font-style:italic;color:rgba(200,169,110,0.07);line-height:1;pointer-events:none;user-select:none;" aria-hidden="true">"</span>
+        <p style="font-family:'Cormorant',serif;font-size:1.25rem;font-weight:300;font-style:italic;color:var(--clr-text);line-height:1.5;margin-bottom:1.5rem;position:relative;z-index:1;">"I hired Atlas to handle the shot. He does. Every time. Without question."</p>
+        <cite style="font-family:'DM Mono',monospace;font-size:var(--fs-label);letter-spacing:0.15em;text-transform:uppercase;color:var(--clr-gold);font-style:normal;">— Tom LoChiatto · MDR Television</cite>
+      </div>
+    </div>
   </div>
 </section>
 
