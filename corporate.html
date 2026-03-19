@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <link rel="icon" type="image/svg+xml" href="brand_assets/ANM Profile Pic BLACK BIGGER.svg">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Corporate Videos — Atlas Narrative Media</title>
+<title>Corporate Media — Atlas Narrative Media</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -69,7 +69,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 .split-hero-img img{width:100%;height:100%;object-fit:cover;filter:brightness(0.4);}
 .split-hero-img .tint{position:absolute;inset:0;background:rgba(200,169,110,0.05);mix-blend-mode:multiply;}
 .split-hero-img .grad{position:absolute;inset:0;background:linear-gradient(to right,var(--clr-base) 0%,transparent 35%);}
-@media(max-width:899px){.split-hero-img .grad{background:linear-gradient(to top,var(--clr-base) 0%,transparent 40%);}}
+@media(max-width:899px){.split-hero-img{display:none;}.split-hero-text{padding-bottom:5rem;}}
 
 /* ===== METRICS BAR ===== */
 .metrics-bar{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--clr-border);}
@@ -190,7 +190,7 @@ footer{background:var(--clr-surface);border-top:1px solid rgba(200,169,110,0.12)
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li class="nav-dropdown"><a href="#" class="active">Services</a>
-      <div class="nav-dd-menu"><a href="corporate.html" class="active">Corporate Videos</a><a href="real-estate.html">Real Estate Media</a><a href="camera-op.html">Camera Operation</a></div>
+      <div class="nav-dd-menu"><a href="corporate.html" class="active">Corporate Media</a><a href="real-estate.html">Real Estate Media</a><a href="camera-op.html">Camera Operation</a></div>
     </li>
     <li><a href="work.html">Work</a></li>
     <li><a href="about.html">About</a></li>
@@ -202,9 +202,9 @@ footer{background:var(--clr-surface);border-top:1px solid rgba(200,169,110,0.12)
 <!-- ===== SPLIT HERO ===== -->
 <header class="split-hero">
   <div class="split-hero-text">
-    <span class="sec-label" style="display:block;margin-bottom:1rem;" data-reveal>Services — 01</span>
+    <span class="sec-label" style="display:block;margin-bottom:1rem;" data-reveal>Corporate Media</span>
     <h1 style="font-family:'Cormorant',serif;font-weight:300;font-style:italic;font-size:var(--fs-display);letter-spacing:-0.03em;line-height:1.0;color:var(--clr-text);margin-bottom:1.5rem;" data-reveal data-d="1">Video That Drives<br>Business Forward</h1>
-    <p style="font-size:1.125rem;color:var(--clr-text-muted);max-width:480px;line-height:1.75;margin-bottom:2.5rem;" data-reveal data-d="2">We turn internal culture, product launches, and executive voices into content that builds real brand authority — and moves the numbers that matter.</p>
+    <p style="font-size:1.125rem;color:var(--clr-text-muted);max-width:480px;line-height:1.75;margin-bottom:2.5rem;" data-reveal data-d="2">We turn internal culture, product launches, and executive voices into content that builds real brand authority and moves the numbers that matter.</p>
     <a href="#contact-form" class="btn-gold" data-reveal data-d="3">Start Your Project</a>
   </div>
   <div class="split-hero-img" aria-hidden="true">
@@ -353,7 +353,7 @@ footer{background:var(--clr-surface);border-top:1px solid rgba(200,169,110,0.12)
       <div class="ind-card" data-reveal data-d="5">
         <svg class="ind-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
         <h3 class="ind-name">Professional Services</h3>
-        <p class="ind-desc">Law firms, consultancies, and agencies — expertise positioning and talent recruitment.</p>
+        <p class="ind-desc">Law firms, consultancies, and agencies seeking expertise positioning and talent recruitment.</p>
       </div>
       <div class="ind-card" data-reveal data-d="6">
         <svg class="ind-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg>
@@ -376,7 +376,7 @@ footer{background:var(--clr-surface);border-top:1px solid rgba(200,169,110,0.12)
         <div class="tl-dot"></div>
         <div class="tl-num">01</div>
         <h3 class="tl-title">Discovery Call</h3>
-        <p class="tl-desc">We learn your goals, audience, and message. No assumptions — just alignment from day one.</p>
+        <p class="tl-desc">We learn your goals, audience, and message. No assumptions, just alignment from day one.</p>
       </div>
       <div class="tl-step" data-reveal data-d="2">
         <div class="tl-dot"></div>
@@ -394,7 +394,7 @@ footer{background:var(--clr-surface);border-top:1px solid rgba(200,169,110,0.12)
         <div class="tl-dot"></div>
         <div class="tl-num">04</div>
         <h3 class="tl-title">Delivery</h3>
-        <p class="tl-desc">Color-graded, sound-designed, and exported for every platform — ready to go live.</p>
+        <p class="tl-desc">Color-graded, sound-designed, and exported for every platform and ready to go live.</p>
       </div>
     </div>
   </div>
@@ -528,13 +528,12 @@ footer{background:var(--clr-surface);border-top:1px solid rgba(200,169,110,0.12)
       </div>
       <div>
         <p style="font-family:'DM Mono',monospace;font-size:var(--fs-label);letter-spacing:0.2em;text-transform:uppercase;color:var(--clr-text-faint);margin-bottom:1.25rem;">Explore</p>
-        <nav><a href="index.html" class="foot-link">Home</a><a href="corporate.html" class="foot-link">Corporate Videos</a><a href="real-estate.html" class="foot-link">Real Estate Media</a><a href="camera-op.html" class="foot-link">Camera Operation</a><a href="work.html" class="foot-link">Our Work</a><a href="about.html" class="foot-link">About</a><a href="contact.html" class="foot-link">Contact</a></nav>
+        <nav><a href="index.html" class="foot-link">Home</a><a href="corporate.html" class="foot-link">Corporate Media</a><a href="real-estate.html" class="foot-link">Real Estate Media</a><a href="camera-op.html" class="foot-link">Camera Operation</a><a href="work.html" class="foot-link">Our Work</a><a href="about.html" class="foot-link">About</a><a href="contact.html" class="foot-link">Contact</a></nav>
       </div>
       <div>
         <p style="font-family:'DM Mono',monospace;font-size:var(--fs-label);letter-spacing:0.2em;text-transform:uppercase;color:var(--clr-text-faint);margin-bottom:1.25rem;">Get in Touch</p>
         <a href="mailto:atlas@atlasnarrative.media" style="display:block;font-size:var(--fs-sm);color:var(--clr-gold);text-decoration:none;margin-bottom:0.75rem;transition:opacity 0.2s ease;" onmouseover="this.style.opacity='.7'" onmouseout="this.style.opacity='1'">atlas@atlasnarrative.media</a>
         <a href="tel:+12146830746" style="display:block;font-size:var(--fs-sm);color:var(--clr-text-muted);text-decoration:none;margin-bottom:0.75rem;transition:color 0.2s ease;" onmouseover="this.style.color='var(--clr-gold)'" onmouseout="this.style.color='var(--clr-text-muted)'">(214) 683-0746</a>
-        <p style="font-size:var(--fs-sm);color:var(--clr-text-faint);">Available Worldwide</p>
       </div>
     </div>
     <div style="border-top:1px solid var(--clr-border);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.75rem;">

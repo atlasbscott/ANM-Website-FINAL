@@ -71,7 +71,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 .cam-hero-img img{width:100%;height:100%;object-fit:cover;filter:brightness(0.35);}
 .cam-hero-img .tint{position:absolute;inset:0;background:rgba(200,169,110,0.05);mix-blend-mode:multiply;}
 .cam-hero-img .grad{position:absolute;inset:0;background:linear-gradient(to right,var(--clr-base) 0%,transparent 40%);}
-@media(max-width:899px){.cam-hero-img .grad{background:linear-gradient(to top,var(--clr-base) 0%,transparent 40%);}}
+@media(max-width:899px){.cam-hero-img{display:none;}.cam-hero-text{padding-bottom:5rem;}}
 .hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;}
 
 /* ===== REEL ===== */
@@ -92,7 +92,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 /* ===== GEAR GRID ===== */
 .gear-grid{display:grid;grid-template-columns:1fr;gap:1.5rem;}
 @media(min-width:640px){.gear-grid{grid-template-columns:repeat(2,1fr);}}
-@media(min-width:1024px){.gear-grid{grid-template-columns:repeat(4,1fr);}}
+@media(min-width:1024px){.gear-grid{grid-template-columns:repeat(3,1fr);}}
 .gear-card{background:var(--clr-surface);border:1px solid var(--clr-border);padding:2rem 1.75rem;transition:border-color 0.3s ease;}
 .gear-card:hover{border-color:rgba(200,169,110,0.3);}
 .gear-head{font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:500;color:var(--clr-gold);margin-bottom:1.25rem;padding-bottom:0.75rem;border-bottom:1px solid rgba(200,169,110,0.15);}
@@ -103,7 +103,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 
 /* ===== CREDITS TABLE ===== */
 .credits-table{width:100%;}
-.credit-row{display:grid;grid-template-columns:2fr 1fr 1fr 0.5fr;gap:1rem;padding:1rem 1.25rem;align-items:center;border-bottom:1px solid var(--clr-border);transition:background-color 0.2s ease;}
+.credit-row{display:grid;grid-template-columns:3fr 2fr 2fr;gap:1.5rem;padding:1rem 1.25rem;align-items:center;border-bottom:1px solid var(--clr-border);transition:background-color 0.2s ease;}
 .credit-row:hover{background:var(--clr-elevated);}
 .credit-row.header{border-bottom:1px solid rgba(200,169,110,0.2);}
 .credit-row.header span{font-family:'DM Mono',monospace;font-size:var(--fs-label);letter-spacing:0.15em;text-transform:uppercase;color:var(--clr-gold);}
@@ -111,9 +111,11 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 .credit-role,.credit-type{font-family:'DM Mono',monospace;font-size:var(--fs-label);letter-spacing:0.1em;text-transform:uppercase;color:var(--clr-text-muted);}
 .credit-year{font-family:'DM Mono',monospace;font-size:var(--fs-sm);color:var(--clr-text-faint);text-align:right;}
 @media(max-width:640px){
-  .credit-row{grid-template-columns:1fr 1fr;gap:0.5rem;padding:0.875rem 1rem;}
-  .credit-title{grid-column:1/-1;}
-  .credit-year{text-align:left;}
+  .credit-row{grid-template-columns:1fr;gap:0.25rem;padding:1rem;}
+  .credit-row.header{display:none;}
+  .credit-title{font-size:1rem;margin-bottom:0.125rem;}
+  .credit-role,.credit-type{font-size:0.6rem;display:inline;}
+  .credit-role::after{content:' · ';color:var(--clr-text-faint);}
 }
 
 /* ===== TESTIMONIALS ===== */
@@ -179,7 +181,7 @@ footer{background:var(--clr-surface);border-top:1px solid rgba(200,169,110,0.12)
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li class="nav-dropdown"><a href="#" class="active">Services</a>
-      <div class="nav-dd-menu"><a href="corporate.html">Corporate Videos</a><a href="real-estate.html">Real Estate Media</a><a href="camera-op.html" class="active">Camera Operation</a></div>
+      <div class="nav-dd-menu"><a href="corporate.html">Corporate Media</a><a href="real-estate.html">Real Estate Media</a><a href="camera-op.html" class="active">Camera Operation</a></div>
     </li>
     <li><a href="work.html">Work</a></li>
     <li><a href="about.html">About</a></li>
@@ -191,9 +193,9 @@ footer{background:var(--clr-surface);border-top:1px solid rgba(200,169,110,0.12)
 <!-- ===== ASYMMETRIC HERO ===== -->
 <header class="cam-hero">
   <div class="cam-hero-text">
-    <span class="sec-label" style="display:block;margin-bottom:1rem;" data-reveal>Services — 03</span>
+    <span class="sec-label" style="display:block;margin-bottom:1rem;" data-reveal>Camera Operation</span>
     <h1 style="font-family:'Cormorant',serif;font-weight:300;font-style:italic;font-size:var(--fs-display);letter-spacing:-0.03em;line-height:1.0;color:var(--clr-text);margin-bottom:1.5rem;" data-reveal data-d="1">Your Next<br>Camera Operator</h1>
-    <p style="font-size:1.125rem;color:var(--clr-text-muted);max-width:480px;line-height:1.75;margin-bottom:2.5rem;" data-reveal data-d="2">Professional eyes behind every lens. Available for film sets, TV productions, commercials, events, and live broadcasts — any scale, any format.</p>
+    <p style="font-size:1.125rem;color:var(--clr-text-muted);max-width:480px;line-height:1.75;margin-bottom:2.5rem;" data-reveal data-d="2">Professional eyes behind every lens. Available for film sets, TV productions, commercials, events, and live broadcasts at any scale and any format.</p>
     <div class="hero-ctas" data-reveal data-d="3">
       <a href="#reel" class="btn-outline">View Reel</a>
       <a href="#contact-form" class="btn-gold">Book Now</a>
@@ -227,11 +229,11 @@ footer{background:var(--clr-surface);border-top:1px solid rgba(200,169,110,0.12)
   <div class="specs-bar">
     <div class="spec-item" data-reveal>
       <div class="spec-label">Based In</div>
-      <div class="spec-value">Dallas, TX</div>
+      <div class="spec-value">DFW</div>
     </div>
     <div class="spec-item" data-reveal data-d="1">
       <div class="spec-label">Travel</div>
-      <div class="spec-value">Worldwide</div>
+      <div class="spec-value">Open to Travel</div>
     </div>
     <div class="spec-item" data-reveal data-d="2">
       <div class="spec-label">Availability</div>
@@ -284,6 +286,17 @@ footer{background:var(--clr-surface);border-top:1px solid rgba(200,169,110,0.12)
         <h3 class="gear-head">Audio</h3>
         <ul class="gear-list">
           <li>Deity S-Mic 3 — Broadcast Short Shotgun</li>
+          <li>Zoom H4N — 4-Track Field Recorder</li>
+          <li>DJI Mic 2 — Wireless Lav System</li>
+          <li>K-Tek Avalon Boom Pole — Field Production</li>
+        </ul>
+      </div>
+      <div class="gear-card" data-reveal data-d="4">
+        <h3 class="gear-head">Lighting</h3>
+        <ul class="gear-list">
+          <li>Amaran 200x — 200W Bi-Color LED</li>
+          <li>ADJ Jolt 300 (x2) — 300W Strobe</li>
+          <li>ADJ UBL6H (x2) — LED Uplighting</li>
         </ul>
       </div>
     </div>
@@ -304,55 +317,180 @@ footer{background:var(--clr-surface);border-top:1px solid rgba(200,169,110,0.12)
         <span>Project</span>
         <span>Role</span>
         <span>Type</span>
-        <span style="text-align:right;">Year</span>
       </div>
       <div class="credit-row" data-reveal data-d="1">
-        <span class="credit-title">Untitled Feature Film</span>
-        <span class="credit-role">A Camera Operator</span>
-        <span class="credit-type">Feature Film</span>
-        <span class="credit-year">2026</span>
-      </div>
-      <div class="credit-row" data-reveal data-d="1">
-        <span class="credit-title">National Auto Campaign</span>
-        <span class="credit-role">Lead Camera Op</span>
-        <span class="credit-type">Commercial</span>
-        <span class="credit-year">2025</span>
-      </div>
-      <div class="credit-row" data-reveal data-d="2">
-        <span class="credit-title">Live at Red Rocks</span>
-        <span class="credit-role">Camera 2</span>
-        <span class="credit-type">Live Event</span>
-        <span class="credit-year">2025</span>
-      </div>
-      <div class="credit-row" data-reveal data-d="2">
-        <span class="credit-title">Docuseries — Season 2</span>
-        <span class="credit-role">DP / Operator</span>
-        <span class="credit-type">TV / Streaming</span>
-        <span class="credit-year">2025</span>
-      </div>
-      <div class="credit-row" data-reveal data-d="3">
-        <span class="credit-title">Fortune 500 Brand Film</span>
-        <span class="credit-role">B Camera Operator</span>
+        <span class="credit-title">Glendora / ActivWall Video Pack</span>
+        <span class="credit-role">Videographer / DP</span>
         <span class="credit-type">Corporate</span>
-        <span class="credit-year">2024</span>
+
+      </div>
+      <div class="credit-row" data-reveal data-d="1">
+        <span class="credit-title">Beautiful Ashes Ministries October Retreat</span>
+        <span class="credit-role">Videographer / DP</span>
+        <span class="credit-type">Corporate Event</span>
+
+      </div>
+      <div class="credit-row" data-reveal data-d="1">
+        <span class="credit-title">Azalea House Tour Videos</span>
+        <span class="credit-role">Videographer / DP</span>
+        <span class="credit-type">Corporate</span>
+
+      </div>
+      <div class="credit-row" data-reveal data-d="1">
+        <span class="credit-title">SPEROVA Long-Form CEO Videos</span>
+        <span class="credit-role">Videographer / DP</span>
+        <span class="credit-type">Corporate</span>
+
+      </div>
+      <div class="credit-row" data-reveal data-d="1">
+        <span class="credit-title">American Streets</span>
+        <span class="credit-role">Camera Operator</span>
+        <span class="credit-type">Feature Film</span>
+
+      </div>
+      <div class="credit-row" data-reveal data-d="2">
+        <span class="credit-title">Beautiful Ashes Ministries April Retreat</span>
+        <span class="credit-role">Videographer / DP</span>
+        <span class="credit-type">Corporate Event</span>
+
+      </div>
+      <div class="credit-row" data-reveal data-d="2">
+        <span class="credit-title">Merge W&D Product Demonstration</span>
+        <span class="credit-role">Videographer / DP</span>
+        <span class="credit-type">Corporate</span>
+
+      </div>
+      <div class="credit-row" data-reveal data-d="2">
+        <span class="credit-title">Merge W&D Product Talking Videos</span>
+        <span class="credit-role">Videographer / DP</span>
+        <span class="credit-type">Corporate</span>
+
+      </div>
+      <div class="credit-row" data-reveal data-d="2">
+        <span class="credit-title">Merge W&D Interview + B-Roll</span>
+        <span class="credit-role">Videographer / DP</span>
+        <span class="credit-type">Corporate</span>
+
+      </div>
+      <div class="credit-row" data-reveal data-d="2">
+        <span class="credit-title">Merge W&D Talking Head Videos #3 & #4</span>
+        <span class="credit-role">Videographer / DP</span>
+        <span class="credit-type">Corporate</span>
+
+      </div>
+      <div class="credit-row" data-reveal data-d="2">
+        <span class="credit-title">Beautiful Ashes Ministries Conference</span>
+        <span class="credit-role">Videographer</span>
+        <span class="credit-type">Corporate Event</span>
+
       </div>
       <div class="credit-row" data-reveal data-d="3">
-        <span class="credit-title">Indie Thriller — "Signal"</span>
-        <span class="credit-role">A Camera / Steadicam</span>
+        <span class="credit-title">Datsun</span>
+        <span class="credit-role">DP / Director</span>
         <span class="credit-type">Short Film</span>
-        <span class="credit-year">2024</span>
+
+      </div>
+      <div class="credit-row" data-reveal data-d="3">
+        <span class="credit-title">Carriage</span>
+        <span class="credit-role">DP / Director</span>
+        <span class="credit-type">Short Film</span>
+
+      </div>
+      <div class="credit-row" data-reveal data-d="3">
+        <span class="credit-title">How to Build a Home</span>
+        <span class="credit-role">DP / Director</span>
+        <span class="credit-type">Short Film</span>
+
+      </div>
+      <div class="credit-row" data-reveal data-d="3">
+        <span class="credit-title">mall</span>
+        <span class="credit-role">DP / Director</span>
+        <span class="credit-type">Short Film</span>
+
+      </div>
+      <div class="credit-row" data-reveal data-d="3">
+        <span class="credit-title">Workers on Strike: Santa's Workshop</span>
+        <span class="credit-role">DP / Director</span>
+        <span class="credit-type">Short Film</span>
+
+      </div>
+      <div class="credit-row" data-reveal data-d="3">
+        <span class="credit-title">Mr. Roberts Jr.</span>
+        <span class="credit-role">DP / Director</span>
+        <span class="credit-type">Short Film</span>
+
       </div>
       <div class="credit-row" data-reveal data-d="4">
-        <span class="credit-title">Tech Conference Keynote</span>
-        <span class="credit-role">Lead Camera Op</span>
-        <span class="credit-type">Livestream</span>
-        <span class="credit-year">2024</span>
+        <span class="credit-title">Gatsby Pilot Episode</span>
+        <span class="credit-role">Camera Op / DP</span>
+        <span class="credit-type">Web Series</span>
+
       </div>
       <div class="credit-row" data-reveal data-d="4">
-        <span class="credit-title">Regional Healthcare Spot</span>
-        <span class="credit-role">Camera Operator</span>
-        <span class="credit-type">Commercial</span>
-        <span class="credit-year">2023</span>
+        <span class="credit-title">BLACK BOX</span>
+        <span class="credit-role">DP / Director</span>
+        <span class="credit-type">Feature Film</span>
+
+      </div>
+      <div class="credit-row" data-reveal data-d="4">
+        <span class="credit-title">Initiation Night</span>
+        <span class="credit-role">DP / Director</span>
+        <span class="credit-type">Short Film</span>
+
+      </div>
+      <div class="credit-row" data-reveal data-d="4">
+        <span class="credit-title">HAUTA Fish Camp 2021 Highlight</span>
+        <span class="credit-role">Videographer / DP</span>
+        <span class="credit-type">Corporate</span>
+
+      </div>
+      <div class="credit-row" data-reveal data-d="4">
+        <span class="credit-title">"Hold Me Close" (Live)</span>
+        <span class="credit-role">Camera Op / DP</span>
+        <span class="credit-type">Music Video</span>
+
+      </div>
+      <div class="credit-row" data-reveal data-d="4">
+        <span class="credit-title">"Hope I'll Find Love Tonight"</span>
+        <span class="credit-role">Camera Op / DP</span>
+        <span class="credit-type">Music Video</span>
+
+      </div>
+      <div class="credit-row" data-reveal data-d="4">
+        <span class="credit-title">"Crazy Tonight"</span>
+        <span class="credit-role">Camera Op / DP</span>
+        <span class="credit-type">Music Video</span>
+
+      </div>
+      <div class="credit-row" data-reveal data-d="4">
+        <span class="credit-title">HAUTA Fish Camp 2020 Highlight</span>
+        <span class="credit-role">Videographer / DP</span>
+        <span class="credit-type">Corporate</span>
+
+      </div>
+      <div class="credit-row" data-reveal data-d="4">
+        <span class="credit-title">i'll stay.</span>
+        <span class="credit-role">DP / Director</span>
+        <span class="credit-type">Short Film</span>
+
+      </div>
+      <div class="credit-row" data-reveal data-d="4">
+        <span class="credit-title">Charis Portraiture Promo</span>
+        <span class="credit-role">Videographer / DP</span>
+        <span class="credit-type">Corporate</span>
+
+      </div>
+      <div class="credit-row" data-reveal data-d="4">
+        <span class="credit-title">Fine,</span>
+        <span class="credit-role">DP / Director</span>
+        <span class="credit-type">Short Film</span>
+
+      </div>
+      <div class="credit-row" data-reveal data-d="4">
+        <span class="credit-title">6 Stones Highlight Video</span>
+        <span class="credit-role">Videographer / Director</span>
+        <span class="credit-type">Corporate</span>
+
       </div>
     </div>
   </div>
@@ -369,7 +507,7 @@ footer{background:var(--clr-surface);border-top:1px solid rgba(200,169,110,0.12)
       <div class="val-card" data-reveal data-d="1"><h3 class="val-title">Craft</h3><p class="val-desc">Camera operation is a skill built frame by frame. We've put in the hours across genres, formats, and environments.</p></div>
       <div class="val-card" data-reveal data-d="2"><h3 class="val-title">Precision</h3><p class="val-desc">On a professional set, there's no room for guesswork. We know the gear, know the workflow, and execute reliably.</p></div>
       <div class="val-card" data-reveal data-d="3"><h3 class="val-title">Impact</h3><p class="val-desc">The operator is the last creative decision before the image is locked. We make every one of those decisions count.</p></div>
-      <div class="val-card" data-reveal data-d="4"><h3 class="val-title">Collaboration</h3><p class="val-desc">Great camera operation means listening to the director and serving their vision — not imposing your own.</p></div>
+      <div class="val-card" data-reveal data-d="4"><h3 class="val-title">Collaboration</h3><p class="val-desc">Great camera operation means listening to the director and serving their vision, not imposing your own.</p></div>
     </div>
   </div>
 </section>
@@ -469,7 +607,7 @@ footer{background:var(--clr-surface);border-top:1px solid rgba(200,169,110,0.12)
         </div>
         <div class="form-field full" id="f-brief">
           <label class="form-label" for="brief">Project Brief <span style="color:var(--clr-gold)">*</span></label>
-          <textarea class="form-textarea" id="brief" name="brief" placeholder="Tell us about the production — format, genre, crew size, director's style, any specific technical requirements..."></textarea>
+          <textarea class="form-textarea" id="brief" name="brief" placeholder="Tell us about the production, including format, genre, crew size, director's style, and any specific technical requirements..."></textarea>
           <span class="form-error">Please describe the project.</span>
         </div>
         <div class="form-field full" style="margin-top:0.5rem;">
@@ -498,13 +636,12 @@ footer{background:var(--clr-surface);border-top:1px solid rgba(200,169,110,0.12)
       </div>
       <div>
         <p style="font-family:'DM Mono',monospace;font-size:var(--fs-label);letter-spacing:0.2em;text-transform:uppercase;color:var(--clr-text-faint);margin-bottom:1.25rem;">Explore</p>
-        <nav><a href="index.html" class="foot-link">Home</a><a href="corporate.html" class="foot-link">Corporate Videos</a><a href="real-estate.html" class="foot-link">Real Estate Media</a><a href="camera-op.html" class="foot-link">Camera Operation</a><a href="work.html" class="foot-link">Our Work</a><a href="about.html" class="foot-link">About</a><a href="contact.html" class="foot-link">Contact</a></nav>
+        <nav><a href="index.html" class="foot-link">Home</a><a href="corporate.html" class="foot-link">Corporate Media</a><a href="real-estate.html" class="foot-link">Real Estate Media</a><a href="camera-op.html" class="foot-link">Camera Operation</a><a href="work.html" class="foot-link">Our Work</a><a href="about.html" class="foot-link">About</a><a href="contact.html" class="foot-link">Contact</a></nav>
       </div>
       <div>
         <p style="font-family:'DM Mono',monospace;font-size:var(--fs-label);letter-spacing:0.2em;text-transform:uppercase;color:var(--clr-text-faint);margin-bottom:1.25rem;">Get in Touch</p>
         <a href="mailto:atlas@atlasnarrative.media" style="display:block;font-size:var(--fs-sm);color:var(--clr-gold);text-decoration:none;margin-bottom:0.75rem;transition:opacity 0.2s ease;" onmouseover="this.style.opacity='.7'" onmouseout="this.style.opacity='1'">atlas@atlasnarrative.media</a>
         <a href="tel:+12146830746" style="display:block;font-size:var(--fs-sm);color:var(--clr-text-muted);text-decoration:none;margin-bottom:0.75rem;transition:color 0.2s ease;" onmouseover="this.style.color='var(--clr-gold)'" onmouseout="this.style.color='var(--clr-text-muted)'">(214) 683-0746</a>
-        <p style="font-size:var(--fs-sm);color:var(--clr-text-faint);">Available Worldwide</p>
       </div>
     </div>
     <div style="border-top:1px solid var(--clr-border);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.75rem;">

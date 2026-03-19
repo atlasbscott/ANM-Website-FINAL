@@ -309,12 +309,15 @@ body::after{
 .stat-num{font-family:'Cormorant',serif;font-size:2.25rem;font-weight:600;color:var(--clr-gold);line-height:1;}
 .stat-label{font-family:'DM Mono',monospace;font-size:var(--fs-label);letter-spacing:0.15em;text-transform:uppercase;color:var(--clr-text-muted);margin-top:0.2rem;}
 
-/* ── MARQUEE ─────────────────────────────────────────── */
-.marquee-wrap{overflow:hidden;white-space:nowrap;}
-.marquee-track{display:inline-flex;gap:3rem;animation:marquee 28s linear infinite;}
-@keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
-.marquee-item{font-family:'DM Mono',monospace;font-size:var(--fs-sm);color:var(--clr-text-faint);letter-spacing:0.08em;flex-shrink:0;}
-.marquee-sep{color:var(--clr-gold);font-size:0.4rem;flex-shrink:0;display:inline-flex;align-items:center;}
+/* ── CLIENT LOGOS ────────────────────────────────────── */
+/* ── CLIENT LOGOS ────────────────────────────────────── */
+.client-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2.5rem;max-width:1400px;margin:0 auto;padding:0 2rem;align-items:center;justify-items:center;}
+@media(max-width:768px){.client-grid{grid-template-columns:repeat(2,1fr);gap:1.5rem;}}
+.client-item{display:flex;align-items:center;justify-content:center;transition:transform 0.3s ease;}
+.client-item:hover{transform:translateY(-3px);}
+.client-item img{height:120px;width:auto;max-width:280px;object-fit:contain;opacity:0.8;transition:opacity 0.3s ease;}
+@media(max-width:768px){.client-item img{height:50px;max-width:130px;}}
+.client-item:hover img{opacity:1;}
 
 /* ── PROJECTS GRID ───────────────────────────────────── */
 .proj-grid{display:grid;grid-template-columns:1fr;gap:3px;background:var(--clr-border);}
@@ -353,7 +356,8 @@ body::after{
 .proc-desc{font-size:var(--fs-sm);color:var(--clr-text-muted);line-height:1.7;}
 
 /* ── TESTIMONIALS ────────────────────────────────────── */
-.t-quote{font-family:'Cormorant',serif;font-size:var(--fs-h2);font-weight:300;font-style:italic;letter-spacing:-0.02em;line-height:1.35;color:var(--clr-text);transition:opacity 0.4s ease;}
+.t-quote{font-family:'Cormorant',serif;font-size:var(--fs-h2);font-weight:300;font-style:italic;letter-spacing:-0.02em;line-height:1.35;color:var(--clr-text);transition:opacity 0.4s ease;min-height:8em;display:flex;align-items:center;justify-content:center;}
+@media(min-width:768px){.t-quote{min-height:5em;}}
 .t-attr{font-family:'DM Mono',monospace;font-size:var(--fs-label);letter-spacing:0.15em;text-transform:uppercase;color:var(--clr-gold);transition:opacity 0.4s ease;}
 .t-dot{width:6px;height:6px;border-radius:50%;background:var(--clr-text-faint);cursor:pointer;border:none;transition:background-color 0.2s ease,transform 0.2s ease;}
 .t-dot.active{background:var(--clr-gold);transform:scale(1.5);}
@@ -413,7 +417,7 @@ footer{background:var(--clr-surface);border-top:1px solid rgba(200,169,110,0.12)
     <li class="nav-dropdown">
       <a href="#" tabindex="0">Services</a>
       <div class="nav-dd-menu" role="menu">
-        <a href="corporate.html" role="menuitem">Corporate Videos</a>
+        <a href="corporate.html" role="menuitem">Corporate Media</a>
         <a href="real-estate.html" role="menuitem">Real Estate Media</a>
         <a href="camera-op.html" role="menuitem">Camera Operation</a>
       </div>
@@ -443,7 +447,7 @@ footer{background:var(--clr-surface);border-top:1px solid rgba(200,169,110,0.12)
       <span class="hero-line1" id="hl1">Press record.</span>
       <span class="hero-line2" id="hl2">Become the brand they follow.</span>
     </h1>
-    <p class="hero-body" id="hb">Four specializations. One vision. We craft visual stories that move audiences and build brands worth remembering.</p>
+    <p class="hero-body" id="hb">Three specializations. One vision. We craft visual stories that move audiences and build brands worth remembering.</p>
     <div class="hero-ctas" id="hc">
       <a href="work.html" class="btn-gold">View Our Work</a>
       <a href="contact.html" class="btn-outline">Start a Project</a>
@@ -473,7 +477,7 @@ footer{background:var(--clr-surface);border-top:1px solid rgba(200,169,110,0.12)
         <path d="M7 11h7M7 15h5"/>
       </svg>
       <p class="svc-num">01</p>
-      <h3 class="svc-title">Corporate Videos</h3>
+      <h3 class="svc-title">Corporate Media</h3>
       <p class="svc-desc">Brand films, product launches, culture videos, and executive stories that make your company impossible to ignore.</p>
       <span class="svc-arrow">Explore <span>→</span></span>
     </a>
@@ -494,7 +498,7 @@ footer{background:var(--clr-surface);border-top:1px solid rgba(200,169,110,0.12)
       </svg>
       <p class="svc-num">03</p>
       <h3 class="svc-title">Camera Operation</h3>
-      <p class="svc-desc">Professional operators for film, TV, commercials, events, and live productions of any scale.</p>
+      <p class="svc-desc">Professional operator for film, TV, commercials, events, and live productions of any scale.</p>
       <span class="svc-arrow">Explore <span>→</span></span>
     </a>
   </div>
@@ -509,7 +513,7 @@ footer{background:var(--clr-surface);border-top:1px solid rgba(200,169,110,0.12)
       <div data-reveal>
         <span class="sec-label" style="display:block;margin-bottom:1rem;">Featured Work</span>
         <h2 class="sec-head" style="font-size:var(--fs-h1);margin-bottom:1.5rem;">Our Signature<br><em>Showreel</em></h2>
-        <p style="color:var(--clr-text-muted);font-size:var(--fs-sm);line-height:1.8;margin-bottom:2rem;max-width:420px;">From corporate boardrooms to concert stages, from luxury listings to live sets — every frame is built to tell the story your audience can't look away from.</p>
+        <p style="color:var(--clr-text-muted);font-size:var(--fs-sm);line-height:1.8;margin-bottom:2rem;max-width:420px;">From corporate boardrooms to concert stages, from luxury listings to live sets. Every frame is built to tell the story your audience can't look away from.</p>
         <div style="display:flex;gap:3rem;flex-wrap:wrap;">
           <div><div class="stat-num">18+</div><div class="stat-label">Years</div></div>
           <div><div class="stat-num">250+</div><div class="stat-label">Projects</div></div>
@@ -531,28 +535,20 @@ footer{background:var(--clr-surface);border-top:1px solid rgba(200,169,110,0.12)
   </div>
 </section>
 
-<!-- Marquee -->
-<div style="padding:2.5rem 0;border-top:1px solid var(--clr-border);border-bottom:1px solid var(--clr-border);background:var(--clr-surface);" aria-hidden="true">
-  <div style="text-align:center;margin-bottom:1.25rem;"><span class="sec-label">Trusted By</span></div>
-  <div class="marquee-wrap">
-    <div class="marquee-track">
-      <span class="marquee-item">Corporate Clients</span><span class="marquee-sep">◆</span>
-      <span class="marquee-item">Real Estate Agencies</span><span class="marquee-sep">◆</span>
-      <span class="marquee-item">Independent Artists</span><span class="marquee-sep">◆</span>
-      <span class="marquee-item">Production Studios</span><span class="marquee-sep">◆</span>
-      <span class="marquee-item">Property Developers</span><span class="marquee-sep">◆</span>
-      <span class="marquee-item">Film & Television</span><span class="marquee-sep">◆</span>
-      <span class="marquee-item">Broadcast Networks</span><span class="marquee-sep">◆</span>
-      <span class="marquee-item">Corporate Clients</span><span class="marquee-sep">◆</span>
-      <span class="marquee-item">Real Estate Agencies</span><span class="marquee-sep">◆</span>
-      <span class="marquee-item">Independent Artists</span><span class="marquee-sep">◆</span>
-      <span class="marquee-item">Production Studios</span><span class="marquee-sep">◆</span>
-      <span class="marquee-item">Property Developers</span><span class="marquee-sep">◆</span>
-      <span class="marquee-item">Film & Television</span><span class="marquee-sep">◆</span>
-      <span class="marquee-item">Broadcast Networks</span><span class="marquee-sep">◆</span>
-    </div>
+<!-- Client Logos -->
+<section style="padding:4.5rem 2rem;border-top:1px solid var(--clr-border);border-bottom:1px solid var(--clr-border);background:var(--clr-surface);" aria-label="Trusted clients">
+  <div style="text-align:center;margin-bottom:2.5rem;" data-reveal><span class="sec-label">Trusted By</span></div>
+  <div class="client-grid" data-reveal data-d="1">
+    <div class="client-item"><img src="brand_assets/Client Logos/BAM.png" alt="Beautiful Ashes Ministries"></div>
+    <div class="client-item"><img src="brand_assets/Client Logos/Annex B.png" alt="Annex B"></div>
+    <div class="client-item"><img src="brand_assets/Client Logos/Premiere Trucking.png" alt="Premiere Trucking"></div>
+    <div class="client-item"><img src="brand_assets/Client Logos/SPEROVA.png" alt="SPEROVA"></div>
+    <div class="client-item"><img src="brand_assets/Client Logos/Merge.png" alt="Merge Windows & Doors"></div>
+    <div class="client-item"><img src="brand_assets/Client Logos/AMS Pictures.png" alt="AMS Pictures"></div>
+    <div class="client-item"><img src="brand_assets/Client Logos/MDR.png" alt="MDR Television"></div>
+    <div class="client-item"><img src="brand_assets/Client Logos/Sleep Pour Productions.png" alt="Sleep Pour Productions"></div>
   </div>
-</div>
+</section>
 
 <!-- Selected Projects -->
 <section style="padding:6rem 0;" aria-label="Selected projects">
@@ -622,7 +618,7 @@ footer{background:var(--clr-surface);border-top:1px solid rgba(200,169,110,0.12)
       <div data-reveal data-d="2">
         <div class="proc-num">02</div>
         <h3 class="proc-title">Production</h3>
-        <p class="proc-desc">Precision on set. From lighting to composition, every element is intentional. We don't miss the moment — we build toward it.</p>
+        <p class="proc-desc">Precision on set. From lighting to composition, every element is intentional. We don't miss the moment. We build toward it.</p>
       </div>
       <div data-reveal data-d="3">
         <div class="proc-num">03</div>
@@ -638,9 +634,9 @@ footer{background:var(--clr-surface);border-top:1px solid rgba(200,169,110,0.12)
   <div style="max-width:860px;margin:0 auto;padding:0 2rem;text-align:center;" data-reveal>
     <span class="sec-label" style="display:block;margin-bottom:2rem;">What Clients Say</span>
     <blockquote>
-      <p class="t-quote" id="tq">"ANM didn't just shoot our brand video — they understood our story before they even picked up the camera. The result exceeded every expectation."</p>
+      <p class="t-quote" id="tq">"I can rely on Atlas to get the job done, and get it done right. He works intentionally, creatively, and has attention to detail that far exceeds competitors in his industry."</p>
       <footer style="margin-top:2rem;">
-        <cite class="t-attr" id="ta" style="font-style:normal;">— Client Name · Corporate Client</cite>
+        <cite class="t-attr" id="ta" style="font-style:normal;">— Victor Fadool · Beautiful Ashes Ministries</cite>
       </footer>
     </blockquote>
     <div style="display:flex;justify-content:center;gap:0.75rem;margin-top:2.5rem;" role="tablist" aria-label="Testimonial navigation">
@@ -687,7 +683,7 @@ footer{background:var(--clr-surface);border-top:1px solid rgba(200,169,110,0.12)
         <p style="font-family:'DM Mono',monospace;font-size:var(--fs-label);letter-spacing:0.2em;text-transform:uppercase;color:var(--clr-text-faint);margin-bottom:1.25rem;">Explore</p>
         <nav aria-label="Footer navigation">
           <a href="index.html" class="foot-link">Home</a>
-          <a href="corporate.html" class="foot-link">Corporate Videos</a>
+          <a href="corporate.html" class="foot-link">Corporate Media</a>
           <a href="real-estate.html" class="foot-link">Real Estate Media</a>
           <a href="camera-op.html" class="foot-link">Camera Operation</a>
           <a href="work.html" class="foot-link">Our Work</a>
@@ -699,7 +695,6 @@ footer{background:var(--clr-surface);border-top:1px solid rgba(200,169,110,0.12)
         <p style="font-family:'DM Mono',monospace;font-size:var(--fs-label);letter-spacing:0.2em;text-transform:uppercase;color:var(--clr-text-faint);margin-bottom:1.25rem;">Get in Touch</p>
         <a href="mailto:atlas@atlasnarrative.media" style="display:block;font-size:var(--fs-sm);color:var(--clr-gold);text-decoration:none;margin-bottom:0.75rem;transition:opacity 0.2s ease;" onmouseover="this.style.opacity='.7'" onmouseout="this.style.opacity='1'">atlas@atlasnarrative.media</a>
         <a href="tel:+12146830746" style="display:block;font-size:var(--fs-sm);color:var(--clr-text-muted);text-decoration:none;margin-bottom:0.75rem;transition:color 0.2s ease;" onmouseover="this.style.color='var(--clr-gold)'" onmouseout="this.style.color='var(--clr-text-muted)'">(214) 683-0746</a>
-        <p style="font-size:var(--fs-sm);color:var(--clr-text-faint);">Available Worldwide</p>
       </div>
     </div>
     <div style="border-top:1px solid var(--clr-border);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.75rem;">
